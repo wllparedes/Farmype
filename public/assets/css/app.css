@@ -17,6 +17,7 @@ label.error {
 
 input.error{
     border: 0.5px solid #f5365c;
+    outline: 0.5px solid #f5365c;
 }
 
 .input-group-alternative{

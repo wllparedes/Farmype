@@ -1,12 +1,20 @@
-import { passwordStrength } from "./passwordStrength.js";
+import { passwordStrength } from "./../auth/passwordStrength.js";
 import { Expressions } from "./../global/regularExpressions.js";
+import { Toast } from "./../global/ToastSwal.js";
+import { resetPasswordValues } from "./resetPasswordValues.js";
+import { assignValues } from "./assignValues.js";
+
+// import { TokenCsrf } from "./../global/csrfToken.js";
+// import { MessageValidator } from "./../global/validatorMessages.js";
 
 $(document).ready(() => {
-
     let inputPassword = document.getElementById("password");
     let alertPassword = document.getElementById("password-strength");
     let spanPassword = document.querySelector(".span-password");
 
+    // ******* SelectDefault *******
+
+    assignValues();
 
     // ******* SelectTwo *******
 
@@ -36,7 +44,7 @@ $(document).ready(() => {
 
     // ******* Jquery-Validator *******
 
-    $("#registerUserForm").validate({
+    $("#updateProfileForm").validate({
         rules: {
             document_type: {
                 required: true,
@@ -70,6 +78,19 @@ $(document).ready(() => {
                 required: true,
                 email: true,
             },
+            password_now: {
+                required: true,
+                remote: {
+                    url: $("#updateProfileForm").data("validate"),
+                    type: $("#updateProfileForm").attr("method"),
+                    dataType: "JSON",
+                    data: {
+                        password: function () {
+                            return $("#password-now").val();
+                        },
+                    },
+                },
+            },
             password: {
                 required: true,
                 maxlength: 20,
@@ -81,12 +102,63 @@ $(document).ready(() => {
             },
         },
         messages: {
+            password_now: {
+                remote: "La contraseña actual es incorrecta",
+            },
             password: {
-                required: "Por favor, introduce tu contraseña",
+                required: "Por favor, introduce tu nueva contraseña",
             },
             password_confirmation: {
                 equalTo: "Por favor, haz que tus contraseñas coincidan",
             },
+        },
+        submitHandler: function (form, event) {
+            event.preventDefault();
+
+            var form = $(form);
+
+            var formData = new FormData(form[0]);
+            console.warn(formData);
+
+            form.find(".btn-save").attr("disabled", "disabled");
+
+            $.ajax({
+                method: form.attr("method"),
+                url: form.attr("action"),
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "JSON",
+                success: function (data) {
+                    console.warn(data);
+                    if (data.success) {
+                        // form.trigger("reset");
+
+                        // * atualizar datos del user en la pagina
+                        assignValues();
+                        // * Eliminar datos del input
+                        resetPasswordValues();
+
+                        Toast.fire({
+                            icon: "success",
+                            title: "Datos guardados",
+                            text: data.message,
+                        });
+                    } else {
+                        Toast.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: data.message,
+                        });
+                    }
+                },
+                complete: function (data) {
+                    form.find(".btn-save").removeAttr("disabled");
+                },
+                error: function (data) {
+                    console.log(data);
+                },
+            });
         },
     });
 
@@ -132,10 +204,9 @@ $(document).ready(() => {
         }
     );
 
-
     // ? Mensaje de la fuerza de la contraseña
 
-    inputPassword.addEventListener("keyup", () => passwordStrength(inputPassword, alertPassword, spanPassword) );
-
-
+    inputPassword.addEventListener("keyup", () =>
+        passwordStrength(inputPassword, alertPassword, spanPassword)
+    );
 });

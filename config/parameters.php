@@ -1,6 +1,11 @@
 <?php
 
 return [
+
+    'updated_message' => '¡Sus datos han sido actualizados!',
+    'exception_message' => 'No es posible completar la solicitud',
+
+
     'document_type' => [
         'dni' => 'DNI',
         'foreigner_id_Card' => 'C.E',

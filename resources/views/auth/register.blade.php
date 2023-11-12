@@ -187,5 +187,8 @@
 @section('optional_scripts')
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
+
+    <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
+
     <script src="{{ asset('assets/js/auth/register.js') }}" type="module"></script>
 @endsection
