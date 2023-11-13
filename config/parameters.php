@@ -2,7 +2,9 @@
 
 return [
 
+    'stored_message_ product' => 'Su producto ha sido registrado',
     'updated_message' => '¡Sus datos han sido actualizados!',
+    'exception_message' => 'No es posible completar la solicitud',
     'exception_message' => 'No es posible completar la solicitud',
 
 
@@ -13,24 +15,17 @@ return [
         'passport' => 'Pasaporte',
     ],
 
+    'roles' => [
+        'company' => 'Empresa',
+        'clients' => 'Cliente',
+    ],
+
     'departaments' => [
         'lima' => 'Lima',
-        // 'amazonas' => 'Amazonas',
-        // 'ancash' => 'Áncash',
-        // 'apurimac' => 'Apurímac',
-        // 'arequipa' => 'Arequipa',
-        // 'ayacucho' => 'Ayacucho',
-        // 'cajamarca' => 'Cajamarca',
-        // 'piura' => 'Piura',
     ],
 
     'provinces' => [
         'lima' => 'Lima',
-        // 'barranca' => 'Barranca',
-        // 'cajatambo' => 'Cajatambo',
-        // 'canto' => 'Canto',
-        // 'cañete' => 'Cañete',
-        // 'huarochiri' => 'Huarochirí',
     ],
 
     'districts' => [
@@ -40,6 +35,13 @@ return [
         'puebloLibre' => 'Pueblo Libre',
         'sanIsidro' => 'San Isidro',
         'miraflores' => 'Miraflores',
+    ],
+
+    'productTypes' => [
+        'medications' => 'Medicamento',
+        'cosmetics' => 'Cosméticos',
+        'eating' => 'Alimentación',
+        'health' => 'Salud',
     ]
 
 ];

@@ -1,4 +1,4 @@
-@extends('home.layouts.main')
+@extends('company.layouts.main')
 
 @section('title', 'Perfil')
 

@@ -34,6 +34,12 @@ $(document).ready(() => {
         minimumResultsForSearch: Infinity,
     });
 
+    $("#select-role").select2({
+        placeholder: "Selecciona tu tipo de usuario",
+        language: "es",
+        minimumResultsForSearch: Infinity,
+    });
+
     // ******* Jquery-Validator *******
 
     $("#registerUserForm").validate({
@@ -46,6 +52,9 @@ $(document).ready(() => {
                 documentType: "#select-document-type",
             },
             names_surnames: {
+                required: true,
+            },
+            role: {
                 required: true,
             },
             departament: {

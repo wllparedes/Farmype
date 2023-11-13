@@ -21,7 +21,7 @@ class ProfileController extends Controller
 
     public function index(){
 
-        return view('home.client.profile',[
+        return view('company.profile.index',[
             'departaments' => config('parameters.departaments'),
             'provinces' => config('parameters.provinces'),
             'districts' => config('parameters.districts'),

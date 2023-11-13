@@ -7,7 +7,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="./index.html">
-            <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -29,7 +29,7 @@
                     aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-1-800x800.jpg') }}">
                         </span>
                     </div>
                 </a>
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="./index.html">
-                            <img src="./assets/img/brand/blue.png">
+                            <img src="{{ asset('assets/img/brand/blue.png') }}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -99,8 +99,8 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item  active ">
-                    <a class="nav-link  active " href="./index.html">
-                        <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                    <a class="nav-link  active " href="{{ route('home') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> Home
                     </a>
                 </li>
                 <li class="nav-item">

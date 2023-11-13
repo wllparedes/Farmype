@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('home.partials._head')
+@include('partials._head')
 
 <body class="">
 
 
-    @include('home.partials._sidebar')
+    @include('company.partials._sidebar')
 
 
     <div class="main-content">
         <!-- Navbar -->
-        @include('home.partials._navbar')
+        @include('company.partials._navbar')
         <!-- End Navbar -->
 
         @yield('content')
 
         <!-- Footer -->
-        @include('home.partials._footer')
+        @include('partials._footer')
     </div>
     <!--   Core   -->
-    @include('home.partials._scripts')
+    @include('partials._scripts')
     @yield('optional_scripts')
 </body>
 

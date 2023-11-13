@@ -15,12 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('document_type'); //? Foreign Key
+            $table->string('document_type');
             $table->string('document_number');
             $table->string('names_surnames');
-            $table->string('departament'); //? Foreign Key
-            $table->string('province'); //? Foreign Key
-            $table->string('district'); //? Foreign Key
+            $table->string('role');
+            $table->string('departament');
+            $table->string('province');
+            $table->string('district');
             $table->string('address');
             $table->string('email')->unique();
             $table->string('phone');

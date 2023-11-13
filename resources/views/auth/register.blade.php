@@ -61,6 +61,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="select-role">Tipo de usuario *</label>
+                                <div class="input-group input-group-alternative mb-3">
+                                    <select id="select-role" class="form-control input-form-class"
+                                        name="role">
+                                        <option></option>
+                                        @foreach ($roles as $key => $role)
+                                            <option value="{{ $key }}"> {{ $role }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="select-departament">Departamento *</label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <select id="select-departament" class="form-control input-form-class"
@@ -152,8 +165,9 @@
                                     fuerza de la contraseña:
                                     <span class="text-danger font-weight-700 span-password">débil</span>
                                 </small>
-                                <button id="popover-password" type="button" class="btn btn-success" data-container="body"
-                                    data-toggle="popover" data-color="success" data-placement="top"
+                                <button id="popover-password" type="button" class="btn btn-success"
+                                    data-container="body" data-toggle="popover" data-color="success"
+                                    data-placement="top"
                                     data-content="Para que su contraseña sea fuerte, ingrese mayúsculas, números, carácteres especiales y que tenga una longitud mayor a 6 carácteres.">
                                     <span class="btn-inner--icon"><i class="ni ni-notification-70"></i></span>
                                 </button>

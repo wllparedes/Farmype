@@ -30,8 +30,9 @@ class RegisterController extends Controller
         $departaments = config('parameters.departaments');
         $provinces = config('parameters.provinces');
         $districts = config('parameters.districts');
+        $roles = config('parameters.roles');
 
-        return view('auth.register', compact('documentTypes', 'departaments', 'provinces', 'districts'));
+        return view('auth.register', compact('documentTypes', 'departaments', 'provinces', 'districts', 'roles'));
     }
 
     /**
@@ -62,7 +63,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'names_surnames' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -83,6 +84,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'names_surnames' => $data['names_surnames'],
+            'role' => $data['role'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

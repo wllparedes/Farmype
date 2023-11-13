@@ -19,9 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'document_type', 'document_number',
-        'names_surnames','password' ,'departament', 'province',
-        'district', 'address', 'email',
-        'phone'
+        'names_surnames','role' ,'password' ,'departament',
+        'province', 'district', 'address',
+        'email', 'phone'
     ];
 
     /**

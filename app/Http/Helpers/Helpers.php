@@ -29,3 +29,8 @@ function normalizeInputStatus($data)
 
     return $data;
 }
+
+function setActive($routeName)
+{
+    return request()->routeIs($routeName) ? 'active' : '';
+}
