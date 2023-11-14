@@ -1,21 +1,12 @@
 import { Toast } from './../global/ToastSwal.js';
 
-// $(document).ready(() => {
-
-
-
-
-// });
-
-
-
-export const uploadImage = () => {
-        var inputUserImageStore = $("#input-user-image-store");
+export const uploadImage = (input, form) => {
+        var inputUserImageStore = $(input);
         inputUserImageStore.on("change", function () {
             if ($(this).val()) {
                 var img_path = $(this)[0].value;
                 var img_holder = $(this)
-                    .closest("#registerProductForm")
+                    .closest(form)
                     .find(".img-holder");
                 var currentImagePath = $(this).data("value");
                 var img_extension = img_path

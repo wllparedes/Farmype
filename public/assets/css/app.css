@@ -109,6 +109,31 @@ input.error {
     z-index: 10;
 }
 
-#input-user-image-store-error{
+#input-product-image-store-error {
     display: block;
 }
+
+
+
+/* @media screen and (max-width: 425px) {
+    .container-products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 0;
+    }
+} */
+
+.container-products{
+    gap: 30px 0;
+}
+.product-description{
+    text-overflow: ellipsis;
+}
+.btn-outline-danger:hover svg{
+    color: white !important;
+}
+
+.swal2-cancel{
+    background-color: #5e72e4 !important;
+}
+

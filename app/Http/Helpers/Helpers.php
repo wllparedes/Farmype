@@ -34,3 +34,36 @@ function setActive($routeName)
 {
     return request()->routeIs($routeName) ? 'active' : '';
 }
+
+function verifyImage($file)
+{
+    $url = asset('storage/img/common/no-image.png');
+    if ($file) {
+        $url = $file->file_url == null ? $url
+            : $file->file_url;
+
+        // TARDA DEMASIADO CUANDO SON VARIAS IMÁGENES
+
+        // $directory = (explode('/', str_ireplace(array('http://', 'https://'), '', $url)))[0];
+
+        // if ($directory == 'localhost' || $directory == '127.0.0.1:8000') {
+        //     $url = $url == null ? asset('storage/img/common/no-image.png')
+        //         : $url;
+        // } else {
+        //     $ch = curl_init();
+        //     curl_setopt($ch, CURLOPT_URL, $url);
+
+        //     curl_setopt($ch, CURLOPT_NOBODY, 1);
+        //     curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        //     $result = curl_exec($ch);
+        //     curl_close($ch);
+        //     if ($result == false) {
+        //         $url = asset('storage/img/common/no-image.png');
+        //     }
+        // }
+    }
+
+    return $url;
+}

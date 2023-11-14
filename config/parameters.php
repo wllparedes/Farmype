@@ -5,8 +5,7 @@ return [
     'stored_message_ product' => 'Su producto ha sido registrado',
     'updated_message' => '¡Sus datos han sido actualizados!',
     'exception_message' => 'No es posible completar la solicitud',
-    'exception_message' => 'No es posible completar la solicitud',
-
+    'updated_message' => 'Datos del producto actualizados',
 
     'document_type' => [
         'dni' => 'DNI',

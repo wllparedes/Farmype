@@ -12,7 +12,7 @@ $(document).ready(() => {
         minimumResultsForSearch: Infinity,
     });
 
-    uploadImage();
+    uploadImage("#input-product-image-store", "#registerProductForm");
 
     const inputsValidateSymbols = [
         document.getElementById("input-stock"),
@@ -99,7 +99,7 @@ $(document).ready(() => {
                             text: data.message,
                         });
                         $("#select-product-type").val(null).trigger("change");
-                        uploadImage();
+                        uploadImage("input-user-image-store", "registerProductForm");
                     } else {
                         Toast.fire({
                             icon: "error",

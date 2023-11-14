@@ -103,14 +103,14 @@
                         <i class="ni ni-tv-2 text-primary"></i> Home
                     </a>
                 </li>
-                <li class="nav-item {{ setActive('products.index') }}">
-                    <a class="nav-link {{ setActive('products.index') }}" href="{{ route('products.index') }}">
+                <li class="nav-item {{ setActive('company.product.create') }}">
+                    <a class="nav-link {{ setActive('company.product.create') }}" href="{{ route('company.product.create') }}">
                         <i class="ni ni-planet text-blue"></i> Registro de Productos
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="./examples/maps.html">
-                        <i class="ni ni-pin-3 text-orange"></i> Maps
+                <li class="nav-item {{ setActive('company.products.index') }}">
+                    <a class="nav-link {{ setActive('company.products.index') }}" href="{{ route('company.products.index') }}">
+                        <i class="ni ni-pin-3 text-orange"></i> Consultar Productos
                     </a>
                 </li>
                 <li class="nav-item ">

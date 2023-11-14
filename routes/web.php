@@ -25,8 +25,18 @@ Route::group(['middleware' => ['auth']], function(){
         Route::group(['middleware' => 'check.role:company'], function(){
 
             Route::get('/home', [CompanyHomeController::class, 'index'])->name('home');
-            Route::get('/registrar-producto', [ProductController::class, 'index'])->name('products.index');
-            Route::post('/registrar', [ProductController::class, 'store'])->name('products.store');
+
+            Route::controller(ProductController::class)->group(function(){
+
+                Route::get('/productos-registrados', 'index')->name('company.products.index');
+                Route::get('/registrar-producto', 'create')->name('company.product.create');
+                Route::post('/registrar', 'store')->name('company.product.store');
+                Route::get('/obtener-productos', 'getMoreProducts')->name('company.products.get-more-products');
+                Route::get('/editar/{product}', 'edit')->name('company.product.edit');
+                Route::post('/actualizar/{product}', 'update')->name('company.product.update');
+                Route::delete('/eliminar/{product}', 'destroy')->name('company.product.delete');
+
+            });
 
         });
 
