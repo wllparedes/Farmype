@@ -9,14 +9,12 @@ const renderProducts = () => {
         getMoreProducts(page);
     });
 
-    let dataSend = $("#productData").data("url");
-
     function getMoreProducts(page) {
         $.ajax({
             type: "GET",
-            url: dataSend + "?page=" + page,
+            url: "?page=" + page,
             success: function (data) {
-                $("#productData").html(data);
+                $("#productData").html(data.html);
             },
         });
     }
@@ -25,19 +23,15 @@ const renderProducts = () => {
 renderProducts();
 
 export const renderProductsLoad = () => {
-
-    let dataSend = $("#productData").data("url");
-
     function getMoreProducts(numberPage) {
         $.ajax({
             type: "GET",
-            url: dataSend + "?page=" + numberPage,
+            url: "?page=" + numberPage,
             success: function (data) {
-                $("#productData").html(data);
+                $("#productData").html(data.html);
             },
         });
     }
 
     getMoreProducts(numberPage);
-
 };

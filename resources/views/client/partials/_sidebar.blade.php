@@ -98,19 +98,19 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  active ">
-                    <a class="nav-link  active " href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> Home
+                <li class="nav-item  {{ setActive('clients.home') }}">
+                    <a class="nav-link  {{ setActive('clients.home') }}" href="{{ route('clients.home') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> Inicio
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="./examples/icons.html">
-                        <i class="ni ni-planet text-blue"></i> Icons
+                <li class="nav-item {{ setActive('client.products.index') }}">
+                    <a class="nav-link {{ setActive('client.products.index') }}" href="{{ route('client.products.index') }}">
+                        <i class="ni ni-planet text-blue"></i> Seleccionar Productos
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="./examples/maps.html">
-                        <i class="ni ni-pin-3 text-orange"></i> Maps
+                <li class="nav-item {{ setActive('client.selected-products.index') }}">
+                    <a class="nav-link {{ setActive('client.selected-products.index') }}" href="{{ route('client.selected-products.index') }}">
+                        <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
                     </a>
                 </li>
                 <li class="nav-item">

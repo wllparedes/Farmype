@@ -1,7 +1,7 @@
 import { Expressions } from "./../../global/regularExpressions.js";
 import { Toast } from "./../../global/ToastSwal.js";
 // import { resetInputsForm } from "./../../global/resetInputsForm.js";
-import { renderProductsLoad } from "./../../company/products/renderProducts.js";
+import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 
 $(document).ready(() => {
     // ******* selectTwo *******
@@ -11,6 +11,8 @@ $(document).ready(() => {
     //     language: "es",
     //     minimumResultsForSearch: Infinity,
     // });
+
+    let requiredImage = false;
 
     const inputsValidateSymbols = [
         document.getElementById("input-stock"),
@@ -63,7 +65,7 @@ $(document).ready(() => {
                 //
             },
             image: {
-                required: true,
+                required: requiredImage,
             },
         },
         messages: {
@@ -90,11 +92,9 @@ $(document).ready(() => {
                 dataType: "JSON",
                 success: function (data) {
 
-                    console.log(data.product)
                     if (data.success) {
                         // * Volver a cargar la lista de datos
                         renderProductsLoad();
-
                         form.trigger("reset");
                         modal.modal("hide");
                         Toast.fire({
@@ -110,7 +110,6 @@ $(document).ready(() => {
                     }
                 },
                 complete: function (data) {
-                    // loadSpinner.toggleClass("active");
                     form.find(".btn-save").removeAttr("disabled");
                     modal.modal('toggle')
                 },

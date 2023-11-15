@@ -1,5 +1,5 @@
 import { Toast } from "./../../global/ToastSwal.js";
-import { renderProductsLoad } from "./../../company/products/renderProducts.js";
+import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 import { SwalDelete } from "./../../global/SwalAlerts.js";
 
 $(document).ready(() => {

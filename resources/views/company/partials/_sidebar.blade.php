@@ -98,8 +98,8 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  {{ setActive('home') }} ">
-                    <a class="nav-link  {{ setActive('home') }} " href="{{ route('home') }}">
+                <li class="nav-item  {{ setActive('company.home') }} ">
+                    <a class="nav-link  {{ setActive('company.home') }} " href="{{ route('company.home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> Home
                     </a>
                 </li>

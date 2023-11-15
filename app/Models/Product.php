@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
 
-    protected $table = "products";
+    protected $table = 'products';
 
     use HasFactory;
 
@@ -24,6 +25,11 @@ class Product extends Model
 
         return $this->belongsTo(User::class);
 
+    }
+
+    public function productLists() : BelongsToMany
+    {
+        return $this->belongsToMany(ProductList::class, 'product_product_list', 'product_id', 'product_lists_id');
     }
 
 

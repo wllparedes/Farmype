@@ -137,3 +137,24 @@ input.error {
     background-color: #5e72e4 !important;
 }
 
+.span-stock{
+    position: absolute;
+    bottom: 170px;
+    left: 0;
+    padding: 10px;
+    border-radius: 0;
+}
+.cart-shooping{
+    position: absolute;
+    bottom: 170px;
+    left: 0;
+    /* padding: 10px; */
+}
+.cart-shooping > button{
+    border-radius: 0;
+}
+
+.badge{
+    font-weight: bold;
+    font-size: 85%;
+}

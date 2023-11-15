@@ -37,10 +37,12 @@ return [
     ],
 
     'productTypes' => [
-        'medications' => 'Medicamento',
-        'cosmetics' => 'Cosméticos',
-        'eating' => 'Alimentación',
-        'health' => 'Salud',
+        'nutrition' => 'Nutrición',
+        'beauty' => 'Belleza',
+        'personal_care' => 'Cuidado Personal',
+        'medical_devices' => 'Dispositivos Médicos',
+        'mon_and_baby' => 'Mamá y bebe',
+        'older_adult' => 'Adulto mayor',
     ]
 
 ];

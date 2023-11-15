@@ -18,7 +18,7 @@
                                 <label class="form-control-label" for="input-name">Nombre del producto
                                     *</label>
                                 <input type="text" id="input-name" name="name"
-                                    class="form-control form-control-alternative input-reset"
+                                    class="form-control form-control-alternative input-reset valid "
                                     placeholder="Ingresa el nombre del producto" autocomplete="off">
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-stock">Stock *</label>
                                 <input type="number" id="input-stock" name="stock"
-                                    class="form-control form-control-alternative input-reset"
+                                    class="form-control form-control-alternative input-reset valid "
                                     placeholder="Ingresa el stock" autocomplete="off" min="0">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-price">Precio *</label>
                                 <input type="number" id="input-price" name="price"
-                                    class="form-control form-control-alternative input-reset"
+                                    class="form-control form-control-alternative input-reset valid "
                                     placeholder="Ingresa el precio" min="0">
                             </div>
                         </div>

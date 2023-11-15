@@ -35,7 +35,7 @@ $(document).ready(() => {
                     .html(
                         '<img class="img-fluid product_img" id="image-product-edit" src="' +
                             data.url_img +
-                            '" onload="javascript:showImage();"></img>'
+                            '"></img>'
                     );
                 modal
                     .find("#input-product-image-store")
@@ -48,7 +48,7 @@ $(document).ready(() => {
                 modal.find("#input-user-image-edit").val("");
             },
             complete: function (data) {
-                // modal.modal('toggle')
+                modal.modal('toggle')
             },
             error: function (data) {
                 console.log(data)

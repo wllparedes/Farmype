@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between mb-4">
                             <button id="btn-update" data-original-title="edit" data-toggle="modal"
-                                data-target="#updateProductModal" class="btn btn-outline-success btn-sm editProduct"
+                                class="btn btn-outline-success btn-sm editProduct"
                                 data-id="{{ $product->id }}"
                                 data-url="{{ route('company.product.update', $product->id) }}"
                                 data-send="{{ route('company.product.edit', $product->id) }}">
