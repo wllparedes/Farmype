@@ -2,11 +2,11 @@ import { Toast } from "./../../global/ToastSwal.js";
 import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 
 $(document).ready(() => {
-    $("#productData").on("click", ".addProductOnList", function () {
+    $("#productData").on("click", ".deleteProductOnList", function () {
         let url = $(this).data("url");
 
         $.ajax({
-            method: "POST",
+            method: "DELETE",
             url: url,
             dataType: "JSON",
             success: function (data) {
