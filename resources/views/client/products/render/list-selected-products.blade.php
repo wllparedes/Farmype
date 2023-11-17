@@ -3,6 +3,11 @@
         {{-- <div class="container-products row col-lg-8 col-md-12 col-sm-12"> --}}
         <p class="col-12">Productos</p>
 
+        @php
+            $quantityProducts = 0;
+            $priceSubtotal = 0;
+        @endphp
+
         @foreach ($productsOnList as $productList)
             @if ($productList->products->isEmpty())
                 <h3 class="col-12 text-center">No hay productos registrados</h3>
@@ -20,18 +25,38 @@
                             </div>
                             <div class="container-price">
                                 @if ($product->on_sale)
-                                    <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/.
+                                    @php
+
+                                        if ($product->stock != 0) {
+                                            $priceSubtotal = $priceSubtotal + ($product->discounted_price * $product->pivot->quantity);
+                                        }
+
+                                    @endphp
+                                    <span
+                                        class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/.
                                         {{ $product->price }}</span>
-                                    <span class="badge badge-pill badge-sm badge-danger discount-value-selected">-% {{ $product->discount }}</span>
-                                    <span class="badge badge-pill badge-sm badge-light">S/. {{ $product->discounted_price }}</span>
+                                    <span class="badge badge-pill badge-sm badge-danger discount-value-selected">-%
+                                        {{ $product->discount }}</span>
+                                    <span class="badge badge-pill badge-sm badge-light">S/.
+                                        {{ $product->discounted_price }}</span>
                                     <span class="btn btn-danger btn-sm span-on_sale-selected">OFERTA</span>
                                 @else
                                     <span class="badge badge-pill badge-sm badge-primary">S/.
                                         {{ $product->price }}</span>
+                                    @php
+
+                                        if ($product->stock != 0) {
+                                            $priceSubtotal = $priceSubtotal + ($product->price * $product->pivot->quantity);
+                                        }
+
+                                    @endphp
                                 @endif
                             </div>
 
                             @if ($product->stock != 0)
+                                @php
+                                    $quantityProducts++;
+                                @endphp
                                 <div class="container-cuantity">
                                     <div class="row-cuantity d-flex justify-content-between p-2">
                                         <button type="button" class="addCuantity btn btn-sm btn-default"
@@ -84,12 +109,12 @@
             <p class="col-12">Resumen de la lista</p>
             <div class="row p-4 container-resumen">
                 <div class="col-8">
-                    <h5>Productos (5)</h5>
+                    <h5>Productos ({{ $quantityProducts }})</h5>
                     <h5>Subtotal:</h5>
                 </div>
                 <div class="col-4 d-flex flex-column align-items-end">
-                    <h5>S/. 0</h5>
-                    <h5>S/. 0</h5>
+                    <h5>S/. {{$priceSubtotal}}</h5>
+                    <h5>S/. {{$priceSubtotal}}</h5>
                 </div>
                 <div class="col-12">
                     <button class="w-100 btn btn-warning">Agregarlos al carrito</button>
