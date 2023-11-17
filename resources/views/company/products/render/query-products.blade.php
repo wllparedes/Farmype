@@ -1,7 +1,7 @@
 <div class="card-body">
     <div class="row container-products">
         @if ($products->isEmpty())
-        <h3 class="col-12 text-center">No hay productos registrados</h3>
+            <h3 class="col-12 text-center">No hay productos registrados</h3>
         @else
             @foreach ($products as $product)
                 <div class="col-sm-6 col-md-6 col-lg-3">
@@ -31,8 +31,16 @@
                             <p class="card-text product-description">
                                 {{ $product->detail ? $product->detail : 'Sin detalle.' }}
                             </p>
-                            <span class="badge badge-pill badge-danger">S/. {{ $product->price }}</span>
-                            <span class="badge badge-pill badge-primary">Cant.
+                            @if ($product->on_sale)
+                                <span class="badge badge-pill badge-success text-decoration-line-through">S/.
+                                    {{ $product->price }}</span>
+                                <span class="badge badge-pill badge-warning">% {{ $product->discount }}</span>
+                                <span class="badge badge-pill badge-danger">S/ {{ $product->discounted_price }}</span>
+                            @else
+                                <span class="badge badge-pill badge-success">S/. {{ $product->price }}</span>
+                            @endif
+
+                            <span class="badge badge-pill badge-primary">Stock.
                                 {{ $product->stock }}
                             </span>
                         </div>

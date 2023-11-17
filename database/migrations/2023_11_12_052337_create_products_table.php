@@ -20,8 +20,10 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 8, 2);
             $table->string('detail')->nullable(); // * opcional
             $table->string('product_type');
+            $table->boolean('on_sale')->default(false);
+            $table->integer('discount')->nullable();
+            $table->decimal('discounted_price',8,2)->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

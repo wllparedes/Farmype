@@ -1,6 +1,6 @@
 import { Expressions } from "./../../global/regularExpressions.js";
 import { Toast } from "./../../global/ToastSwal.js";
-// import { resetInputsForm } from "./../../global/resetInputsForm.js";
+import { resetInputsForm } from "./../../global/resetInputsForm.js";
 import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 
 $(document).ready(() => {
@@ -17,11 +17,12 @@ $(document).ready(() => {
     const inputsValidateSymbols = [
         document.getElementById("input-stock"),
         document.getElementById("input-price"),
+        document.getElementById("input-discount"),
     ];
 
     inputsValidateSymbols.forEach((input) => {
         input.addEventListener("keypress", (event) => {
-            if (inputsValidateSymbols[0] == input) {
+            if (inputsValidateSymbols[0] == input || inputsValidateSymbols[2] == input) {
                 if (
                     event.key === "e" ||
                     event.key === "E" ||
@@ -67,10 +68,18 @@ $(document).ready(() => {
             image: {
                 required: requiredImage,
             },
+            discount: {
+                required: true,
+                isDiscount: true,
+            },
         },
         messages: {
             image: {
                 required: "SUBIR IMAGEN",
+            },
+            discount: {
+                isDiscount:
+                    "Por favor, introduzca un descuento para este producto.",
             },
         },
         submitHandler: function (form, event) {
@@ -91,7 +100,6 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-
                     if (data.success) {
                         // * Volver a cargar la lista de datos
                         renderProductsLoad();
@@ -104,14 +112,13 @@ $(document).ready(() => {
                     } else {
                         Toast.fire({
                             icon: "error",
-                            title: "Datos guardados",
                             text: data.message,
                         });
                     }
                 },
                 complete: function (data) {
                     form.find(".btn-save").removeAttr("disabled");
-                    modal.modal('toggle')
+                    modal.modal("toggle");
                 },
                 error: function (data) {
                     console.log(data);
@@ -120,10 +127,15 @@ $(document).ready(() => {
         },
     });
 
-
     $.validator.addMethod(
         "doubleOrInteger",
         (value, element) => Expressions.isPrice.test(value),
         "Por favor, introduzca un precio para este producto."
+    );
+
+    $.validator.addMethod(
+        "isDiscount",
+        (value, element) => Expressions.isDiscount.test(value),
+        "Por favor, introduzca un descuento para este producto."
     );
 });

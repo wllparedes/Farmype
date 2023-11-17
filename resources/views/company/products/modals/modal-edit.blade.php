@@ -18,7 +18,7 @@
                                 <label class="form-control-label" for="input-name">Nombre del producto
                                     *</label>
                                 <input type="text" id="input-name" name="name"
-                                    class="form-control form-control-alternative input-reset valid "
+                                    class="form-control form-control-alternative input-reset "
                                     placeholder="Ingresa el nombre del producto" autocomplete="off">
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-stock">Stock *</label>
                                 <input type="number" id="input-stock" name="stock"
-                                    class="form-control form-control-alternative input-reset valid "
+                                    class="form-control form-control-alternative input-reset"
                                     placeholder="Ingresa el stock" autocomplete="off" min="0">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-price">Precio *</label>
                                 <input type="number" id="input-price" name="price"
-                                    class="form-control form-control-alternative input-reset valid "
+                                    class="form-control form-control-alternative input-reset"
                                     placeholder="Ingresa el precio" min="0">
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="form-control-label">Imagen * </label>
                                 <div class="square-img-input-container">
@@ -81,6 +81,27 @@
                                         <div id="img-holder" class="img-holder img-cover">
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Poner en oferta (opcional) </label>
+                                <div class="input-group input-group-alternative mb-3">
+                                    <label class="custom-toggle" id="toggle">
+                                        <input type="checkbox" name="on_sale">
+                                        <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                            data-label-on="Yes"></span>
+                                    </label>
+                                </div>
+                                <div class="div discount-value" id="discount-value">
+                                    <label class="form-control-label" for="input-discount">% de descuento
+                                        *</label>
+                                    <input type="number" id="input-discount" name="discount"
+                                        class="form-control form-control-alternative input-reset"
+                                        placeholder="Ingrese el % de descuento" autocomplete="off" min="1" max="100">
                                 </div>
                             </div>
                         </div>

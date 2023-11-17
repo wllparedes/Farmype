@@ -54,7 +54,8 @@
                         <span>Soporte</span>
                     </a> --}}
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form-sb').submit();">
+                    <a href="{{ route('logout') }}" class="dropdown-item"
+                        onclick="event.preventDefault(); document.getElementById('logout-form-sb').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>Salir</span>
                         <form id="logout-form-sb" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -103,13 +104,20 @@
                         <i class="ni ni-tv-2 text-primary"></i> Inicio
                     </a>
                 </li>
+                <li class="nav-item {{ setActive('profile.index') }}">
+                    <a class="nav-link {{ setActive('profile.index') }}" href="{{ route('profile.index') }}">
+                        <i class="ni ni-single-02 text-yellow"></i> Perfil de Usuario
+                    </a>
+                </li>
                 <li class="nav-item {{ setActive('client.products.index') }}">
-                    <a class="nav-link {{ setActive('client.products.index') }}" href="{{ route('client.products.index') }}">
+                    <a class="nav-link {{ setActive('client.products.index') }}"
+                        href="{{ route('client.products.index') }}">
                         <i class="ni ni-planet text-blue"></i> Seleccionar Productos
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('client.selected-products.index') }}">
-                    <a class="nav-link {{ setActive('client.selected-products.index') }}" href="{{ route('client.selected-products.index') }}">
+                    <a class="nav-link {{ setActive('client.selected-products.index') }}"
+                        href="{{ route('client.selected-products.index') }}">
                         <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
                     </a>
                 </li>

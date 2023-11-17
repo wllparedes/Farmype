@@ -49,19 +49,19 @@
                             </div>
 
                             @if ($product->stock != 0)
-                                <div class="dropdown dropleft" id="dropdown-three">
-                                    <button class="bg-transparent " type="button" data-toggle="dropdown"
+                                <div class="dropdown" id="dropdown-three">
+                                    <button class="btn btn-sm btn-icon-only bg-transparent text-light" href="#"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         <i class="fas fa-ellipsis-v"></i>
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                         <a class="dropdown-item"
                                             data-add-cart-shopping="{{ route('client.selected-products.addShoppingCart', $product->id) }}">Añadir
                                             al carrito</a>
-                                        <a class="dropdown-item deleteProductOnList"
+                                        <a class="dropdown-item"
                                             data-delete-list="{{ route('client.products.delete', $product->id) }}">Eliminar
-                                            de
-                                            la lista</a>
+                                            de la lista</a>
                                     </div>
                                 </div>
                             @endif
@@ -69,7 +69,6 @@
                     @endforeach
                 @endif
             @endforeach
-
 
         </div>
         <div class="row col-lg-4 col-md-12 col-sm-12">

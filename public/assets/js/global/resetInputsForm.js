@@ -9,9 +9,14 @@ export const resetInputsForm = () => {
 
     let imgHolder = document.getElementById("img-holder");
     if (imgHolder) {
-        imgHolder.innerHTML = "";
+        imgHolder.innerHTML = " ";
     }
 
+    let checkbox = document.querySelector('input[type="checkbox"]')
+
+    if (checkbox && checkbox.checked) {
+        checkbox.checked = false;
+    }
 
 }
 

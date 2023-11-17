@@ -17,11 +17,12 @@ $(document).ready(() => {
     const inputsValidateSymbols = [
         document.getElementById("input-stock"),
         document.getElementById("input-price"),
+        document.getElementById("input-discount"),
     ];
 
     inputsValidateSymbols.forEach((input) => {
         input.addEventListener("keypress", (event) => {
-            if (inputsValidateSymbols[0] == input) {
+            if (inputsValidateSymbols[0] == input || inputsValidateSymbols[2] == input) {
                 if (
                     event.key === "e" ||
                     event.key === "E" ||
@@ -67,10 +68,18 @@ $(document).ready(() => {
             image: {
                 required: true,
             },
+            discount: {
+                required: true,
+                isDiscount: true,
+            },
         },
         messages: {
             image: {
                 required: "SUBIR IMAGEN",
+            },
+            discount: {
+                isDiscount:
+                    "Por favor, introduzca un descuento para este producto.",
             },
         },
         submitHandler: function (form, event) {
@@ -99,7 +108,13 @@ $(document).ready(() => {
                             text: data.message,
                         });
                         $("#select-product-type").val(null).trigger("change");
-                        uploadImage("input-user-image-store", "registerProductForm");
+                        let discountValue = document.getElementById("discount-value");
+                        discountValue.classList.add("discount-value");
+                        discountValue.classList.remove("discount-value-active");
+                        uploadImage(
+                            "input-user-image-store",
+                            "registerProductForm"
+                        );
                     } else {
                         Toast.fire({
                             icon: "error",
@@ -122,5 +137,11 @@ $(document).ready(() => {
         "doubleOrInteger",
         (value, element) => Expressions.isPrice.test(value),
         "Por favor, introduzca un precio para este producto."
+    );
+
+    $.validator.addMethod(
+        "isDiscount",
+        (value, element) => Expressions.isDiscount.test(value),
+        "Por favor, introduzca un descuento para este producto."
     );
 });

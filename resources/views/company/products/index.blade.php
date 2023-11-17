@@ -53,4 +53,5 @@
     <script src="{{ asset('assets/js/company/products/editValidatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/company/products/editProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/company/products/deleteProduct.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/global/chekedDiscount.js') }}"></script>
 @endsection

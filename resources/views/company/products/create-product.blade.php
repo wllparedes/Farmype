@@ -46,7 +46,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="select-product-type">Tipo de producto *</label>
+                                            <label class="form-control-label" for="select-product-type">Tipo de producto
+                                                *</label>
                                             <div class="input-group input-group-alternative mb-3">
                                                 <select id="select-product-type"
                                                     class="form-control js-example-basic-single input-form-class"
@@ -92,12 +93,33 @@
                                             <label class="form-control-label">Imagen * </label>
                                             <div class="square-img-input-container">
                                                 <div id="image-preview" class="image-preview">
-                                                    <label class="form-control-label" for="image-upload" id="image-label">Subir Imagen</label>
+                                                    <label class="form-control-label" for="image-upload"
+                                                        id="image-label">Subir Imagen</label>
                                                     <input type="file" name="image" id="input-product-image-store"
                                                         data-value="" class="">
                                                     <div id="img-holder" class="img-holder img-cover">
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Poner en oferta (opcional) </label>
+                                            <div class="input-group input-group-alternative mb-3">
+                                                <label class="custom-toggle" id="toggle">
+                                                    <input type="checkbox" name="on_sale">
+                                                    <span class="custom-toggle-slider rounded-circle" data-label-off="No"
+                                                        data-label-on="Yes"></span>
+                                                </label>
+                                            </div>
+                                            <div class="div discount-value" id="discount-value">
+                                                <label class="form-control-label" for="input-discount">% de descuento
+                                                    *</label>
+                                                <input type="number" id="input-discount" name="discount"
+                                                    class="form-control form-control-alternative input-reset"
+                                                    placeholder="Ingrese el % de descuento" autocomplete="off"
+                                                    min="1" max="100">
                                             </div>
                                         </div>
                                     </div>
@@ -121,4 +143,6 @@
     <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
     <script src="{{ asset('assets/js/company/products/validatorProduct.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/global/chekedDiscount.js') }}"></script>
+
 @endsection

@@ -12,15 +12,16 @@ use Illuminate\Support\Str;
 class ProductService
 {
 
-    public function getProducts($id){
+    public function getProducts($id)
+    {
 
         return Product::where('user_id', $id)
-        ->with([
-            'file' => fn($sq3) =>
-            $sq3->where('file_type', 'imagenes')
-                ->where('category', 'products')
-        ])
-        ->paginate(8);
+            ->with([
+                'file' => fn($sq3) =>
+                    $sq3->where('file_type', 'imagenes')
+                        ->where('category', 'products')
+            ])
+            ->paginate(8);
 
     }
 
@@ -30,9 +31,10 @@ class ProductService
         $user_id = auth()->id();
         $data = $request->all();
         $data['user_id'] = $user_id;
-        $product = Product::create($data);
+        $data['on_sale'] = $request->on_sale == true ? 1 : 0;
+        $data['discounted_price'] = $data['on_sale'] ? $data['price'] - ($data['price'] * ($data['discount'] / 100)) : null;
 
-        // dd($data);
+        $product = Product::create($data);
 
         if ($product) {
 
@@ -69,11 +71,12 @@ class ProductService
         $user_id = auth()->id();
         $data = $request->all();
         $data['user_id'] = $user_id;
+        $data['on_sale'] = $request->on_sale == true ? 1 : 0;
+        $data['discount'] = $data['on_sale'] ? $request->discount: null;
+        $data['discounted_price'] = $data['on_sale'] ? $data['price'] - ($data['price'] * ($data['discount'] / 100)) : null;
 
-        // $data['password'] = $data['password'] == NULL ? $user->password : Hash::make($data['password']);
 
         if ($product->update($data)) {
-            // $product->miningUnits()->sync($request['id_mining_units']);
 
             return $this->updateProductImage($request, $product, $storage);
         }
@@ -107,7 +110,8 @@ class ProductService
         return true;
     }
 
-    public function deleteProductAndImage($product, $storage){
+    public function deleteProductAndImage($product, $storage)
+    {
 
         if ($product->delete()) {
             return app(FileService::class)->destroy($product->file, $storage);

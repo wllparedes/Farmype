@@ -39,7 +39,15 @@
                             <p class="card-text product-description">
                                 {{ $product->detail ? $product->detail : 'Sin detalle.' }}
                             </p>
-                            <span class="badge badge-pill badge-lg badge-primary">S/. {{ $product->price }}</span>
+                            @if ($product->on_sale)
+                                <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/. {{ $product->price }}</span>
+                                <span class="badge badge-pill badge-sm badge-danger span-discount">-{{ $product->discount }}%</span>
+                                <span class="badge badge-pill badge-sm badge-light">S/.
+                                    {{ $product->discounted_price }}</span>
+                                <span class="btn btn-danger span-on_sale">OFERTA</span>
+                            @else
+                                <span class="badge badge-pill badge-sm badge-success">S/. {{ $product->price }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>

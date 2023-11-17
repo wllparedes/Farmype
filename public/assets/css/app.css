@@ -68,7 +68,8 @@ input.error {
 
 .image-preview,
 #callback-preview {
-    width: 250px;
+    width: 100%;
+    /* width: 250px; */
     height: 250px;
     border: 2px dashed #ddd;
     border-radius: 3px;
@@ -149,7 +150,7 @@ input.error {
 
 .cart-shooping {
     position: absolute;
-    bottom: 170px;
+    bottom: 159px;
     left: 0;
     /* padding: 10px; */
 }
@@ -291,10 +292,10 @@ input.error {
 
     }
 
-    .container-description .card-title,
+    /* .container-description .card-title,
     .card-text {
         font-size: 0.5rem;
-    }
+    } */
 
     .container-price span {
         padding: 0.3rem;
@@ -343,4 +344,33 @@ input.error {
     box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
     -webkit-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
     -moz-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+}
+
+
+.discount-value-active{
+    display: block;
+}
+
+.discount-value{
+    display: none;
+}
+
+
+.text-decoration-line-through{
+    text-decoration: line-through !important;
+}
+
+.span-on_sale{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+}
+
+.span-discount{
+    position: absolute;
+    right: 0px;
+    top: 42px;
+    border-radius: 0;
+
 }
