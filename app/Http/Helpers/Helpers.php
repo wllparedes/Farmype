@@ -67,3 +67,18 @@ function verifyImage($file)
 
     return $url;
 }
+
+
+
+function whatIsTop($quantity){
+
+    return $quantity >= 10 ? 'disabled' : '';
+
+}
+function whatIsBottom($quantity){
+
+    return $quantity <= 1 ? 'disabled' : '';
+
+}
+
+

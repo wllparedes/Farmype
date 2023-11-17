@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-        public function redirectTo()
+    public function redirectTo()
     {
 
         switch(Auth::user()->role)

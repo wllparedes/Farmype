@@ -123,38 +123,224 @@ input.error {
     }
 } */
 
-.container-products{
-    gap: 30px 0;
+.container-products {
+    /* gap: 30px 0; */
 }
-.product-description{
+
+.product-description {
     text-overflow: ellipsis;
 }
-.btn-outline-danger:hover svg{
+
+.btn-outline-danger:hover svg {
     color: white !important;
 }
 
-.swal2-cancel{
+.swal2-cancel {
     background-color: #5e72e4 !important;
 }
 
-.span-stock{
+.span-stock {
     position: absolute;
     bottom: 170px;
     left: 0;
     padding: 10px;
     border-radius: 0;
 }
-.cart-shooping{
+
+.cart-shooping {
     position: absolute;
     bottom: 170px;
     left: 0;
     /* padding: 10px; */
 }
-.cart-shooping > button{
+
+.cart-shooping>button {
     border-radius: 0;
 }
 
-.badge{
+.badge {
     font-weight: bold;
     font-size: 70%;
+}
+
+/*  */
+
+/* .container-list-img {
+    width: 120px;
+} */
+
+.container-list-img img {
+    width: 100%;
+}
+
+
+.container-product-items {
+    background-color: #fff;
+    /* border-radius: 10px; */
+    box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+    -webkit-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+    -moz-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+}
+
+#dropdown-three {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+
+/* .container-products {
+    gap: 20px;
+} */
+
+#dropdown-three button {
+    border-radius: 50px;
+    border: none;
+    padding: 0;
+}
+
+#dropdown-three button:hover {
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+#dropdown-three button:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.container-list-img,
+.container-description,
+.container-price,
+.container-cuantity {
+
+    width: 130px;
+    min-width: 120px;
+    padding: 20px;
+
+}
+
+.container-cuantity {
+    width: 160px;
+}
+
+
+.container-product-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn:not(:last-child) {
+    margin-right: 0 !important;
+}
+
+
+/* @media (min-width: 425) {
+
+    .container-list-img,
+    .container-description,
+    .container-price,
+    .container-cuantity {
+
+        width: 60px;
+        min-width: 30px;
+        padding: 15px;
+        background-color: red !important;
+
+    }
+
+    .container-products {
+        background-color: blue;
+    }
+
+} */
+
+/* Escritorio extra grande */
+@media only screen and (min-width: 1200px) {}
+
+/* Escritorio grande */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Escritorio pequeño / tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Tablets y phablets */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Teléfonos */
+@media only screen and (max-width: 575px) {
+
+
+
+    .container-product-items {
+        justify-content: space-evenly;
+        padding: 0 !important;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    .container-list-img,
+    .container-description,
+    .container-price,
+    .container-cuantity {
+        width: 70px;
+        min-width: 0px;
+        padding: 10px;
+
+    }
+
+    .container-description .card-title,
+    .card-text {
+        font-size: 0.5rem;
+    }
+
+    .container-price span {
+        padding: 0.3rem;
+        font-size: .5rem;
+    }
+
+    .container-cuantity {
+        width: 80px;
+    }
+
+    .container-cuantity button,
+    p,
+    span {
+        font-size: .5rem;
+    }
+
+    .container-cuantity button {
+        padding: 0.15rem 0.3rem;
+    }
+
+    .container-cuantity p {
+        font-size: .4rem !important;
+    }
+
+    .row-cuantity {
+        padding: 5.5px !important;
+    }
+
+    #dropdown-three {
+        position: absolute;
+        right: 20px;
+        top: -5px !important;
+
+    }
+
+    #dropdown-three i {
+        font-size: .5rem;
+    }
+
+
+}
+
+.container-resumen {
+    background-color: #fff;
+    /* border-radius: 10px; */
+    box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+    -webkit-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
+    -moz-box-shadow: 0px 1px 19px 0px rgba(236, 236, 236, 0.75);
 }

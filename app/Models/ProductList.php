@@ -17,7 +17,7 @@ class ProductList extends Model
 
     public function products() : BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'product_product_list', 'product_lists_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'product_product_list', 'product_lists_id', 'product_id')->withPivot('quantity');
     }
 
 

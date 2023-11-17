@@ -39,7 +39,13 @@ Route::group(['middleware' => ['auth']], function(){
             // * Lista de productos
 
             Route::controller(ProductListController::class)->group(function(){
-                Route::get('productos-seleccionados', 'index')->name('client.selected-products.index');
+
+                Route::get('/productos-seleccionados', 'index')->name('client.selected-products.index');
+                Route::post('/sumarCantidad/{productOnList}', 'addCuantity')->name('client.selected-products.addCuantity');
+                Route::post('/restarCantidad/{productOnList}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
+                Route::post('/agregar-al-carrito/{productOnList}', 'addShoppingCart')->name('client.selected-products.addShoppingCart');
+
+
             });
 
         });
