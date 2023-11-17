@@ -12,7 +12,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Estadisticas</h5>
                                         <span class="h2 font-weight-bold mb-0">350,897</span>
                                     </div>
                                     <div class="col-auto">
@@ -23,7 +23,7 @@
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
                                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                    <span class="text-nowrap">Since last month</span>
+                                    <span class="text-nowrap">Desde el mes pasado</span>
                                 </p>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Nuevos Usuarios</h5>
                                         <span class="h2 font-weight-bold mb-0">2,356</span>
                                     </div>
                                     <div class="col-auto">
@@ -44,7 +44,7 @@
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
                                     <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                                    <span class="text-nowrap">Since last week</span>
+                                    <span class="text-nowrap">Desde el mes pasado</span>
                                 </p>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Ventas</h5>
                                         <span class="h2 font-weight-bold mb-0">924</span>
                                     </div>
                                     <div class="col-auto">
@@ -65,7 +65,7 @@
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
                                     <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                    <span class="text-nowrap">Since yesterday</span>
+                                    <span class="text-nowrap">Desde ayer</span>
                                 </p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Rendimiento</h5>
                                         <span class="h2 font-weight-bold mb-0">49,65%</span>
                                     </div>
                                     <div class="col-auto">
@@ -86,7 +86,7 @@
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
                                     <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                                    <span class="text-nowrap">Since last month</span>
+                                    <span class="text-nowrap">Desde el mes pasado</span>
                                 </p>
                             </div>
                         </div>
@@ -102,8 +102,8 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
+                                <h6 class="text-uppercase text-light ls-1 mb-1">Visión general</h6>
+                                <h2 class="text-white mb-0">Valor de ventas</h2>
                             </div>
                             <div class="col">
                                 <ul class="nav nav-pills justify-content-end">
@@ -111,7 +111,7 @@
                                         data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}'
                                         data-prefix="$" data-suffix="k">
                                         <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                            <span class="d-none d-md-block">Month</span>
+                                            <span class="d-none d-md-block">Mes</span>
                                             <span class="d-md-none">M</span>
                                         </a>
                                     </li>
@@ -119,7 +119,7 @@
                                         data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}'
                                         data-prefix="$" data-suffix="k">
                                         <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                            <span class="d-none d-md-block">Week</span>
+                                            <span class="d-none d-md-block">Semana</span>
                                             <span class="d-md-none">W</span>
                                         </a>
                                     </li>
@@ -141,8 +141,8 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
+                                <h6 class="text-uppercase text-muted ls-1 mb-1">Rendimiento</h6>
+                                <h2 class="mb-0">Ordenes totales</h2>
                             </div>
                         </div>
                     </div>
@@ -161,10 +161,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
+                                <h3 class="mb-0">Vistas de la página</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                                <a href="#!" class="btn btn-sm btn-primary">Ver todo</a>
                             </div>
                         </div>
                     </div>
@@ -173,16 +173,16 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Page name</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col">Unique users</th>
-                                    <th scope="col">Bounce rate</th>
+                                    <th scope="col">Nombre de página</th>
+                                    <th scope="col">Visitantes</th>
+                                    <th scope="col">Usuarios unicos</th>
+                                    <th scope="col">Tasa de rebote</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        /argon/
+                                        /adp/
                                     </th>
                                     <td>
                                         4,569
@@ -196,7 +196,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/index.html
+                                        /adp/index.html
                                     </th>
                                     <td>
                                         3,985
@@ -210,7 +210,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/charts.html
+                                        /adp/charts.html
                                     </th>
                                     <td>
                                         3,513
@@ -224,7 +224,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/tables.html
+                                        /adp/tables.html
                                     </th>
                                     <td>
                                         2,050
@@ -238,7 +238,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/profile.html
+                                        /adp/profile.html
                                     </th>
                                     <td>
                                         1,795
@@ -260,10 +260,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
+                                <h3 class="mb-0">Trafico social</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                                <a href="#!" class="btn btn-sm btn-primary">Ver todo</a>
                             </div>
                         </div>
                     </div>
@@ -272,8 +272,8 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Referral</th>
-                                    <th scope="col">Visitors</th>
+                                    <th scope="col">Recomendación</th>
+                                    <th scope="col">Visitantes</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>

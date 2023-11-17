@@ -305,11 +305,11 @@ input.error {
         width: 80px;
     }
 
-    .container-cuantity button,
+    /* .container-cuantity button,
     p,
     span {
         font-size: .5rem;
-    }
+    } */
 
     .container-cuantity button {
         padding: 0.15rem 0.3rem;

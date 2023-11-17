@@ -6,8 +6,6 @@ use App\Http\Controllers\Client\Product\ClientProductController;
 use App\Http\Controllers\Client\Shopping\ProductListController;
 use App\Http\Controllers\Company\{CompanyHomeController};
 use App\Http\Controllers\Company\Product\CompanyProductController;
-use App\Http\Controllers\Company\Product\ProductController;
-use App\Models\ProductList;
 use Illuminate\Support\Facades\{Auth, Route};
 
 
@@ -45,7 +43,6 @@ Route::group(['middleware' => ['auth']], function(){
                 Route::post('/restarCantidad/{productOnList}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
                 Route::post('/agregar-al-carrito/{productOnList}', 'addShoppingCart')->name('client.selected-products.addShoppingCart');
 
-
             });
 
         });
@@ -68,7 +65,6 @@ Route::group(['middleware' => ['auth']], function(){
         });
 
 
-
         Route::group(['prefix' => 'perfil'], function(){
 
             Route::controller(ProfileController::class)->group(function(){
@@ -83,9 +79,3 @@ Route::group(['middleware' => ['auth']], function(){
         });
 
 });
-
-
-
-// *
-
-

@@ -74,7 +74,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('profile.update') }}" id="updateProfileForm" method="POST" data-send="{{ route('profile.edit') }}" data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
+                        <form action="{{ route('profile.update') }}" id="updateProfileForm" method="POST"
+                            data-send="{{ route('profile.edit') }}" data-validate="{{ route('profile.validatePassword') }}"
+                            autocomplete="off">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">Tú información</h6>
                             <div class="pl-lg-4">
@@ -202,7 +204,8 @@
                                                 *</label>
                                             <input id="password-now" name="password_now"
                                                 class="form-control form-control-alternative"
-                                                placeholder="Ingrese su contraseña actual" type="password" autocomplete="off">
+                                                placeholder="Ingrese su contraseña actual" type="password"
+                                                autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

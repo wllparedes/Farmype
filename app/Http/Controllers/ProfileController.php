@@ -17,19 +17,26 @@ class ProfileController extends Controller
     {
         $this->userService = $service;
     }
+    
+    public function index()
+    {
 
+        $user_role = Auth::User()->role;
+        $departaments = config('parameters.departaments');
+        $provinces = config('parameters.provinces');
+        $districts = config('parameters.districts');
+        $documentTypes = config('parameters.document_type');
 
-    public function index(){
+        if ($user_role === 'company') {
+            return view('company.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
+        } elseif ($user_role === 'clients') {
+            return view('client.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
+        }
 
-        return view('company.profile.index',[
-            'departaments' => config('parameters.departaments'),
-            'provinces' => config('parameters.provinces'),
-            'districts' => config('parameters.districts'),
-            'documentTypes' => config('parameters.document_type'),
-            ]);
     }
 
-    public function edit(){
+    public function edit()
+    {
 
         $user = Auth::User();
 
@@ -46,7 +53,8 @@ class ProfileController extends Controller
 
     }
 
-    public function validatePassword(Request $request){
+    public function validatePassword(Request $request)
+    {
 
         if (Hash::check($request->password, Auth::User()->password)) {
             return response()->json(true);
@@ -55,7 +63,8 @@ class ProfileController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         $user = Auth::user();
 
