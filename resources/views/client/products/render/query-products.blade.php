@@ -40,8 +40,10 @@
                                 {{ $product->detail ? $product->detail : 'Sin detalle.' }}
                             </p>
                             @if ($product->on_sale)
-                                <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/. {{ $product->price }}</span>
-                                <span class="badge badge-pill badge-sm badge-danger span-discount">-{{ $product->discount }}%</span>
+                                <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/.
+                                    {{ $product->price }}</span>
+                                <span
+                                    class="badge badge-pill badge-sm badge-danger span-discount">-{{ $product->discount }}%</span>
                                 <span class="badge badge-pill badge-sm badge-light">S/.
                                     {{ $product->discounted_price }}</span>
                                 <span class="btn btn-danger span-on_sale">OFERTA</span>
@@ -58,4 +60,12 @@
 
 <div class="card-footer">
     {{ $products->links() }}
+</div>
+
+<div class="row col-12">
+    <div class="col-12 p-4">
+        <a class="btn btn-default" href="{{ route('clients.home') }}">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
 </div>

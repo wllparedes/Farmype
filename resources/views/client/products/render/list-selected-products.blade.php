@@ -97,4 +97,11 @@
             </div>
         </div>
     </div>
+    <div class="row col-12">
+        <div class="col-12 pt-4">
+            <a class="btn btn-default" href="{{ route('clients.home') }}">
+                <i class="fas fa-arrow-left"></i> Volver
+            </a>
+        </div>
+    </div>
 </div>

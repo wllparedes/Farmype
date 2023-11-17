@@ -1,5 +1,7 @@
 @extends('client.layouts.main')
 
+@section('title', 'Inicio')
+
 @section('content')
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">

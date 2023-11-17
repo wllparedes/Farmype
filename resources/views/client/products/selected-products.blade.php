@@ -4,6 +4,7 @@
 
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
+    <link rel="stylesheet" src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}"></link>
 @endsection
 
 
@@ -40,6 +41,7 @@
 @section('optional_scripts')
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/js/all.min.js') }}"></script>
     <script src="{{ asset('assets/js/client/productsOnList/renderProductsOnList.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/productsOnList/addCuantityProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/productsOnList/subtractCuantityProduct.js') }}" type="module"></script>
