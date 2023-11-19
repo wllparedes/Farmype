@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
 
+        // * Clientes
 
         Route::group(['middleware' => 'check.role:clients'], function(){
 
@@ -47,6 +48,8 @@ Route::group(['middleware' => ['auth']], function(){
 
         });
 
+        // * Empresa / farmacia
+
         Route::group(['middleware' => 'check.role:company'], function(){
 
             Route::get('/home', [CompanyHomeController::class, 'index'])->name('company.home');
@@ -64,6 +67,7 @@ Route::group(['middleware' => ['auth']], function(){
 
         });
 
+        // * Perfil del usuario
 
         Route::group(['prefix' => 'perfil'], function(){
 

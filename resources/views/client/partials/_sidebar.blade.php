@@ -14,14 +14,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
+                    <i class="ni ni-cart"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
                     aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Ver carrito</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
