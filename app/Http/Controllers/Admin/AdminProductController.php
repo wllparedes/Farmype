@@ -117,5 +117,23 @@ class AdminProductController extends Controller
     }
 
 
+    public function destroy($id)
+    {
+
+        $product = Product::find($id);
+        $storage = env('FILESYSTEM_DRIVER');
+
+        try {
+            $success = $this->adminProductService->deleteProductAndImage($product, $storage);
+        } catch (Exception $e) {
+            $success = false;
+        }
+
+        return response()->json([
+            "success" => $success
+        ]);
+
+    }
+
 
 }

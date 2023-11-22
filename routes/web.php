@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/editar-producto/{product}', 'edit')->name('admin.product.edit');
             Route::post('/actualizar-producto/{product}', 'update')->name('admin.product.update');
             // *--
-            Route::delete('/eliminar-producto/{product}', 'delete')->name('admin.product.delete');
+            Route::delete('/eliminar-producto/{product}', 'destroy')->name('admin.product.delete');
 
 
         });

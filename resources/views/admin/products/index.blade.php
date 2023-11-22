@@ -53,11 +53,11 @@
 
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
     <script src="{{ asset('assets/js/admin/products/editProduct.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/admin/products/deleteProduct.js') }}" type="module"></script>
 
     <script src="{{ asset('assets/js/admin/products/editValidatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/global/renderProductsNext.js') }}" type="module"></script>
 
 {{--
-    <script src="{{ asset('assets/js/company/products/deleteProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/global/chekedDiscount.js') }}"></script> --}}
 @endsection

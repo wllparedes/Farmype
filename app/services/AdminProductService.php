@@ -77,7 +77,6 @@ class AdminProductService
 
 
 
-    // SQLSTATE[42S22]: Column not found: 1054 Unknown column '_token' in 'field list' (SQL: update `products` set `_token` = zX3ZgWacQ0TlLMp2aT48csmjDa9yHtuwtzxLjFIe, `name` = Omega 2, `detail` = ?, `products`.`updated_at` = 2023-11-22 22:51:01 where `products`.`user_id` = 3 and `products`.`user_id` is not null)
 
     public function updateProductImage(Request $request, Product $product, $storage)
     {
@@ -104,6 +103,20 @@ class AdminProductService
 
         return true;
     }
+
+
+    public function deleteProductAndImage($product, $storage)
+    {
+
+        if ($product->delete()) {
+            return app(FileService::class)->destroy($product->file, $storage);
+        }
+        throw new Exception(config('parameters.exception_message'));
+
+    }
+
+
+
 
 }
 
