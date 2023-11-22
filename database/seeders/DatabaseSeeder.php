@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('carmen'),
             ],
             [
-                'names_surnames' => 'Bastian',
+                'names_surnames' => 'admin',
                 'document_type' => 'dni',
                 'document_number' => '73173131',
                 'role' => 'super_admin',
@@ -54,9 +54,9 @@ class DatabaseSeeder extends Seeder
                 'province' => 'lima',
                 'district' => 'ate',
                 'address' => 'San Juan de Lurigancho',
-                'email' => 'bastian@gmail.com',
+                'email' => 'admin@gmail.com',
                 'phone' => '902902902',
-                'password' => Hash::make('bastian'),
+                'password' => Hash::make('admin'),
             ]
         ];
 
