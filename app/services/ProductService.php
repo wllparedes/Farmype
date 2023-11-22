@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\{Product, User};
+use Auth;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,13 +29,14 @@ class ProductService
 
     public function store(Request $request, $storage)
     {
-        $user_id = auth()->id();
         $data = $request->all();
-        $data['user_id'] = $user_id;
+        
+        $user = Auth::user();
+
         $data['on_sale'] = $request->on_sale == true ? 1 : 0;
         $data['discounted_price'] = $data['on_sale'] ? $data['price'] - ($data['price'] * ($data['discount'] / 100)) : null;
 
-        $product = Product::create($data);
+        $product = $user->products()->create($data);
 
         if ($product) {
 

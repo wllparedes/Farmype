@@ -33,6 +33,11 @@ class User extends Authenticatable
 
     }
 
+    public function inventories() : HasMany
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
 
 
     /**

@@ -31,9 +31,11 @@ class RedirectIfAuthenticated
                     case 'company':
                         $routeVerify = route('company.home');
                         break;
+                    case 'super_admin':
+                        $routeVerify = route('admin.home');
+                        break;
                     default:
-                        $routeVerify = route('company.home');
-
+                        $routeVerify = route('/login');
                 }
 
                 return redirect($routeVerify);

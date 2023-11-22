@@ -1,47 +1,47 @@
 <div class="card-body">
     <div class="row container-products">
-        @if ($products->isEmpty())
+        @if ($inventories->isEmpty())
             <h3 class="col-12 text-center">No hay productos registrados</h3>
         @else
-            @foreach ($products as $product)
+            @foreach ($inventories as $inventory)
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between mb-4">
                                 <button id="btn-update" data-original-title="edit" data-toggle="modal"
-                                    class="btn btn-outline-success btn-sm editProduct" data-id="{{ $product->id }}"
-                                    data-url="{{ route('company.product.update', $product->id) }}"
-                                    data-send="{{ route('company.product.edit', $product->id) }}">
+                                    class="btn btn-outline-success btn-sm editProduct" data-id="{{ $inventory->id }}"
+                                    data-url="{{ route('company.inventory.update', $inventory->id) }}"
+                                    data-send="{{ route('company.inventory.edit', $inventory->id) }}">
                                     <i class="fa fa-pen"></i>
                                 </button>
 
                                 <a href="javascript:void(0)"
                                     class="btn btn-outline-danger btn-sm text-danger deleteProduct"
-                                    data-url="{{ route('company.product.delete', $product->id) }}">
+                                    data-url="{{ route('company.inventory.delete', $inventory->id) }}">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </div>
                             <div class="container-image">
-                                <img class="card-img-top" src="{{ verifyImage($product->file) }}"
-                                    alt="{{ $product->name }}">
+                                <img class="card-img-top" src="{{ verifyImage($inventory->product->file) }}"
+                                    alt="{{ $inventory->name }}">
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">{{ $product->name }}</h4>
+                            <h4 class="card-title">{{ $inventory->product->name }}</h4>
                             <p class="card-text product-description">
-                                {{ $product->detail ? $product->detail : 'Sin detalle.' }}
+                                {{ $inventory->product->detail ? $inventory->product->detail : 'Sin detalle.' }}
                             </p>
-                            @if ($product->on_sale)
+                            @if ($inventory->on_sale)
                                 <span class="badge badge-pill badge-success text-decoration-line-through">S/.
-                                    {{ $product->price }}</span>
-                                <span class="badge badge-pill badge-warning">% {{ $product->discount }}</span>
-                                <span class="badge badge-pill badge-danger">S/ {{ $product->discounted_price }}</span>
+                                    {{ $inventory->price }}</span>
+                                <span class="badge badge-pill badge-warning">-% {{ $inventory->discount }}</span>
+                                <span class="badge badge-pill badge-danger">S/ {{ $inventory->discounted_price }}</span>
                             @else
-                                <span class="badge badge-pill badge-success">S/. {{ $product->price }}</span>
+                                <span class="badge badge-pill badge-success">S/. {{ $inventory->price }}</span>
                             @endif
 
                             <span class="badge badge-pill badge-primary">Stock.
-                                {{ $product->stock }}
+                                {{ $inventory->stock }}
                             </span>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="card-footer">
-    {{ $products->links() }}
+    {{ $inventories->links() }}
 </div>
 
 <div class="row col-12">

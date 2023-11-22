@@ -15,8 +15,9 @@ $(document).ready(() => {
                         type: "DELETE",
                         url: url,
                         dataType: "JSON",
-                        success: function (result) {
-                            if (result.success === true) {
+                        success: function (data) {
+
+                            if (data.success === true) {
                                 // * volver a renderizar
                                 renderProductsLoad();
                                 Toast.fire({
@@ -25,7 +26,7 @@ $(document).ready(() => {
                                 });
                             }
                         },
-                        error: function (result) {
+                        error: function (data) {
                             Toast.fire({
                                 icon: "error",
                                 title: "¡Ocurrió un error inesperado!",

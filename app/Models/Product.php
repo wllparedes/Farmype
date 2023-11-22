@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -14,25 +15,35 @@ class Product extends Model
 
     use HasFactory;
 
-    protected $fillable = [
-        'name', 'product_type',
-        'on_sale', 'discount',
-        'discounted_price',
-        'stock', 'price',
-        'detail', 'user_id'
-    ];
+    protected $fillable = ['name', 'detail', 'user_id'];
 
-    public function user() : BelongsTo
+
+    // *
+
+    public function childCategories(): BelongsToMany
+    {
+        return $this->belongsToMany(ChildCategory::class, 'child_categories_products', 'product_id', 'child_category_id');
+    }
+
+    public function inventories(): HasMany
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
+    // *
+
+
+    public function user(): BelongsTo
     {
 
         return $this->belongsTo(User::class);
 
     }
 
-    public function productLists() : BelongsToMany
-    {
-        return $this->belongsToMany(ProductList::class, 'product_product_list', 'product_id', 'product_lists_id');
-    }
+    // public function productLists(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(ProductList::class, 'product_product_list', 'product_id', 'product_lists_id');
+    // }
 
 
     public function file()
@@ -42,8 +53,9 @@ class Product extends Model
 
     public function loadImage()
     {
-        return $this->load(['file' => fn($q) =>
-            $q->where('category', 'products')
+        return $this->load([
+            'file' => fn($q) =>
+                $q->where('category', 'products')
         ]);
     }
 

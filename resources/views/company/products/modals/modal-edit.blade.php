@@ -15,8 +15,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-name">Nombre del producto
-                                    *</label>
+                                <label class="form-control-label" for="input-name">Nombre del producto</label>
                                 <input type="text" id="input-name" name="name"
                                     class="form-control form-control-alternative input-reset "
                                     placeholder="Ingresa el nombre del producto" autocomplete="off">
@@ -24,18 +23,40 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Imagen * </label>
+                                <div class="square-img-input-container">
+                                    <div id="image-preview" class="image-preview h-100">
+                                        <div id="img-picture" class="img-picture img-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-detail">Detalle</label>
+                                <textarea type="text" id="input-detail" name="detail"
+                                    class="form-control form-control-alternative input-reset w-100"
+                                    placeholder="Ingresa el detalle" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="select-product-type">Tipo de producto *</label>
+                                <label class="form-control-label" for="select-product-type">Categoria principal</label>
                                 <div class="input-group input-group-alternative mb-3">
-                                    <select id="select-product-type"
-                                        class="form-control js-example-basic-single input-form-class"
-                                        name="product_type">
-                                        <option></option>
-                                        @foreach ($productTypes as $key => $type)
-                                            <option value="{{ $key }}"> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
+                                    <span class="badge badge-pill badge-md badge-primary" id="parentCategory"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label" for="select-product-type">Sub-categoria(s)</label>
+                                <div class="input-group input-group-alternative mb-3" id="containerChildCategories">
+
                                 </div>
                             </div>
                         </div>
@@ -61,33 +82,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-detail">Detalle (opcional)</label>
-                                <input type="text" id="input-detail" name="detail"
-                                    class="form-control form-control-alternative input-reset"
-                                    placeholder="Ingresa el detalle">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Imagen * </label>
-                                <div class="square-img-input-container">
-                                    <div id="image-preview" class="image-preview">
-                                        <label class="form-control-label" for="image-upload" id="image-label">Subir
-                                            Imagen</label>
-                                        <input type="file" name="image" id="input-product-image-store"
-                                            data-value="" class="">
-                                        <div id="img-holder" class="img-holder img-cover">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
                                 <label class="form-control-label">Poner en oferta (opcional) </label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <label class="custom-toggle" id="toggle">
@@ -101,7 +95,8 @@
                                         *</label>
                                     <input type="number" id="input-discount" name="discount"
                                         class="form-control form-control-alternative input-reset"
-                                        placeholder="Ingrese el % de descuento" autocomplete="off" min="1" max="100">
+                                        placeholder="Ingrese el % de descuento" autocomplete="off" min="1"
+                                        max="100">
                                 </div>
                             </div>
                         </div>

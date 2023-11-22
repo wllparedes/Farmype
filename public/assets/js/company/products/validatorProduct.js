@@ -6,8 +6,8 @@ import { uploadImage } from "./../../global/uploadImage.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    $("#select-product-type").select2({
-        placeholder: "Selecciona el tipo de producto.",
+    $("#select-product").select2({
+        placeholder: "Selecciona el producto",
         language: "es",
         minimumResultsForSearch: Infinity,
     });
@@ -22,7 +22,10 @@ $(document).ready(() => {
 
     inputsValidateSymbols.forEach((input) => {
         input.addEventListener("keypress", (event) => {
-            if (inputsValidateSymbols[0] == input || inputsValidateSymbols[2] == input) {
+            if (
+                inputsValidateSymbols[0] == input ||
+                inputsValidateSymbols[2] == input
+            ) {
                 if (
                     event.key === "e" ||
                     event.key === "E" ||
@@ -47,10 +50,7 @@ $(document).ready(() => {
 
     let registerProductForm = $("#registerProductForm").validate({
         rules: {
-            name: {
-                required: true,
-            },
-            product_type: {
+            product_id: {
                 required: true,
             },
             stock: {
@@ -62,21 +62,13 @@ $(document).ready(() => {
                 required: true,
                 doubleOrInteger: true,
             },
-            detail: {
-                //
-            },
-            image: {
-                required: true,
-            },
+
             discount: {
                 required: true,
                 isDiscount: true,
             },
         },
         messages: {
-            image: {
-                required: "SUBIR IMAGEN",
-            },
             discount: {
                 isDiscount:
                     "Por favor, introduzca un descuento para este producto.",
@@ -104,21 +96,15 @@ $(document).ready(() => {
                         resetInputsForm();
                         Toast.fire({
                             icon: "success",
-                            title: "Producto registrado",
                             text: data.message,
                         });
-                        $("#select-product-type").val(null).trigger("change");
+                        $("#select-product").val(null).trigger("change");
                         let discountValue = document.getElementById("discount-value");
                         discountValue.classList.add("discount-value");
                         discountValue.classList.remove("discount-value-active");
-                        uploadImage(
-                            "input-user-image-store",
-                            "registerProductForm"
-                        );
                     } else {
                         Toast.fire({
                             icon: "error",
-                            title: "Error",
                             text: data.message,
                         });
                     }

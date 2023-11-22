@@ -31,11 +31,12 @@ class LoginController extends Controller
             case 'clients':
                 $this->redirectTo = route('clients.home');
                 return $this->redirectTo;
-                break;
             case 'company':
                 $this->redirectTo = route('company.home');
                 return $this->redirectTo;
-                break;
+            case 'super_admin':
+                $this->redirectTo = route('admin.home');
+                return $this->redirectTo;
             default:
                 $this->redirectTo = '/login';
                 return $this->redirectTo;

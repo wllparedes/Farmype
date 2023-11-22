@@ -20,7 +20,8 @@ class ProductController extends Controller
         $this->productService = $service;
     }
 
-    public function index(){
+    public function index()
+    {
 
         $user = Auth::User();
         $products = $this->productService->getProducts($user->id);
@@ -30,14 +31,16 @@ class ProductController extends Controller
 
     }
 
-    public function create(){
+    public function create()
+    {
 
         $productTypes = config('parameters.productTypes');
         return view('company.products.create-product', compact('productTypes'));
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $storage = env('FILESYSTEM_DRIVER');
 
@@ -57,7 +60,8 @@ class ProductController extends Controller
 
     }
 
-    public function getMoreProducts(Request $request ){
+    public function getMoreProducts(Request $request)
+    {
 
         $user = Auth::User();
 
@@ -70,7 +74,8 @@ class ProductController extends Controller
         }
     }
 
-    public function edit(Product $product){
+    public function edit(Product $product)
+    {
 
         $product->loadImage();
 
@@ -87,7 +92,8 @@ class ProductController extends Controller
 
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
         $storage = env('FILESYSTEM_DRIVER');
         $product = Product::find($id);
@@ -106,7 +112,8 @@ class ProductController extends Controller
         ]);
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
         $product = Product::find($id);
         $storage = env('FILESYSTEM_DRIVER');

@@ -6,7 +6,6 @@ $(document).ready(() => {
         var getDataUrl = $(this).data("send");
         var url = $(this).data("url");
         var form = modal.find("#editProductForm");
-        var selectProductType = modal.find("#select-product-type");
 
         form.trigger("reset");
         form.attr("action", url);
@@ -18,46 +17,65 @@ $(document).ready(() => {
             url: getDataUrl,
             dataType: "JSON",
             success: function (data) {
-                let discountValue = document.getElementById("discount-value");
+                let inventory = data.inventory;
+                let parentCategory = data.parentCategory;
+                let url_image = data.url_image;
 
-                uploadImage("#input-product-image-store", "#editProductForm");
-                let product = data["product"];
+                inventory.forEach((items) => {
+                    modal.find("input[name=name]").val(items.product.name);
+                    modal.find("input[name=name]").prop("disabled", true);
 
-                selectProductType.val(product.product_type).change();
+                    modal.find("input[name=stock]").val(items.stock);
+                    modal.find("input[name=price]").val(items.price);
 
-                modal.find("input[name=name]").val(product.name);
-                modal.find("input[name=stock]").val(product.stock);
-                modal.find("input[name=price]").val(product.price);
-                modal.find("input[name=email]").val(product.detail);
+                    let checked = modal.find("input[name=on_sale]");
+                    if (items.on_sale) {
+                        checked.prop("checked", true);
+                        discountValue.classList.remove("discount-value");
+                        discountValue.classList.add("discount-value-active");
+                        modal
+                            .find("input[name=discount]")
+                            .val(items.discount);
+                    } else {
+                        discountValue.classList.add("discount-value");
+                        discountValue.classList.remove("discount-value-active");
+                    }
+                    modal
+                        .find(".img-picture")
+                        .html(
+                            '<img class="img-fluid product_img" id="image-product-edit" src="' +
+                                url_image +
+                                '"></img>'
+                        );
+                    modal
+                        .find("textarea[name=detail]")
+                        .val(
+                            items.product.detail
+                                ? items.product.detail
+                                : "Sin detalle."
+                        );
+                    modal.find("textarea[name=detail]").prop("disabled", true);
 
-                let checked = modal.find("input[name=on_sale]");
+                    let colors = [
+                        "default",
+                        "info",
+                        "success",
+                        "danger",
+                        "warning",
+                    ];
+                    let i = 0;
+                    modal.find("#containerChildCategories").html("");
+                    items.product.child_categories.forEach((childCategory) => {
+                        let newSpan = $(
+                            `<span class='badge badge-pill badge-md badge-${colors[i]}'> ${childCategory.name} </span>`
+                        );
+                        modal.find("#containerChildCategories").append(newSpan);
+                        i === 4 ? (i = 0) : i++;
+                    });
+                });
 
-                if (product.on_sale) {
-                    checked.prop("checked", true);
-                    discountValue.classList.remove("discount-value");
-                    discountValue.classList.add("discount-value-active");
-                    modal.find("input[name=discount]").val(product.discount);
-                } else {
-                    discountValue.classList.add("discount-value");
-                    discountValue.classList.remove("discount-value-active");
-                }
+                modal.find("#parentCategory").text(parentCategory.name);
 
-                modal
-                    .find(".img-holder")
-                    .html(
-                        '<img class="img-fluid product_img" id="image-product-edit" src="' +
-                            data.url_img +
-                            '"></img>'
-                    );
-                modal
-                    .find("#input-product-image-store")
-                    .attr(
-                        "data-value",
-                        '<img scr="' +
-                            data.url_img +
-                            '" class="img-fluid avatar_img"></img>'
-                    );
-                modal.find("#input-user-image-edit").val("");
             },
             complete: function (data) {
                 modal.modal("toggle");

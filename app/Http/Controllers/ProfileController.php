@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $this->userService = $service;
     }
-    
+
     public function index()
     {
 
@@ -31,6 +31,8 @@ class ProfileController extends Controller
             return view('company.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
         } elseif ($user_role === 'clients') {
             return view('client.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
+        } elseif ($user_role === 'super_admin') {
+            return view('admin.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
         }
 
     }

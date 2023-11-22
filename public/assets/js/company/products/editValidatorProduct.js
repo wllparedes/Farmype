@@ -6,14 +6,6 @@ import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    // $("#select-product-type").select2({
-    //     placeholder: "Selecciona el tipo de producto.",
-    //     language: "es",
-    //     minimumResultsForSearch: Infinity,
-    // });
-
-    let requiredImage = false;
-
     const inputsValidateSymbols = [
         document.getElementById("input-stock"),
         document.getElementById("input-price"),
@@ -47,12 +39,6 @@ $(document).ready(() => {
 
     $("#editProductForm").validate({
         rules: {
-            name: {
-                required: true,
-            },
-            product_type: {
-                required: true,
-            },
             stock: {
                 required: true,
                 number: true,
@@ -62,21 +48,12 @@ $(document).ready(() => {
                 required: true,
                 doubleOrInteger: true,
             },
-            detail: {
-                //
-            },
-            image: {
-                required: requiredImage,
-            },
             discount: {
                 required: true,
                 isDiscount: true,
             },
         },
         messages: {
-            image: {
-                required: "SUBIR IMAGEN",
-            },
             discount: {
                 isDiscount:
                     "Por favor, introduzca un descuento para este producto.",

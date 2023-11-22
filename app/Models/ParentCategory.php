@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class ProductList extends Model
+class ParentCategory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'name'
     ];
 
 
-    public function inventories() : BelongsToMany
+    public function childCategories(): HasMany
     {
-        return $this->belongsToMany(Inventory::class, 'product_product_list', 'product_lists_id', 'inventory_id')->withPivot('quantity');
+        return $this->hasMany(ChildCategory::class);
     }
 
 

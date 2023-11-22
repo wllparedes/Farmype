@@ -41,6 +41,8 @@ class CompanyProductController extends Controller
 
     public function create(){
 
+        $products = 
+
         $productTypes = config('parameters.productTypes');
         return view('company.products.create-product', compact('productTypes'));
 

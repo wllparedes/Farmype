@@ -6,30 +6,27 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('company.home') }}">
-            <img src="{{ asset('assets/img/icons/farmype.jpg') }}" class="navbar-brand-img" alt="">
+        <a class="navbar-brand pt-0" href="{{ route('admin.home') }}">
+            <img src="{{ asset('assets/img/icons/farmype.jpg') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
+                    <i class="ni ni-cart"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
                     aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Ver carrito</a>
                 </div>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-1-800x800.jpg') }}">
+                            <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-3-800x800.jpg') }}">
                         </span>
                     </div>
                 </a>
@@ -41,6 +38,18 @@
                         <i class="ni ni-single-02"></i>
                         <span>Mi perfil</span>
                     </a>
+                    {{-- <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-settings-gear-65"></i>
+                        <span>Ajuster</span>
+                    </a>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span>Actividad</span>
+                    </a>
+                    <a href="./examples/profile.html" class="dropdown-item">
+                        <i class="ni ni-support-16"></i>
+                        <span>Soporte</span>
+                    </a> --}}
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                         onclick="event.preventDefault(); document.getElementById('logout-form-sb').submit();">
@@ -59,7 +68,7 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="{{ route('company.home') }}">
+                        <a href="{{ route('clients.home') }}">
                             <img src="{{ asset('assets/img/icons/farmype.jpg') }}">
                         </a>
                     </div>
@@ -87,9 +96,9 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  {{ setActive('company.home') }} ">
-                    <a class="nav-link  {{ setActive('company.home') }} " href="{{ route('company.home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> Home
+                <li class="nav-item  {{ setActive('admin.home') }}">
+                    <a class="nav-link  {{ setActive('admin.home') }}" href="{{ route('admin.home') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> Inicio
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('profile.index') }}">
@@ -97,29 +106,34 @@
                         <i class="ni ni-single-02 text-yellow"></i> Perfil de Usuario
                     </a>
                 </li>
-                <li class="nav-item {{ setActive('company.inventory.create') }}">
-                    <a class="nav-link {{ setActive('company.inventory.create') }}"
-                        href="{{ route('company.inventory.create') }}">
-                        <i class="ni ni-planet text-blue"></i> Registro de inventarios
+                <li class="nav-item {{ setActive('admin.products.create') }}">
+                    <a class="nav-link {{ setActive('admin.products.create') }}"
+                        href="{{ route('admin.products.create') }}">
+                        <i class="ni ni-planet text-blue"></i> Crear productos y categorias
                     </a>
                 </li>
-                <li class="nav-item {{ setActive('company.inventory.index') }}">
-                    <a class="nav-link {{ setActive('company.inventory.index') }}"
-                        href="{{ route('company.inventory.index') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> Consultar inventario
+                <li class="nav-item {{ setActive('client.selected-products.index') }}">
+                    <a class="nav-link {{ setActive('client.selected-products.index') }}"
+                        href="{{ route('client.selected-products.index') }}">
+                        <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
                     </a>
                 </li>
-                {{-- <li class="nav-item ">
+                {{-- <li class="nav-item">
+                    <a class="nav-link " href="./examples/profile.html">
+                        <i class="ni ni-single-02 text-yellow"></i> User profile
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="./examples/tables.html">
                         <i class="ni ni-bullet-list-67 text-red"></i> Tables
                     </a>
-                </li> --}}
-                {{-- <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('profile.index') }}">
-                        <i class="ni ni-key-25 text-info"></i> Perfil
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./examples/login.html">
+                        <i class="ni ni-key-25 text-info"></i> Login
                     </a>
-                </li> --}}
-                {{-- <li class="nav-item ">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="./examples/register.html">
                         <i class="ni ni-circle-08 text-pink"></i> Register
                     </a>
@@ -149,8 +163,8 @@
                         <i class="ni ni-ui-04"></i> Components
                     </a>
                 </li>
-            </ul> --}}
-            {{-- <ul class="navbar-nav">
+            </ul>
+            <ul class="navbar-nav">
                 <li class="nav-item active active-pro">
                     <a class="nav-link" href="./examples/upgrade.html">
                         <i class="ni ni-send text-dark"></i> Upgrade to PRO

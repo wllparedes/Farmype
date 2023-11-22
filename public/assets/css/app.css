@@ -149,9 +149,9 @@ input.error {
 }
 
 .cart-shooping {
-    position: absolute;
-    bottom: 159px;
-    left: 0;
+    /* position: absolute; */
+    /* bottom: 159px; */
+    /* left: 0; */
     /* padding: 10px; */
 }
 
@@ -213,17 +213,22 @@ input.error {
 .container-list-img,
 .container-description,
 .container-price,
-.container-cuantity {
-    width: 130px;
-    min-width: 120px;
+.container-cuantity,
+.container-user {
+    width: 120px;
+    min-width: 130px;
     padding: 20px;
     text-align: center;
 }
 
-.container-cuantity {
+/* .container-cuantity {
     width: 160px;
-}
+} */
 
+.container-user {
+    width: 220px;
+    min-width: 130px;
+}
 
 .container-product-items {
     display: flex;
@@ -430,3 +435,46 @@ input.error {
 .div-image-category img {
     width: 100%;
 }
+
+/*  */
+/* @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+.select2-selection__rendered,
+.select2-results__option,
+.select2-results__option--selectable, .selection {
+    font-family: var(--bs-body-font-family) !important;
+    font-family: "Nunito", sans-serif !important;
+    font-size: var(--bs-body-font-size) !important;
+}
+
+option, select, span{
+
+    font-family: var(--bs-body-font-family) !important;
+    font-family: "Nunito", sans-serif !important;
+} */
+
+.div-name-child-category {
+    display: none;
+}
+
+.div-name-child-category-active {
+    display: block;
+}
+
+.div-name-parent-category {
+    display: none;
+}
+
+.div-name-parent-category-active {
+    display: block;
+}
+
+/* ** */
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #fcfcfc !important;
+    opacity: 1;
+}
+
+/* * */

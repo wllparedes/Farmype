@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client\Shopping;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductList;
 use Auth;
@@ -14,9 +15,11 @@ class ProductListController extends Controller
     public function index(Request $request){
 
         $user = Auth::user()->id;
+
+
         $productsOnList = ProductList::where('user_id', $user)
-                        ->with(['products',
-                                'products.file' => fn($sq3) =>
+                        ->with(['inventories',
+                                'inventories.product.file' => fn($sq3) =>
                                 $sq3->where('file_type', 'imagenes')
                                     ->where('category', 'products')
                                 ])->get();
@@ -39,20 +42,20 @@ class ProductListController extends Controller
 
     public function subtractCuantity($id){
 
-        $product = Product::find($id);
+        $inventory = Inventory::find($id);
         $user_id = Auth::user()->id;
 
         $productLists = ProductList::where('user_id', $user_id)
-                        ->with(['products' => function ($query) use ($product) {
-                            $query->where('product_id', $product->id);
+                        ->with(['inventories' => function ($query) use ($inventory) {
+                            $query->where('inventory_id', $inventory->id);
                         }])->get();
 
         foreach ($productLists as $productList ) {
-            foreach ($productList->products as $product) {
+            foreach ($productList->inventories as $inventory) {
 
-                if ($product->stock != 0 and $product->pivot->quantity > 1) {
-                    $newQuantity = $product->pivot->quantity - 1;
-                    $productList->products()->updateExistingPivot($product->id, ["quantity" => $newQuantity]);
+                if ($inventory->stock != 0 and $inventory->pivot->quantity > 1) {
+                    $newQuantity = $inventory->pivot->quantity - 1;
+                    $productList->inventories()->updateExistingPivot($inventory->id, ["quantity" => $newQuantity]);
                     $message = true;
                 } else{
                     $message = false;
@@ -68,20 +71,20 @@ class ProductListController extends Controller
 
     public function addCuantity($id){
 
-        $product = Product::find($id);
+        $inventory = Inventory::find($id);
         $user_id = Auth::user()->id;
 
         $productLists = ProductList::where('user_id', $user_id)
-                        ->with(['products' => function ($query) use ($product) {
-                            $query->where('product_id', $product->id);
+                        ->with(['inventories' => function ($query) use ($inventory) {
+                            $query->where('inventory_id', $inventory->id);
                         }])->get();
 
         foreach ($productLists as $productList ) {
-            foreach ($productList->products as $product) {
+            foreach ($productList->inventories as $inventory) {
 
-                if ($product->stock != 0 and $product->pivot->quantity < 10)  {
-                    $newQuantity = $product->pivot->quantity + 1;
-                    $productList->products()->updateExistingPivot($product->id, ["quantity" => $newQuantity]);
+                if ($inventory->stock != 0 and $inventory->pivot->quantity < 10)  {
+                    $newQuantity = $inventory->pivot->quantity + 1;
+                    $productList->inventories()->updateExistingPivot($inventory->id, ["quantity" => $newQuantity]);
                     $message = true;
                 } else{
                     $message = false;
