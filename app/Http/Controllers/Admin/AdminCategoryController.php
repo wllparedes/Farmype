@@ -33,4 +33,16 @@ class AdminCategoryController extends Controller
             'message' => $message,
         ]);
     }
+
+
+    public function getParentCategory()
+    {
+        $parentCategory = ParentCategory::all();
+
+        return response()->json($parentCategory);
+
+    }
+
+
+
 }

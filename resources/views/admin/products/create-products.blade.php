@@ -74,6 +74,7 @@
                                         <div class="input-group input-group-alternative mb-3">
                                             <select name="child_category_id[]" id="select-child-category"
                                                 class="form-control js-example-basic-single input-form-class">
+                                                <option disabled selected> </option>
                                             </select>
                                         </div>
                                     </div>

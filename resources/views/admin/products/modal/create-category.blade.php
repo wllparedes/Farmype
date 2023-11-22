@@ -39,7 +39,8 @@
                                 <label class="form-control-label">Crear sub-categoria </label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <label class="custom-toggle" id="toggle">
-                                        <input type="checkbox" name="create_child_category">
+                                        <input type="checkbox" name="create_child_category"
+                                            data-url="{{ route('admin.category.getParentCategory') }}">
                                         <span class="custom-toggle-slider rounded-circle" data-label-off="No"
                                             data-label-on="Yes"></span>
                                     </label>
@@ -55,11 +56,6 @@
                                         <select id="select-parent-category-c"
                                             class="form-control input-form-class select-parent-category-c"
                                             name="parent_category_id_c">
-                                            <option></option>
-                                            {{-- @foreach ($parentCategories as $key => $parentCategory)
-                                                <option value="{{ $parentCategory->id }}"> {{ $parentCategory->name }}
-                                                </option>
-                                            @endforeach --}}
                                         </select>
                                     </div>
                                 </div>

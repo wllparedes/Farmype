@@ -6,11 +6,11 @@ import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    $("#select-parent-category-c").select2({
-        placeholder: "Selecciona una categoria principal",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
+    // $("#select-parent-category-c").select2({
+    //     placeholder: "Selecciona una categoria principal",
+    //     language: "es",
+    //     minimumResultsForSearch: Infinity,
+    // });
 
     // ******* Jquery-Validator *******
 
@@ -25,6 +25,9 @@ $(document).ready(() => {
             name_child: {
                 required: true,
             },
+            child_category_id: {
+                required: true
+            }
         },
         submitHandler: function (form, event) {
             event.preventDefault();

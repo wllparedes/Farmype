@@ -94,10 +94,16 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/registrar-producto-categoria', 'create')->name('admin.products.create');
             Route::get('/obtener-categorias-hijos', 'getChildCategories')->name('admin.products.getChildCategories');
             Route::post('/registrar-producto', 'store')->name('admin.product.store');
+            Route::get('/editar-producto/{product}', 'edit')->name('admin.product.edit');
+            Route::post('/actualizar-producto/{product}', 'update')->name('admin.product.update');
+            // *--
+            Route::delete('/eliminar-producto/{product}', 'delete')->name('admin.product.delete');
+
 
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
+            Route::get('/obtener-categorias-principales', 'getParentCategory')->name('admin.category.getParentCategory');
             Route::post('/registrar-categoria', 'store')->name('admin.category.store');
         });
 
