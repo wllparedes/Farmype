@@ -49,12 +49,13 @@
                         <div class="col-lg-12">
                             <div class="div div-name-child-category" id="name-child-category">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="select-parent-category">Categoria
+                                    <label class="form-control-label" for="select-parent-category-c">Categoria
                                         Princial *</label>
                                     <div class="input-group input-group-alternative mb-3">
-                                        <select id="select-parent-category" class="form-control input-form-class"
-                                            name="parent_category_id">
-                                            <option selected disabled>Selecciona una categoria principal</option>
+                                        <select id="select-parent-category-c"
+                                            class="form-control input-form-class select-parent-category-c"
+                                            name="parent_category_id_c">
+                                            <option></option>
                                             @foreach ($parentCategories as $key => $parentCategory)
                                                 <option value="{{ $parentCategory->id }}"> {{ $parentCategory->name }}
                                                 </option>
@@ -73,10 +74,10 @@
                         </div>
 
                     </div>
-                                <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar categoria</button>
-            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar categoria</button>
+                    </div>
                 </form>
             </div>
 

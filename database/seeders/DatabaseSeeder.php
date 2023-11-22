@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
                 'province' => 'lima',
                 'district' => 'ate',
                 'address' => 'Los Olivos',
-                'email' => 'adp@gmail.com',
+                'email' => 'farmacia@gmail.com',
                 'phone' => '901901901',
-                'password' => Hash::make('adptechnology'),
+                'password' => Hash::make('farmacia'),
             ],
             [
                 'names_surnames' => 'Carmen',
@@ -41,9 +41,9 @@ class DatabaseSeeder extends Seeder
                 'province' => 'lima',
                 'district' => 'ate',
                 'address' => 'San Juan de Lurigancho',
-                'email' => 'carmen@gmail.com',
+                'email' => 'cliente@gmail.com',
                 'phone' => '902902902',
-                'password' => Hash::make('carmen'),
+                'password' => Hash::make('cliente'),
             ],
             [
                 'names_surnames' => 'admin',
@@ -95,10 +95,43 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Cosmeticos',
                 'parent_category_id' => 2
             ],
-
+            // * 3
+            [
+                'name' => 'Higiene personal',
+                'parent_category_id' => 3
+            ],
+            [
+                'name' => 'Cuidado del cabello',
+                'parent_category_id' => 3
+            ],
+            // * 4
+            [
+                'name' => 'Monitores de salud',
+                'parent_category_id' => 4
+            ],
+            [
+                'name' => 'Ayudas ortopédicas',
+                'parent_category_id' => 4
+            ],
+            // * 5
+            [
+                'name' => 'Alimentación del bebé',
+                'parent_category_id' => 5
+            ],
+            [
+                'name' => 'Cuidado del bebé',
+                'parent_category_id' => 5
+            ],
+            // * 6
+            [
+                'name' => 'Cuidado de la salud',
+                'parent_category_id' => 6
+            ],
+            [
+                'name' => 'Ayudas para la movilidad',
+                'parent_category_id' => 6
+            ],
         ];
-
-
         foreach ($dataUsers as $user) {
             User::create($user);
         }

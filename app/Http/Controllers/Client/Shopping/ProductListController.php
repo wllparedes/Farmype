@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Client\Shopping;
-
+// ! no used !
 use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\Product;
@@ -15,7 +15,6 @@ class ProductListController extends Controller
     public function index(Request $request){
 
         $user = Auth::user()->id;
-
 
         $productsOnList = ProductList::where('user_id', $user)
                         ->with(['inventories',
@@ -40,7 +39,10 @@ class ProductListController extends Controller
         //
     }
 
-    public function subtractCuantity($id){
+
+
+
+    public function subtractCuantity(Inventory $id){
 
         $inventory = Inventory::find($id);
         $user_id = Auth::user()->id;
@@ -67,6 +69,10 @@ class ProductListController extends Controller
             'message' => $message
         ]);
     }
+
+
+
+
 
 
     public function addCuantity($id){

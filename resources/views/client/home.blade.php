@@ -14,39 +14,8 @@
         <div class="container-fluid">
             <div class="header-body">
                 <!-- Card stats -->
-                <div class="row">
-                    <div class="swiper swiper-client">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                            </div>
-                        </div>
-                        <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-pagination"></div>
-                    </div>
+                <div class="col-12">
+                    {{-- <img alt="" src="{{ asset('assets/img/gifs/farma.png') }}" width="100" > --}}
                 </div>
             </div>
         </div>
@@ -60,40 +29,52 @@
         </div>
         <div class="row container-items-category justify-content-center">
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/food.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Nutrición</h4>
+                <a href="{{ route('client.getProductsNutrition') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/food.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Nutrición</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/belleza.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Belleza</h4>
+                <a href="{{ route('client.getProductsBeauty') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/belleza.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Belleza</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/cuidado-personal.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Cuidado personal</h4>
+                <a href="{{ route('client.getProductsPersonalCare') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/cuidado-personal.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Cuidado personal</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/dispo-medico.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Dispositivos Medicos</h4>
+                <a href="{{ route('client.getProductsMedicalDevices') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/dispo-medico.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Dispositivos Medicos</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/mom-feeding-baby.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Mamá y bebe</h4>
+                <a href="{{ route('client.getProductsMomBaby') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/mom-feeding-baby.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Mamá y bebe</h4>
+                </a>
             </div>
             <div class="col-md-3 col-sm-4 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/old-person.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Adulto mayor</h4>
+                <a href="{{ route('client.getProductsOlderAdult') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/old-person.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Adulto mayor</h4>
+                </a>
             </div>
         </div>
         <div class="row mt-5">
@@ -103,16 +84,20 @@
         </div>
         <div class="row container-items-category justify-content-center">
             <div class="col-md-4 col-sm-6 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/on-sale.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Ofertas</h4>
+                <a href="{{ route('client.getProductsOnSale') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/on-sale.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Ofertas</h4>
+                </a>
             </div>
             <div class="col-md-4 col-sm-6 col-lg-2 div-container-category">
-                <div class="div-image-category">
-                    <img src="{{ asset('assets/img/gifs/list.gif') }}" alt="">
-                </div>
-                <h4 class="text-center">Todos</h4>
+                <a href="{{ route('client.products.index') }}">
+                    <div class="div-image-category">
+                        <img src="{{ asset('assets/img/gifs/list.gif') }}" alt="">
+                    </div>
+                    <h4 class="text-center">Todos</h4>
+                </a>
             </div>
         </div>
     </div>

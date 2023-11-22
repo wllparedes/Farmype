@@ -44,7 +44,7 @@
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
     {{--* Necesarios --}}
     <script src="{{ asset('assets/js/global/renderProductsNext.js') }}" type="module"></script>
-    <script src="{{ asset('assets/js/client/products/addProductOnList.js') }}" type="module"></script>
-    <script src="{{ asset('assets/js/client/products/deleteProductOnList.js') }}" type="module"></script>
+    {{-- <script src="{{ asset('assets/js/client/products/addProductOnList.js') }}" type="module"></script> --}}
+    {{-- <script src="{{ asset('assets/js/client/products/deleteProductOnList.js') }}" type="module"></script> --}}
 
 @endsection

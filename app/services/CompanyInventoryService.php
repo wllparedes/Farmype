@@ -54,9 +54,9 @@ class CompanyInventoryService
             "message" => $message
         ]);
 
-
     }
 
+    
     public function editInventory($inventory)
     {
 

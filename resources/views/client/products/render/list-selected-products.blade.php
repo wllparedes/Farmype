@@ -74,7 +74,7 @@
                                     <p class="card-text text-danger text-center text-sm-center text-sm">Producto sin
                                         stock.</p>
                                     <button class="deleteProductOnList btn btn-sm btn-danger"
-                                        data-delete-list="{{ route('client.inventory.delete', $inventory->id) }}">
+                                        data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">
                                         Eliminar de la lista
                                     </button>
                                 </div>
@@ -91,8 +91,8 @@
                                     <a class="dropdown-item"
                                         data-add-cart-shopping="{{ route('client.selected-products.addShoppingCart', $inventory->id) }}">Añadir
                                         al carrito</a>
-                                    <a class="dropdown-item"
-                                        data-delete-list="{{ route('client.inventory.delete', $inventory->id) }}">Eliminar
+                                    <a class="deleteProductOnList dropdown-item"
+                                        data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">Eliminar
                                         de la lista</a>
                                 </div>
                             </div>

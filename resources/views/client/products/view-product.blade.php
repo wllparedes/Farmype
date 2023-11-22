@@ -14,8 +14,8 @@
             <div class="header-body">
                 <!-- Card stats -->
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6">
-                        <h1 class="text-white text-center">Producto seleccionado</h1>
+                    <div class="col-xl-3 col-lg-12">
+                        <h1 class="text-white text-center">Productos a elegir</h1>
                     </div>
                 </div>
             </div>
@@ -39,15 +39,13 @@
 
 @section('optional_scripts')
 
-    {{--* Plugins --}}
+    {{-- * Plugins --}}
     <script src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/js/all.min.js') }}"></script>
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
-    {{--* Necesarios --}}
+    {{-- * Necesarios --}}
     <script src="{{ asset('assets/js/global/renderProductsNext.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/products/addProductOnList.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/products/deleteProductOnList.js') }}" type="module"></script>
 
 @endsection
-
-

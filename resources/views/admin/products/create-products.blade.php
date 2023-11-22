@@ -16,7 +16,7 @@
                     <div class="col-sm-12 col-lg-6 col-md-12">
                         <h1 class="text-white text-start">Registro de Productos y categorias</h1>
                     </div>
-                    <div class="col-sm-12 col-lg-6 col-md-12 d-flex justify-content-end">
+                    <div class="col-sm-12 col-lg-6 col-md-12 text-end">
                         <button type="button" class="btn btn-default" data-toggle="modal"
                             data-target="#createCategoryModal">
                             Crear Categoria
@@ -70,9 +70,9 @@
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="form-group">
-                                        <label for="select-child-category" class="form-control-label">Sub Categoria</label>
+                                        <label for="select-child-category" class="form-control-label">Sub Categoria *</label>
                                         <div class="input-group input-group-alternative mb-3">
-                                            <select name="child_category_id[]"  id="select-child-category"
+                                            <select name="child_category_id[]" id="select-child-category"
                                                 class="form-control js-example-basic-single input-form-class">
                                             </select>
                                         </div>
@@ -80,14 +80,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-detail">Detalle (opcional)</label>
                                         <textarea type="text" id="input-detail" name="detail" class="form-control form-control-alternative input-reset"
                                             placeholder="Ingresa el detalle" rows="11"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label class="form-control-label">Imagen * </label>
                                         <div class="square-img-input-container">
@@ -127,8 +127,5 @@
     <script src="{{ asset('assets/js/admin/products/validatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/admin/products/validatorCategory.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/admin/products/createCategory.js') }}" type="module"></script>
-
     <script src="{{ asset('assets/js/admin/products/handleParentSelect.js') }}"></script>
-
-
 @endsection

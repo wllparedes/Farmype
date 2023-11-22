@@ -142,7 +142,7 @@ input.error {
 
 .span-stock {
     position: absolute;
-    bottom: 159px;
+    top: 0px;
     left: 0;
     padding: 10px;
     border-radius: 0;
@@ -446,12 +446,14 @@ input.error {
     font-family: "Nunito", sans-serif !important;
     font-size: var(--bs-body-font-size) !important;
 }
+*/
 
-option, select, span{
 
-    font-family: var(--bs-body-font-family) !important;
-    font-family: "Nunito", sans-serif !important;
-} */
+.text-end{
+    text-align: end;
+}
+
+
 
 .div-name-child-category {
     display: none;
@@ -478,3 +480,12 @@ option, select, span{
 }
 
 /* * */
+
+.image-product {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.image-product img {
+    width: 100%;
+}

@@ -6,11 +6,11 @@ import { renderProductsLoad } from "./../../global/renderProductsNext.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    // $("#select-parent-category").select2({
-    //     placeholder: "Selecciona una categoria principal",
-    //     language: "es",
-    //     minimumResultsForSearch: Infinity,
-    // });
+    $("#select-parent-category-c").select2({
+        placeholder: "Selecciona una categoria principal",
+        language: "es",
+        minimumResultsForSearch: Infinity,
+    });
 
     // ******* Jquery-Validator *******
 
@@ -19,7 +19,7 @@ $(document).ready(() => {
             name_parent: {
                 required: true,
             },
-            parent_category_id: {
+            parent_category_id_c: {
                 required: true,
             },
             name_child: {
@@ -44,8 +44,6 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-                    console.log(data);
-
                     form.trigger("reset");
                     modal.modal("hide");
                     Toast.fire({

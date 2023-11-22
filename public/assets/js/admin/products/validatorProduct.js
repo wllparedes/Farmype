@@ -10,7 +10,7 @@ $(document).ready(() => {
         language: {
             noResults: function () {
                 return "No se encontraron resultados";
-            }
+            },
         },
 
         minimumResultsForSearch: Infinity,
@@ -65,7 +65,6 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-
                     if (data.success) {
                         registerProductForm.resetForm();
                         resetInputsForm();

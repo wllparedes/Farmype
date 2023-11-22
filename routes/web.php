@@ -4,8 +4,7 @@ use App\Http\Controllers\{ProfileController};
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminProductController;
-use App\Http\Controllers\Client\{ClientHomeController};
-use App\Http\Controllers\Client\Product\ClientProductController;
+use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController};
 use App\Http\Controllers\Client\Shopping\ProductListController;
 use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController};
 use App\Http\Controllers\Company\Product\CompanyProductController;
@@ -27,27 +26,39 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/inicio', [ClientHomeController::class, 'index'])->name('clients.home');
 
-        // * Productos
+        // * Inventories
 
-        Route::controller(ClientProductController::class)->group(function () {
-
+        Route::controller(ClientInventoryController::class)->group(function () {
             Route::get('/productos', 'index')->name('client.products.index');
             Route::get('/ver-producto/{product}', 'view')->name('client.product.view');
             Route::post('/agregar-inventario/{inventory}', 'add')->name('client.inventory.add');
             Route::delete('/client/eliminar-inventario/{inventory}', 'delete')->name('client.inventory.delete');
-
         });
 
-        // * Lista de productos
+        // * Lista
 
-        Route::controller(ProductListController::class)->group(function () {
+        Route::controller(ClientListController::class)->group(function () {
 
             Route::get('/productos-seleccionados', 'index')->name('client.selected-products.index');
-            Route::post('/sumarCantidad/{productOnList}', 'addCuantity')->name('client.selected-products.addCuantity');
-            Route::post('/restarCantidad/{productOnList}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
-            Route::post('/agregar-al-carrito/{productOnList}', 'addShoppingCart')->name('client.selected-products.addShoppingCart');
+            Route::post('/sumarCantidad/{inventory}', 'addCuantity')->name('client.selected-products.addCuantity');
+            Route::post('/restarCantidad/{inventory}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
+            Route::post('/agregar-al-carrito/{inventory}', 'addShoppingCart')->name('client.selected-products.addShoppingCart');
+            Route::delete('eliminar-inventatio-lista/{inventory}', 'deleteInventoryOfList')->name('client.selected-inventory.delete');
 
         });
+
+        // * Filter
+
+        Route::controller(ClientFilterController::class)->group(function () {
+            Route::get('productos/nutricion','getProductsNutrition')->name('client.getProductsNutrition');
+            Route::get('productos/belleza','getProductsBeauty')->name('client.getProductsBeauty');
+            Route::get('productos/cuidado-personal','getProductsPersonalCare')->name('client.getProductsPersonalCare');
+            Route::get('productos/dispositivos-medicos','getProductsMedicalDevices')->name('client.getProductsMedicalDevices');
+            Route::get('productos/mama-bebe','getProductsMomBaby')->name('client.getProductsMomBaby');
+            Route::get('productos/adulto-mayor','getProductsOlderAdult')->name('client.getProductsOlderAdult');
+            Route::get('productos/ofertas','getProductsOnSale')->name('client.getProductsOnSale');
+        });
+
 
     });
 
@@ -73,21 +84,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     // * Super admin
 
-    Route::group(['middleware' => 'check.role:super_admin'], function () {
+    Route::group(['middleware' => 'check.role:super_admin', 'prefix' => 'admin'], function () {
 
-        Route::get('/admin/inicio', [AdminHomeController::class, 'index'])->name('admin.home');
+        Route::get('/inicio', [AdminHomeController::class, 'index'])->name('admin.home');
 
         Route::controller(AdminProductController::class)->group(function () {
 
-            Route::get('/admin/productos-registrados', 'index')->name('admin.products.index');
-            Route::get('/admin/registrar-producto-categoria', 'create')->name('admin.products.create');
-            Route::get('/admin/obtener-categorias-hijos', 'getChildCategories')->name('admin.products.getChildCategories');
-            Route::post('/admin/registrar-producto', 'store')->name('admin.product.store');
+            Route::get('/productos-registrados', 'index')->name('admin.products.index');
+            Route::get('/registrar-producto-categoria', 'create')->name('admin.products.create');
+            Route::get('/obtener-categorias-hijos', 'getChildCategories')->name('admin.products.getChildCategories');
+            Route::post('/registrar-producto', 'store')->name('admin.product.store');
 
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
-            Route::post('/admin/registrar-categoria', 'store')->name('admin.category.store');
+            Route::post('/registrar-categoria', 'store')->name('admin.category.store');
         });
 
 

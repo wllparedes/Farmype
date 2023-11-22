@@ -38,7 +38,11 @@ class User extends Authenticatable
         return $this->hasMany(Inventory::class);
     }
 
-
+    // Make method for product_lists
+    public function productList() : HasOne
+    {
+        return $this->hasOne(ProductList::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
