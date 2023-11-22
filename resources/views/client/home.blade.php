@@ -84,7 +84,7 @@
         </div>
         <div class="row container-items-category justify-content-center">
             <div class="col-md-4 col-sm-6 col-lg-2 div-container-category">
-                <a href="{{ route('client.getProductsOnSale') }}">
+                <a href="">
                     <div class="div-image-category">
                         <img src="{{ asset('assets/img/gifs/on-sale.gif') }}" alt="">
                     </div>
