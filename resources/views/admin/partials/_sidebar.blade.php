@@ -112,12 +112,12 @@
                         <i class="ni ni-planet text-blue"></i> Crear productos y categorias
                     </a>
                 </li>
-                <li class="nav-item {{ setActive('client.selected-products.index') }}">
+                {{-- <li class="nav-item {{ setActive('client.selected-products.index') }}">
                     <a class="nav-link {{ setActive('client.selected-products.index') }}"
                         href="{{ route('client.selected-products.index') }}">
                         <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item">
                     <a class="nav-link " href="./examples/profile.html">
                         <i class="ni ni-single-02 text-yellow"></i> User profile

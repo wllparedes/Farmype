@@ -35,6 +35,18 @@ checkParent.addEventListener("click", function () {
 });
 
 checkChild.addEventListener("click", function () {
+
+
+    // $.ajax({
+    //     url: "",
+    //     data: "",
+
+    // })
+
+
+
+
+
     if (checkChild.checked) {
         parentCategory.classList.remove("div-name-parent-category-active");
         parentCategory.classList.add("div-name-parent-category");

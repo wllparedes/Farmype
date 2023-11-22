@@ -56,10 +56,10 @@
                                             class="form-control input-form-class select-parent-category-c"
                                             name="parent_category_id_c">
                                             <option></option>
-                                            @foreach ($parentCategories as $key => $parentCategory)
+                                            {{-- @foreach ($parentCategories as $key => $parentCategory)
                                                 <option value="{{ $parentCategory->id }}"> {{ $parentCategory->name }}
                                                 </option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                 </div>
