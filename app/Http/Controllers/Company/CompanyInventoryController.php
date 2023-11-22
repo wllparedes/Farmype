@@ -57,7 +57,6 @@ class CompanyInventoryController extends Controller
     {
 
         return $this->companyInventoryService->editInventory($inventory);
-
     }
 
     public function update(Request $request, Inventory $inventory)

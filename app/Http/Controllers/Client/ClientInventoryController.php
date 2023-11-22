@@ -17,9 +17,9 @@ class ClientInventoryController extends Controller
         $this->clientInventoryService = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->clientInventoryService->getProducts();
+        return $this->clientInventoryService->getProducts($request);
     }
 
     public function view(Product $product, Request $request)

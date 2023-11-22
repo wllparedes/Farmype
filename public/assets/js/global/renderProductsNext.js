@@ -1,7 +1,7 @@
 let numberPage = 1;
 
 const renderProducts = () => {
-    $(document).on("click", ".page-link a", function (e) {
+    $(document).on("click", ".pagination a", function (e) {
         e.preventDefault();
 
         let page = $(this).attr("href").split("page=")[1];

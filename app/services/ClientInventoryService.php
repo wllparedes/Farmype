@@ -13,13 +13,20 @@ use Illuminate\Http\Request;
 class ClientInventoryService
 {
 
-    public function getProducts()
+    public function getProducts(Request $request)
     {
         $products = Product::with([
             'file' => fn($sq3) =>
                 $sq3->where('file_type', 'imagenes')
                     ->where('category', 'products')
         ])->paginate(8);
+
+        if ($request->ajax()) {
+            $products = view('client.products.render.query-products', compact('products'))->render();
+            return [
+                'html' => $products,
+            ];
+        }
 
         return view('client.products.index', compact('products'));
     }

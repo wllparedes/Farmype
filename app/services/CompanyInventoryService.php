@@ -56,19 +56,16 @@ class CompanyInventoryService
 
     }
 
-    
-    public function editInventory($inventory)
+
+    public function editInventory(Inventory $inventory)
     {
+        $inventory->load(['product', 'product.file', 'product.childCategories']);
 
-        $inventory = $inventory->with(['product', 'product.file', 'product.childCategories'])->get();
-
-        foreach ($inventory as $item) {
-            $product = $item->product;
-            $urlImage = verifyImage($product->file);
-            foreach ($product->childCategories as $childCategory) {
-                $parentCategory = $childCategory->parentCategory;
-                break;
-            }
+        $product = $inventory->product;
+        $urlImage = verifyImage($product->file);
+        foreach ($product->childCategories as $childCategory) {
+            $parentCategory = $childCategory->parentCategory;
+            break;
         }
 
         return response()->json([
@@ -76,8 +73,8 @@ class CompanyInventoryService
             "parentCategory" => $parentCategory,
             "url_image" => $urlImage,
         ]);
-
     }
+
 
     public function updateInventory(Request $request, Inventory $inventory)
     {
