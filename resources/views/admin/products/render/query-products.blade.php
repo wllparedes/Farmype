@@ -45,7 +45,7 @@
 
 <div class="row col-12">
     <div class="col-12 p-4">
-        <a class="btn btn-default" href="{{ route('company.home') }}">
+        <a class="btn btn-default" href="{{ route('admin.home') }}">
             <i class="fas fa-arrow-left"></i> Volver
         </a>
     </div>
