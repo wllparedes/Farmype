@@ -489,3 +489,11 @@ input.error {
 .image-product img {
     width: 100%;
 }
+
+
+/* ** */
+
+.view-product-on{
+    position: absolute;
+    top: 42px;
+}

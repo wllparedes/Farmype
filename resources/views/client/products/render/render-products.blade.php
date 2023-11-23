@@ -40,7 +40,7 @@
                         @if ($inventory->on_sale)
                             <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/.
                                 {{ $inventory->price }}</span>
-                            <span class="badge badge-pill badge-sm badge-danger discount-value-selected">-%
+                            <span class="badge badge-pill badge-sm badge-danger discount-value-selected view-product-on">-%
                                 {{ $inventory->discount }}</span>
                             <span class="badge badge-pill badge-sm badge-light">S/.
                                 {{ $inventory->discounted_price }}</span>

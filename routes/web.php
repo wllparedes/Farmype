@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('productos/dispositivos-medicos','getProductsMedicalDevices')->name('client.getProductsMedicalDevices');
             Route::get('productos/mama-bebe','getProductsMomBaby')->name('client.getProductsMomBaby');
             Route::get('productos/adulto-mayor','getProductsOlderAdult')->name('client.getProductsOlderAdult');
-            Route::get('productos/ofertas','getProductsOnSale')->name('client.getProductsOnSale');
+            Route::get('productos/ofertas','getOnSale')->name('client.getProductsOnSale');
         });
 
 
@@ -98,7 +98,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/actualizar-producto/{product}', 'update')->name('admin.product.update');
             // *--
             Route::delete('/eliminar-producto/{product}', 'destroy')->name('admin.product.delete');
-
 
         });
 
