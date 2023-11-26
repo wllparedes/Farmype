@@ -1,20 +1,40 @@
 <div class="card-body container bg-list-productos">
     <div class="row">
-        <div class="col-lg-8 col-md-12 col-sm-12">
-            <p class="">Productos</p>
 
+        @php
+            $quantityProducts = 0;
+            $priceSubtotal = 0;
+        @endphp
+        @foreach ($inventoriesOnShopping as $inventoriesShopping)
             @php
-                $quantityProducts = 0;
-                $priceSubtotal = 0;
+                $user = $inventoriesShopping->user;
             @endphp
+            @if ($inventoriesShopping->inventories->isEmpty())
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 d-flex flex-column">
+                            <div class="container-empty">
+                                <img class="image-empty" src="{{ asset('assets/img/theme/carro-vacio.png') }}"
+                                    alt="">
+                                <div class="container-note">
+                                    <h3 class="col-12 text-start pl-0">Tu carro está vacío</h3>
+                                    <p>¡Aprovecha! Tenemos miles de productos en oferta y oportunidades únicas.</p>
+                                </div>
+                            </div>
+                            <a class="btn btn-outline-warning btn-md button-empty"
+                                href="{{ route('client.getProductsOnSale') }}">
+                                Ver ofertas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <p class="">Productos en tu carrito</p>
 
-            @foreach ($productsOnList as $productList)
-                @if ($productList->inventories->isEmpty())
-                    <h3 class="col-12 text-center">No hay productos seleccionados</h3>
-                @else
-                    @foreach ($productList->inventories as $inventory)
+                    @foreach ($inventoriesShopping->inventories as $inventory)
                         <div class="row">
-                            <div class="col-12 mb-4 justify-content-around ">
+                            <div class="col-12 mb-4 justify-content-around">
                                 <div class="col-12 container-product-items">
                                     <div class="container-list-img">
                                         <img src="{{ verifyImage($inventory->product->file) }}"
@@ -46,7 +66,6 @@
                                                 {{ $inventory->discount }}</span>
                                             <span class="badge badge-pill badge-sm badge-light">S/.
                                                 {{ $inventory->discounted_price }}</span>
-
                                             <span class="btn btn-danger btn-sm span-on_sale-selected">OFERTA</span>
                                         @else
                                             <span class="badge badge-pill badge-sm badge-primary">S/.
@@ -69,21 +88,22 @@
                                             <div class="row-cuantity d-flex justify-content-between p-2">
                                                 <button type="button" class="addCuantity btn btn-sm btn-default"
                                                     {{ whatIsTop($inventory->pivot->quantity) }}
-                                                    data-add="{{ route('client.selected-products.addCuantity', $inventory->id) }}">+</button>
+                                                    data-add="{{ route('client.shopping.addCuantity', $inventory->id) }}">+</button>
                                                 <span class="valueQuantity"> {{ $inventory->pivot->quantity }} </span>
                                                 <button type="button" class="subtractCuantity btn btn-sm btn-default"
                                                     {{ whatIsBottom($inventory->pivot->quantity) }}
-                                                    data-subtract="{{ route('client.selected-products.subtractCuantity', $inventory->id) }}">-</button>
+                                                    data-subtract="{{ route('client.shopping.subtractCuantity', $inventory->id) }}">-</button>
                                             </div>
                                             <p class="card-text text-center text-sm-center text-sm">Máx 10 unidades</p>
-                                            <p class="text-small text-sm-success text-success">Stock Disponible: {{ $inventory->stock}}</p>
+                                            <p class="text-small text-sm-success text-success">Stock Disponible:
+                                                {{ $inventory->stock }}</p>
                                         </div>
                                     @else
                                         <div class="container-cuantity">
                                             <p class="card-text text-danger text-center text-sm">Producto sin stock</p>
                                             <button class="deleteProductOnList w-100 btn btn-sm btn-danger"
                                                 data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">
-                                                Eliminar de lista
+                                                Eliminar
                                             </button>
                                         </div>
                                     @endif
@@ -97,46 +117,69 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="addOnShoppingCart dropdown-item"
-                                                data-add-cart-shopping="{{ route('client.selected-inventory.addShoppingCart', $inventory->id) }}">Añadir
-                                                al carrito</a>
                                             <a class="deleteProductOnList dropdown-item"
                                                 data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">Eliminar
-                                                de la lista</a>
+                                                del carrito</a>
                                         </div>
                                     </div>
                                 @endif
                             </div>
                         </div>
                     @endforeach
-                @endif
-            @endforeach
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12">
-            <p class="">Resumen de la lista</p>
-            <div class="row">
-                <div class="col-12 mb-4 justify-content-around">
-                    <div class="col-12 container-product-items">
-                        <div class="resumen-detalle">
-                            <h5>Productos: </h5>
-                            <h5>Subtotal: </h5>
-                        </div>
-                        <div class="resumen-precio">
-                            <h5>({{ $quantityProducts }})</h5>
-                            <h5>S/. {{ $priceSubtotal }}</h5>
+
+                    <div class="row">
+                        <div class="col-12 mb-4 justify-content-around ">
+                            <div class="col-12">
+                                <div class="action-buy">
+                                    <a href="{{ route('client.products.index') }}"
+                                        class="btn btn-sm btn-outline-primary">Seguir
+                                        comprando</a>
+                                    &nbsp;&nbsp;
+                                    <a class="text-white btn btn-sm btn-warning emptyShoppingCart"
+                                        data-empty="{{ route('client.shopping.emptyShoppingCart') }}">Vaciar
+                                        carrito</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-12 pt-4">
-                    <a class="btn btn-default" href="{{ route('clients.home') }}">
-                        <i class="fas fa-arrow-left"></i> Volver
-                    </a>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <p class="">Resumen de tu carrito</p>
+                    <div class="row">
+                        <div class="col-12 mb-4 justify-content-around">
+                            <div class="col-12 container-product-items">
+                                <div class="resumen-detalle">
+                                    <h5>Productos: </h5>
+                                    <h5>Subtotal:</h5>
+                                </div>
+                                <div class="resumen-precio">
+                                    <h5>({{ $quantityProducts }})</h5>
+                                    <h5>S/. {{ $priceSubtotal }}</h5>
+                                </div>
+                                <div class="address">
+                                    <h5>Envío:</h5>
+                                    {{-- * Direccion exacta --}}
+                                    <p>{{ $user->address }}
+                                        <br>
+                                        {{-- * Direccion General --}}
+                                        {{ Str::ucfirst($user->departament) . ', ' . Str::ucfirst($user->province) . ', ' . Str::ucfirst($user->district) . ', Perú.' }}
+                                    </p>
+                                    <a class="text-small" href="#">
+                                        Cambiar dirección
+                                    </a>
+                                </div>
+                                <div class="total">
+                                    <h5>TOTAL: </h5>
+                                    <h5>S/. {{ $priceSubtotal }}</h5>
+                                </div>
+                                <div class="buy-now">
+                                    <a href="#" class="btn btn-md btn-danger">Continuar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </div>
 </div>

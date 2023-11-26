@@ -34,10 +34,14 @@ class ClientListController extends Controller
 
     public function deleteInventoryOfList(Inventory $inventory)
     {
-        
+
         return $this->clientListService->deleteInventoryOfList($inventory);
 
     }
 
+    public function addShoppingCart(Inventory $inventory)
+    {
+        return $this->clientListService->addShoppingCart($inventory);
+    }
 
 }

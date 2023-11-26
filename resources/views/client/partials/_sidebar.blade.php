@@ -12,14 +12,12 @@
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
+                <a class="nav-link nav-link-icon" href="" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-cart"></i>
+                    <a href="{{ route('client.shopping.index') }}">
+                        <i class="ni ni-cart"></i>
+                    </a>
                 </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
-                    aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Ver carrito</a>
-                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -116,6 +114,12 @@
                     <a class="nav-link {{ setActive('client.selected-products.index') }}"
                         href="{{ route('client.selected-products.index') }}">
                         <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
+                    </a>
+                </li>
+                <li class="nav-item {{ setActive('client.shopping.index') }}">
+                    <a class="nav-link {{ setActive('client.shopping.index') }}"
+                        href="{{ route('client.shopping.index') }}">
+                        <i class="ni ni-cart text-info"></i> Carrito de compras
                     </a>
                 </li>
                 {{-- <li class="nav-item">

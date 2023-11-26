@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class ProductList extends Model
+class Shopping extends Model
 {
     use HasFactory;
 
@@ -15,12 +16,12 @@ class ProductList extends Model
         'user_id'
     ];
 
-    public function inventories() : BelongsToMany
+    public function inventories(): BelongsToMany
     {
-        return $this->belongsToMany(Inventory::class, 'product_product_list', 'product_lists_id', 'inventory_id')->withPivot('quantity');
+        return $this->belongsToMany(Inventory::class, 'inventory_shopping', 'shopping_id', 'inventory_id')->withPivot('quantity');
     }
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

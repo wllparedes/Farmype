@@ -43,6 +43,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(ProductList::class);
     }
+    // Make method for shopping
+    public function shopping() : HasOne
+    {
+        return $this->hasOne(Shopping::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

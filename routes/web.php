@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\{ProfileController};
-use App\Http\Controllers\Admin\AdminCategoryController;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\AdminProductController;
-use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController};
-use App\Http\Controllers\Client\Shopping\ProductListController;
+
+use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController};
+use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController};
 use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController};
-use App\Http\Controllers\Company\Product\CompanyProductController;
 use Illuminate\Support\Facades\{Auth, Route};
 
 
@@ -42,9 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/productos-seleccionados', 'index')->name('client.selected-products.index');
             Route::post('/sumarCantidad/{inventory}', 'addCuantity')->name('client.selected-products.addCuantity');
             Route::post('/restarCantidad/{inventory}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
-            Route::post('/agregar-al-carrito/{inventory}', 'addShoppingCart')->name('client.selected-products.addShoppingCart');
-            Route::delete('eliminar-inventatio-lista/{inventory}', 'deleteInventoryOfList')->name('client.selected-inventory.delete');
-
+            Route::post('/agregar-al-carrito/{inventory}', 'addShoppingCart')->name('client.selected-inventory.addShoppingCart');
+            Route::delete('eliminar-inventario-lista/{inventory}', 'deleteInventoryOfList')->name('client.selected-inventory.delete');
         });
 
         // * Filter
@@ -57,6 +53,13 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('productos/mama-bebe','getProductsMomBaby')->name('client.getProductsMomBaby');
             Route::get('productos/adulto-mayor','getProductsOlderAdult')->name('client.getProductsOlderAdult');
             Route::get('productos/ofertas','getOnSale')->name('client.getProductsOnSale');
+        });
+
+        Route::controller(ClientShoppingController::class)->group(function () {
+            Route::get('/carrito-de-compras', 'index')->name('client.shopping.index');
+            Route::post('/sumar-cantidad-en-carrito/{inventory}', 'addCuantity')->name('client.shopping.addCuantity');
+            Route::post('/restar-cantidad-en-carrito/{inventory}', 'subtractCuantity')->name('client.shopping.subtractCuantity');
+            Route::delete('/vaciar-carrito', 'emptyShoppingCart')->name('client.shopping.emptyShoppingCart');
         });
 
 
