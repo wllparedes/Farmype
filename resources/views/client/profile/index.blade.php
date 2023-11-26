@@ -68,13 +68,16 @@
                             <div class="col-8">
                                 <h3 class="mb-0">Mi cuenta</h3>
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">Editar</a>
-                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('profile.update') }}" id="updateProfileForm" method="POST" data-send="{{ route('profile.edit') }}" data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
+
+
+                        {{-- * FORM CHANGE DATES --}}
+
+                        <form action="{{ route('profile.update-fields') }}" id="updateFieldsForm" method="POST"
+                            data-send="{{ route('profile.edit') }}" autocomplete="off">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">Tú información</h6>
                             <div class="pl-lg-4">
@@ -191,8 +194,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-primary mt-4 btn-save">Actualizar
+                                    campos</button>
+                            </div>
                             <hr class="my-4" />
                             <!-- Description -->
+                        </form>
+
+                        {{-- * FORM CHANGE PASSWORD --}}
+                        <form id="updatePasswordForm" action="{{ route('profile.update-password') }}" method="POST"
+                            data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
+                            @csrf
                             <h6 class="heading-small text-muted mb-4">Contraseña</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
@@ -202,7 +215,8 @@
                                                 *</label>
                                             <input id="password-now" name="password_now"
                                                 class="form-control form-control-alternative"
-                                                placeholder="Ingrese su contraseña actual" type="password" autocomplete="off">
+                                                placeholder="Ingrese su contraseña actual" type="password"
+                                                autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -228,23 +242,25 @@
                                 </div>
                             </div>
 
-                            <div class="text-muted font-italic password-strength" id="password-strength">
-                                <small>
-                                    fuerza de la contraseña:
-                                    <span class="text-danger font-weight-700 span-password">débil</span>
-                                </small>
-                                <button id="popover-password" type="button" class="btn btn-success"
-                                    data-container="body" data-toggle="popover" data-color="success"
-                                    data-placement="top"
-                                    data-content="Para que su contraseña sea fuerte, ingrese mayúsculas, números, carácteres especiales y que tenga una longitud mayor a 6 carácteres.">
-                                    <span class="btn-inner--icon"><i class="ni ni-notification-70"></i></span>
-                                </button>
+                            <div class="pl-lg-4">
+                                <div class="text-muted font-italic password-strength" id="password-strength">
+                                    <small>
+                                        fuerza de la contraseña:
+                                        <span class="text-danger font-weight-700 span-password">débil</span>
+                                    </small>
+                                    <button id="popover-password" type="button" class="btn btn-success"
+                                        data-container="body" data-toggle="popover" data-color="success"
+                                        data-placement="top"
+                                        data-content="Para que su contraseña sea fuerte, ingrese mayúsculas, números, carácteres especiales y que tenga una longitud mayor a 6 carácteres.">
+                                        <span class="btn-inner--icon"><i class="ni ni-notification-70"></i></span>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary mt-4 btn-save">Actualizar campos</button>
+                                <button type="submit" class="btn btn-outline-warning mt-4 btn-save">Actualizar
+                                    contraseña</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -261,6 +277,6 @@
 
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
-
-    <script src="{{ asset('assets/js/profile/updatedProfile.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/profile/updatedFields.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/profile/updatePassword.js') }}" type="module"></script>
 @endsection

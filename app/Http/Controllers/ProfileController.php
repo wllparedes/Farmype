@@ -65,13 +65,13 @@ class ProfileController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function updateFields(Request $request)
     {
 
         $user = Auth::user();
 
         try {
-            $success = $this->userService->update($request, $user);
+            $success = $this->userService->updateFields($request, $user);
             $message = config('parameters.updated_message');
         } catch (Exception $e) {
             $success = false;
@@ -84,6 +84,28 @@ class ProfileController extends Controller
         ]);
 
     }
+
+    public function updatePassword(Request $request)
+    {
+
+        $user = Auth::user();
+
+        try {
+            $success = $this->userService->updatePassword($request, $user);
+            $message = config('parameters.updated_message');
+        } catch (Exception $e) {
+            $success = false;
+            $message = $e->getMessage();
+        }
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
+
+    }
+
+
 
 
 

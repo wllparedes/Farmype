@@ -1,7 +1,7 @@
 export const assignValues = () => {
     $.ajax({
         type: "GET",
-        url: $("#updateProfileForm").data("send"),
+        url: $("#updateFieldsForm").data("send"),
         dataType: "JSON",
         success: function (data) {
             const user = data["user"];

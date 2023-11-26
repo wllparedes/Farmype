@@ -1,6 +1,6 @@
-import { passwordStrength } from "./../auth/passwordStrength.js";
-import { Expressions } from "./../global/regularExpressions.js";
-import { Toast } from "./../global/ToastSwal.js";
+import { passwordStrength } from "../auth/passwordStrength.js";
+import { Expressions } from "../global/regularExpressions.js";
+import { Toast } from "../global/ToastSwal.js";
 import { resetPasswordValues } from "./resetPasswordValues.js";
 import { assignValues } from "./assignValues.js";
 
@@ -44,7 +44,7 @@ $(document).ready(() => {
 
     // ******* Jquery-Validator *******
 
-    $("#updateProfileForm").validate({
+    $("#updateFieldsForm").validate({
         rules: {
             document_type: {
                 required: true,
@@ -78,48 +78,11 @@ $(document).ready(() => {
                 required: true,
                 email: true,
             },
-            password_now: {
-                required: true,
-                remote: {
-                    url: $("#updateProfileForm").data("validate"),
-                    type: $("#updateProfileForm").attr("method"),
-                    dataType: "JSON",
-                    data: {
-                        password: function () {
-                            return $("#password-now").val();
-                        },
-                    },
-                },
-            },
-            password: {
-                required: true,
-                maxlength: 20,
-                minlength: 6,
-            },
-            password_confirmation: {
-                required: true,
-                equalTo: "#password",
-            },
-        },
-        messages: {
-            password_now: {
-                remote: "La contraseña actual es incorrecta",
-            },
-            password: {
-                required: "Por favor, introduce tu nueva contraseña",
-            },
-            password_confirmation: {
-                equalTo: "Por favor, haz que tus contraseñas coincidan",
-            },
         },
         submitHandler: function (form, event) {
             event.preventDefault();
-
             var form = $(form);
-
             var formData = new FormData(form[0]);
-            console.warn(formData);
-
             form.find(".btn-save").attr("disabled", "disabled");
 
             $.ajax({
@@ -130,7 +93,6 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-                    console.warn(data);
                     if (data.success) {
                         // form.trigger("reset");
 
@@ -141,13 +103,11 @@ $(document).ready(() => {
 
                         Toast.fire({
                             icon: "success",
-                            title: "Datos guardados",
                             text: data.message,
                         });
                     } else {
                         Toast.fire({
                             icon: "error",
-                            title: "Error",
                             text: data.message,
                         });
                     }
@@ -204,9 +164,11 @@ $(document).ready(() => {
         }
     );
 
-    // ? Mensaje de la fuerza de la contraseña
+    // // ? Mensaje de la fuerza de la contraseña
 
-    inputPassword.addEventListener("keyup", () =>
-        passwordStrength(inputPassword, alertPassword, spanPassword)
-    );
+    // inputPassword.addEventListener("keyup", () =>
+    //     passwordStrength(inputPassword, alertPassword, spanPassword)
+    // );
+
+
 });

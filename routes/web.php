@@ -46,13 +46,13 @@ Route::group(['middleware' => ['auth']], function () {
         // * Filter
 
         Route::controller(ClientFilterController::class)->group(function () {
-            Route::get('productos/nutricion','getProductsNutrition')->name('client.getProductsNutrition');
-            Route::get('productos/belleza','getProductsBeauty')->name('client.getProductsBeauty');
-            Route::get('productos/cuidado-personal','getProductsPersonalCare')->name('client.getProductsPersonalCare');
-            Route::get('productos/dispositivos-medicos','getProductsMedicalDevices')->name('client.getProductsMedicalDevices');
-            Route::get('productos/mama-bebe','getProductsMomBaby')->name('client.getProductsMomBaby');
-            Route::get('productos/adulto-mayor','getProductsOlderAdult')->name('client.getProductsOlderAdult');
-            Route::get('productos/ofertas','getOnSale')->name('client.getProductsOnSale');
+            Route::get('productos/nutricion', 'getProductsNutrition')->name('client.getProductsNutrition');
+            Route::get('productos/belleza', 'getProductsBeauty')->name('client.getProductsBeauty');
+            Route::get('productos/cuidado-personal', 'getProductsPersonalCare')->name('client.getProductsPersonalCare');
+            Route::get('productos/dispositivos-medicos', 'getProductsMedicalDevices')->name('client.getProductsMedicalDevices');
+            Route::get('productos/mama-bebe', 'getProductsMomBaby')->name('client.getProductsMomBaby');
+            Route::get('productos/adulto-mayor', 'getProductsOlderAdult')->name('client.getProductsOlderAdult');
+            Route::get('productos/ofertas', 'getOnSale')->name('client.getProductsOnSale');
         });
 
         Route::controller(ClientShoppingController::class)->group(function () {
@@ -123,7 +123,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', 'index')->name('profile.index');
             Route::get('/editar', 'edit')->name('profile.edit');
             Route::post('/validar-password', 'validatePassword')->name('profile.validatePassword');
-            Route::post('/actualizar', 'update')->name('profile.update');
+            Route::post('/actualizar-campos', 'updateFields')->name('profile.update-fields');
+            Route::post('/actualizar-password', 'updatePassword')->name('profile.update-password');
 
         });
 
