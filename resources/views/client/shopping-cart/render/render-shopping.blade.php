@@ -8,6 +8,7 @@
         @foreach ($inventoriesOnShopping as $inventoriesShopping)
             @php
                 $user = $inventoriesShopping->user;
+                $discountCoupion = $inventoriesShopping->discountCoupion ? $inventoriesShopping->discountCoupion : false;
             @endphp
             @if ($inventoriesShopping->inventories->isEmpty())
                 <div class="col-12">
@@ -30,7 +31,11 @@
                 </div>
             @else
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    <p class="">Productos en tu carrito</p>
+                    <p class="d-flex justify-content-between">
+                        Productos en tu carrito
+                        <button href="" class="btn btn-sm btn-primary" data-toggle="modal"
+                            data-target="#discount">Añadir cupón de descuento</button>
+                    </p>
 
                     @foreach ($inventoriesShopping->inventories as $inventory)
                         <div class="row">
@@ -144,7 +149,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
-                    <p class="">Resumen de tu carrito</p>
+                    <p class="">
+                        Resumen de tu carrito
+                    </p>
                     <div class="row">
                         <div class="col-12 mb-4 justify-content-around">
                             <div class="col-12 container-product-items">
@@ -170,7 +177,23 @@
                                 </div>
                                 <div class="total">
                                     <h5>TOTAL: </h5>
-                                    <h5>S/. {{ $priceSubtotal }}</h5>
+                                    @if ($discountCoupion)
+                                        <div class="container-discount">
+                                            <span class="badge badge-warning">-% {{ $discountCoupion->discount }}
+                                            </span>
+                                            @php
+                                                $total = $priceSubtotal - ($priceSubtotal * $discountCoupion->discount) / 100;
+                                            @endphp
+                                            <span class="badge badge-primary badge-md">CUPÓN:
+                                                {{ Str::upper($discountCoupion->code) }} </span>
+                                            <span class="badge badge-success badge-lg">Precio final: S/
+                                                {{ round($total, 2) }}
+                                            </span>
+                                        </div>
+                                    @else
+                                        <h5> S/. {{ $priceSubtotal }} </h5>
+                                    @endif
+
                                 </div>
                                 <div class="buy-now">
                                     <a href="#" class="btn btn-md btn-danger">Continuar</a>

@@ -39,7 +39,7 @@
                                 <h3 class="col-12 text-center">No hay productos en esta categoria</h3>
                             @else
                                 @foreach ($productMonBabys as $productMonBaby)
-                                    <div class="col-sm-6 col-md-6 col-lg-3">
+                                    <div class="col-sm-3 col-md-6 col-lg-3 card-responsive-mobil">
                                         <div class="card">
                                             <div class="card-header">
                                                 <div class="container-image">
@@ -53,7 +53,7 @@
                                                 <p class="card-text product-description">
                                                     {{ $productMonBaby->detail ? $productMonBaby->detail : 'Sin detalle.' }}
                                                 </p>
-                                                <a class="btn btn-primary"
+                                                <a class="btn btn-primary btn-sm w-100"
                                                     href="{{ route('client.product.view', $productMonBaby->id) }}">Ver
                                                     más</a>
                                             </div>

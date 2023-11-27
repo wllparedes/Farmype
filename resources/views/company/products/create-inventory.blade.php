@@ -4,7 +4,8 @@
 
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
 @endsection
 
 @section('content')
@@ -23,8 +24,6 @@
 
     <!-- * -->
 
-
-
     <div class="container-fluid mt--7">
         <!-- Table -->
         <div class="row">
@@ -40,16 +39,12 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="" class="form-control-label">Producto *</label>
-                                            <div class="input-group input-group-alternative mb-3">
+                                            <div class="input-group-alternative mb-3" id="select-product-c" data-get="{{ route('admin.inventory.getProductsForSelect') }}">
                                                 <select name="product_id" id="select-product"
                                                     class="form-control js-example-basic-single input-form-class">
-                                                    <option></option>
-                                                    @foreach ($products as $key => $product)
-                                                        <option value="{{ $product->id }}"> {{ $product->name }} </option>
-                                                    @endforeach
+                                                    <option selected disabled value="">Seleccionar producto </option>
                                                 </select>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -107,7 +102,10 @@
 @section('optional_scripts')
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
     <script src="{{ asset('assets/js/company/products/validatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/global/chekedDiscount.js') }}"></script>

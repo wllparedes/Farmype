@@ -13,7 +13,7 @@ class Shopping extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id', 'discount_coupion_id', 'total', 'subtotal'
     ];
 
     public function inventories(): BelongsToMany
@@ -24,6 +24,11 @@ class Shopping extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function discountCoupion(): HasOne
+    {
+        return $this->hasOne(DiscountCoupion::class, 'id', 'discount_coupion_id' );
     }
 
 

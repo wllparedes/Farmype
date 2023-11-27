@@ -4,7 +4,7 @@
             <h3 class="col-12 text-center">No hay productos registrados</h3>
         @else
             @foreach ($productsOnSale as $productsOnSal)
-                <div class="col-sm-6 col-md-6 col-lg-3">
+                <div class="col-sm-3 col-md-6 col-lg-3 card-responsive-mobil">
                     <div class="card">
                         <div class="card-header">
                             <div class="container-image">
@@ -45,7 +45,7 @@
                                 class="badge badge-pill badge-sm badge-danger span-discount">-{{ $productsOnSal->discount }}%</span>
                             <span class="badge badge-pill badge-sm badge-light">S/.
                                 {{ $productsOnSal->discounted_price }}</span>
-                            <span class="btn btn-danger span-on_sale">OFERTA</span>
+                            <span class="btn btn-danger btn-sm span-on_sale">OFERTA</span>
 
                         </div>
                     </div>

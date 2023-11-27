@@ -84,4 +84,16 @@ class CompanyInventoryController extends Controller
         ]);
 
     }
+
+    public function getProductsForSelect()
+    {
+
+        $products = $this->companyInventoryService->getProducts();
+
+        return response()->json([
+            'products' => $products
+        ]);
+
+    }
+
 }

@@ -55,10 +55,13 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('productos/ofertas', 'getOnSale')->name('client.getProductsOnSale');
         });
 
+        // * carrito de compras
         Route::controller(ClientShoppingController::class)->group(function () {
             Route::get('/carrito-de-compras', 'index')->name('client.shopping.index');
             Route::post('/sumar-cantidad-en-carrito/{inventory}', 'addCuantity')->name('client.shopping.addCuantity');
             Route::post('/restar-cantidad-en-carrito/{inventory}', 'subtractCuantity')->name('client.shopping.subtractCuantity');
+            Route::post('/verificar-cupon-descuento', 'verifycoupions')->name('client.shopping.verifycoupions');
+
             Route::delete('eliminar-inventario-shopping/{inventory}', 'deleteInventoryOfShopping')->name('client.shopping.delete');
             Route::delete('/vaciar-carrito', 'emptyShoppingCart')->name('client.shopping.emptyShoppingCart');
         });
@@ -77,6 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/inventario-registrados', 'index')->name('company.inventory.index');
             Route::get('/registrar-en-inventario', 'create')->name('company.inventory.create');
             Route::get('/editar/{inventory}', 'edit')->name('company.inventory.edit');
+            Route::get('/obtener-inventarios-en-select', 'getProductsForSelect')->name('admin.inventory.getProductsForSelect');
             Route::post('/registrar', 'store')->name('company.inventory.store');
             Route::post('/actualizar-inventario/{inventory}', 'update')->name('company.inventory.update');
             Route::delete('/eliminar-inventario/{inventory}', 'destroy')->name('company.inventory.delete');
@@ -97,10 +101,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/productos-registrados', 'index')->name('admin.products.index');
             Route::get('/registrar-producto-categoria', 'create')->name('admin.products.create');
             Route::get('/obtener-categorias-hijos', 'getChildCategories')->name('admin.products.getChildCategories');
+            Route::get('/obtener-categorias-padres', 'getParentCategories')->name('admin.products.getParentCategories');
             Route::post('/registrar-producto', 'store')->name('admin.product.store');
             Route::get('/editar-producto/{product}', 'edit')->name('admin.product.edit');
             Route::post('/actualizar-producto/{product}', 'update')->name('admin.product.update');
-            // *--
             Route::delete('/eliminar-producto/{product}', 'destroy')->name('admin.product.delete');
 
         });

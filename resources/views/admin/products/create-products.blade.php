@@ -4,7 +4,8 @@
 
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
 @endsection
 
 @section('content')
@@ -54,27 +55,23 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="select-parent-category">Categoria Principal
                                             *</label>
-                                        <div class="input-group input-group-alternative mb-3" id="group-parent-category"
-                                            data-url="{{ route('admin.products.getChildCategories') }}">
-                                            <select id="select-parent-category"
-                                                class="form-control js-example-basic-single input-form-class"
-                                                name="parent_category_id">
-                                                <option></option>
-                                                @foreach ($parentCategories as $key => $parentCategory)
-                                                    <option value="{{ $parentCategory->id }}"> {{ $parentCategory->name }}
-                                                    </option>
-                                                @endforeach
+                                        <div class="input-group-alternative mb-3" id="group-parent-category"
+                                            data-url-child="{{ route('admin.products.getChildCategories') }}"
+                                            data-url-parent="{{ route('admin.products.getParentCategories') }}">
+                                            <select  id="select-parent-category" class="form-control input-form-class"
+                                                name="parentCategoryId">
+                                                <option value="">Selecciona una categoria</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="form-group">
-                                        <label for="select-child-category" class="form-control-label">Sub Categoria *</label>
-                                        <div class="input-group input-group-alternative mb-3">
-                                            <select name="child_category_id[]" id="select-child-category"
+                                        <label for="select-child-category" class="form-control-label">Sub categoria
+                                            *</label>
+                                        <div class="input-group-alternative mb-3 render-childCategory">
+                                            <select name="child_category_id[]" id="select-child-category" multiple
                                                 class="form-control js-example-basic-single input-form-class">
-                                                <option disabled selected> </option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +118,8 @@
 @section('optional_scripts')
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
 
 

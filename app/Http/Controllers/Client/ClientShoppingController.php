@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\DiscountCoupion;
 use App\Models\Inventory;
 use Auth;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ class ClientShoppingController extends Controller
         $inventoriesOnShopping = $user->shopping()
             ->with([
                 'user',
+                'discountCoupion',
                 'inventories',
                 'inventories.user',
                 'inventories.product.file' => fn($sq3) =>
@@ -99,7 +101,7 @@ class ClientShoppingController extends Controller
     {
 
         $user = Auth::user();
-
+        $shoppingCart = $user->shopping()->get();
         $inventoriesShopping = $user->shopping()->with([
             'inventories' => function ($query) use ($inventory) {
                 $query->where('inventory_id', $inventory->id);
@@ -113,6 +115,32 @@ class ClientShoppingController extends Controller
                     if ($inventory->stock != 0 and $inventory->pivot->quantity > 1) {
                         $newQuantity = $inventory->pivot->quantity - 1;
                         $inventoryShopping->inventories()->updateExistingPivot($inventory->id, ["quantity" => $newQuantity]);
+
+                        // *****
+
+                        // foreach ($shoppingCart as $shopping) {
+
+                        //     $subtotal = 0;
+                        //     $inventarios = $shopping->inventories;
+
+                        //     if ($inventarios) {
+                        //         foreach ($inventarios as $inventor) {
+
+                        //             if ($inventor->on_sale && $inventor->pivot->discount_price > 0) {
+                        //                 $subtotal += $inventor->pivot->quantity * $inventor->pivot->discount_price;
+                        //             } elseif ($inventor->pivot->price > 0) {
+                        //                 $subtotal += $inventor->pivot->quantity * $inventor->pivot->price;
+                        //             }
+
+                        //         }
+                        //     }
+
+                        //     $shopping->subtotal = $subtotal;
+                        //     $shopping->save();
+                        // }
+
+                        // *****
+
                         $success = true;
                     } else {
                         $success = false;
@@ -141,6 +169,41 @@ class ClientShoppingController extends Controller
 
         return response()->json([
             'message' => "Producto eliminado de tu carrito"
+        ]);
+    }
+
+
+    public function verifycoupions(Request $request)
+    {
+
+        $user = Auth::user();
+        $data = $request->all();
+
+        try {
+            $discountCoupions = DiscountCoupion::select('id', 'code', 'discount', 'is_active')
+                ->where('is_active', 1)
+                ->where('code', $data['code'])
+                ->first();
+
+            $discountCoupions = isset($discountCoupions) ? $discountCoupions : null;
+            $success =  $discountCoupions == null ? false : true;
+
+            if ($success) {
+
+                $user->shopping()->update([
+                    'discount_coupion_id' => $discountCoupions->id
+                ]);
+
+            }
+
+        } catch (Exception $e) {
+            $discountCoupions = $e->getMessage();
+            $success = false;
+        }
+
+        return response()->json([
+            'data' => $discountCoupions,
+            'success' => $success,
         ]);
     }
 

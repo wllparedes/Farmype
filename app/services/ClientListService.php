@@ -134,6 +134,21 @@ class ClientListService
                     }
 
                     $shoppingCart->inventories()->attach($inventory->id, ['quantity' => $inventory->pivot->quantity]);
+
+
+                    // *****
+
+                    // if($inventory->on_sale){
+                    //     $subtotal = $inventory->pivot->quantity * $inventory->discounted_price;
+                    // }else{
+                    //     $subtotal = $inventory->pivot->quantity * $inventory->price;
+                    // }
+
+                    // $sub_totalEnd = $shoppingCart->subtotal + $subtotal;
+                    // $shoppingCart->update(['subtotal' => $sub_totalEnd]);
+
+                    // *****
+
                     $message = "Producto añadido a tu carrito";
                     $success = true;
 
@@ -151,7 +166,6 @@ class ClientListService
             'message' => $message,
             'success' => $success,
         ]);
-
 
     }
 

@@ -5,23 +5,18 @@ import { uploadImage } from "./../../global/uploadImage.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    $("#select-child-category").select2({
-        placeholder: "Selecciona una categoria principal",
-        language: {
-            noResults: function () {
-                return "No se encontraron resultados";
-            },
-        },
+    // const parentCategory = document.getElementById("select-parent-category");
 
-        minimumResultsForSearch: Infinity,
-        multiple: true,
-    });
+    // const choicesParentCategory = new Choices(parentCategory, {
+    //     placeholder: true,
+    //     placeholderValue: "Selecciona una categoria",
+    //     allowHTML: true,
+    //     itemSelectText: "Presiona para seleccionar",
+    //     noResultsText: "Resultados no encontrados",
+    //     noChoicesText: "No hay opciones para seleccionar",
+    // });
 
-    $("#select-parent-category").select2({
-        placeholder: "Selecciona una sub categoria",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
+    // $("#select-parent-category").addAttr("required");
 
     uploadImage("#input-product-image-store", "#registerProductForm");
 
@@ -35,11 +30,10 @@ $(document).ready(() => {
             child_category_id: {
                 required: true,
             },
-            detail: {},
             image: {
                 required: true,
             },
-            parent_category_id: {
+            parentCategoryId: {
                 required: true,
             },
         },

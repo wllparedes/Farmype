@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Models\Inventory;
+use App\Models\Product;
 use Auth;
 use Exception;
 use Illuminate\Http\Request;
@@ -122,6 +123,22 @@ class CompanyInventoryService
 
     // }
 
+
+    public function getProducts()
+    {
+
+        $productsT = Product::select('id', 'name')->get();
+
+        $products = [];
+        foreach ($productsT as $product) {
+            $products[] = [
+                'value' => $product->id,
+                'label' => $product->name
+            ];
+        }
+
+        return $products;
+    }
 
 }
 

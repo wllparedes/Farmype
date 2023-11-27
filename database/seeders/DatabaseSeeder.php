@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\ChildCategory;
+use App\Models\DiscountCoupion;
 use App\Models\ParentCategory;
 use App\Models\User;
 use Hash;
@@ -132,6 +133,8 @@ class DatabaseSeeder extends Seeder
                 'parent_category_id' => 6
             ],
         ];
+
+
         foreach ($dataUsers as $user) {
             User::create($user);
         }
@@ -141,6 +144,8 @@ class DatabaseSeeder extends Seeder
         foreach ($child_categories as $childCategory) {
             ChildCategory::create($childCategory);
         }
+
+
 
 
     }

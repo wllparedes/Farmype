@@ -110,10 +110,22 @@
                         <i class="ni ni-planet text-blue"></i> Seleccionar Productos
                     </a>
                 </li>
+                <li class="nav-item {{ setActive('client.getProductsOnSale') }}">
+                    <a class="nav-link {{ setActive('client.getProductsOnSale') }}"
+                        href="{{ route('client.getProductsOnSale') }}">
+                        <i class="ni ni-pin-3 text-pink"></i> Ver ofertas
+                    </a>
+                </li>
                 <li class="nav-item {{ setActive('client.selected-products.index') }}">
                     <a class="nav-link {{ setActive('client.selected-products.index') }}"
                         href="{{ route('client.selected-products.index') }}">
                         <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link "
+                        href="{{ route('client.selected-products.index') }}">
+                        <i class="ni ni-pin-3 text-success"></i> Historial de compras
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('client.shopping.index') }}">

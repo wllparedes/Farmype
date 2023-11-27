@@ -6,10 +6,35 @@ import { uploadImage } from "./../../global/uploadImage.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    $("#select-product").select2({
-        placeholder: "Selecciona el producto",
-        language: "es",
-        minimumResultsForSearch: Infinity,
+    let containerSelectProduct = document.querySelector("#select-product-c");
+    let urlGet = containerSelectProduct.getAttribute("data-get");
+
+    const inventory = document.querySelector("#select-product");
+    const choicesProduct = new Choices(inventory, {
+        placeholder: true,
+        placeholderValue: "Selecciona el producto",
+        allowHTML: true,
+        noResultsText: "No se encontraron resultados",
+        noChoicesText: "No hay opciones para seleccionar",
+        itemSelectText: "Presiona para seleccionar",
+    });
+
+    $.ajax({
+        method: "GET",
+        url: urlGet,
+        dataType: "JSON",
+        success: function (data) {
+            let products = data.products;
+            if (products.length === 0) {
+                console.log("0");
+                // selectChilds.prop("disabled", true);
+            } else {
+                // choicesChildCategory.setValue(arrayChildCategories);
+                choicesProduct.setChoices(products, "value", "label", true);
+                // selectChilds.prop("disabled", false);
+            }
+        },
+        complete: function () {},
     });
 
     uploadImage("#input-product-image-store", "#registerProductForm");
@@ -99,9 +124,11 @@ $(document).ready(() => {
                             text: data.message,
                         });
                         $("#select-product").val(null).trigger("change");
-                        let discountValue = document.getElementById("discount-value");
+                        let discountValue =
+                            document.getElementById("discount-value");
                         discountValue.classList.add("discount-value");
                         discountValue.classList.remove("discount-value-active");
+                        choicesProduct.removeActiveItems();
                     } else {
                         Toast.fire({
                             icon: "error",

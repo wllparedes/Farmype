@@ -111,8 +111,34 @@ class AdminProductController extends Controller
         $parentCategory = ParentCategory::find($parentCategory_id);
         $childCategories = $parentCategory->childCategories()->get();
 
+        $childCategoriesArray = [];
+        foreach ($childCategories as $childCategory) {
+            $childCategoriesArray[] = [
+                'label' => $childCategory->name,
+                'value' => $childCategory->id,
+            ];
+        }
+
         return response()->json([
-            'childCategories' => $childCategories,
+            'childCategories' => $childCategoriesArray,
+        ]);
+    }
+
+    public function getParentCategories(Request $request)
+    {
+
+        $parentCategories = ParentCategory::all();
+
+        $parentCategoriesArray = [];
+        foreach ($parentCategories as $parentCategory) {
+            $parentCategoriesArray[] = [
+                'label' => $parentCategory->name,
+                'value' => $parentCategory->id,
+            ];
+        }
+
+        return response()->json([
+            'parentCategories' => $parentCategoriesArray,
         ]);
     }
 
