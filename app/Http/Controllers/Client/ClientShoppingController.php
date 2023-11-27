@@ -132,5 +132,18 @@ class ClientShoppingController extends Controller
     }
 
 
+    public function deleteInventoryOfShopping(Inventory $inventory)
+    {
+
+        $user = Auth::user();
+        $shoppingCart = $user->shopping->first();
+        $shoppingCart->inventories()->detach($inventory);
+
+        return response()->json([
+            'message' => "Producto eliminado de tu carrito"
+        ]);
+    }
+
+
 
 }

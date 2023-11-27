@@ -49,6 +49,7 @@
 
     <script src="{{ asset('assets/js/client/shopping/addCuantityProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/shopping/subtractCuantityProduct.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/client/shopping/deleteProductOnShopping.js') }}" type="module"></script>
 
 
 
@@ -56,7 +57,6 @@
     {{-- <script src="{{ asset('assets/js/client/productsOnList/renderProductsOnList.js') }}" type="module"></script> --}}
 
     {{--
-    <script src="{{ asset('assets/js/client/productsOnList/deleteProductOnListMain.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/client/products/validateQuantity.js') }}"></script> --}}
 
 @endsection

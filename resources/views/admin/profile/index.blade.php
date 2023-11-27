@@ -3,7 +3,9 @@
 @section('title', 'Perfil - Admin')
 
 @section('optional_links')
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/base.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
 @endsection
 
@@ -74,7 +76,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('profile.update') }}" id="updateProfileForm" method="POST" data-send="{{ route('profile.edit') }}" data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
+                        {{-- * FORM CHANGE DATES --}}
+
+                        <form action="{{ route('profile.update-fields') }}" id="updateFieldsForm" method="POST"
+                            data-send="{{ route('profile.edit') }}" autocomplete="off">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">Tú información</h6>
                             <div class="pl-lg-4">
@@ -96,7 +101,6 @@
                                             <select id="select-document-type"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="document_type">
-                                                <option></option>
                                                 @foreach ($documentTypes as $key => $type)
                                                     <option value="{{ $key }}"> {{ $type }} </option>
                                                 @endforeach
@@ -128,7 +132,6 @@
                                                 *</label>
                                             <select id="select-departament" class="form-control input-form-class"
                                                 name="departament">
-                                                <option></option>
                                                 @foreach ($departaments as $key => $departament)
                                                     <option value="{{ $key }}"> {{ $departament }} </option>
                                                 @endforeach
@@ -141,7 +144,6 @@
                                             <select id="select-province"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="province">
-                                                <option></option>
                                                 @foreach ($provinces as $key => $province)
                                                     <option value="{{ $key }}"> {{ $province }} </option>
                                                 @endforeach
@@ -156,7 +158,6 @@
                                             <select id="select-district"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="district">
-                                                <option></option>
                                                 @foreach ($districts as $key => $district)
                                                     <option value="{{ $key }}"> {{ $district }} </option>
                                                 @endforeach
@@ -191,8 +192,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-primary mt-4 btn-save">Actualizar
+                                    campos</button>
+                            </div>
                             <hr class="my-4" />
                             <!-- Description -->
+                        </form>
+                        {{-- * FORM CHANGE PASSWORD --}}
+                        <form id="updatePasswordForm" action="{{ route('profile.update-password') }}" method="POST"
+                            data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
+                            @csrf
                             <h6 class="heading-small text-muted mb-4">Contraseña</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
@@ -202,7 +212,8 @@
                                                 *</label>
                                             <input id="password-now" name="password_now"
                                                 class="form-control form-control-alternative"
-                                                placeholder="Ingrese su contraseña actual" type="password" autocomplete="off">
+                                                placeholder="Ingrese su contraseña actual" type="password"
+                                                autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -228,23 +239,25 @@
                                 </div>
                             </div>
 
-                            <div class="text-muted font-italic password-strength" id="password-strength">
-                                <small>
-                                    fuerza de la contraseña:
-                                    <span class="text-danger font-weight-700 span-password">débil</span>
-                                </small>
-                                <button id="popover-password" type="button" class="btn btn-success"
-                                    data-container="body" data-toggle="popover" data-color="success"
-                                    data-placement="top"
-                                    data-content="Para que su contraseña sea fuerte, ingrese mayúsculas, números, carácteres especiales y que tenga una longitud mayor a 6 carácteres.">
-                                    <span class="btn-inner--icon"><i class="ni ni-notification-70"></i></span>
-                                </button>
+                            <div class="pl-lg-4">
+                                <div class="text-muted font-italic password-strength" id="password-strength">
+                                    <small>
+                                        fuerza de la contraseña:
+                                        <span class="text-danger font-weight-700 span-password">débil</span>
+                                    </small>
+                                    <button id="popover-password" type="button" class="btn btn-success"
+                                        data-container="body" data-toggle="popover" data-color="success"
+                                        data-placement="top"
+                                        data-content="Para que su contraseña sea fuerte, ingrese mayúsculas, números, carácteres especiales y que tenga una longitud mayor a 6 carácteres.">
+                                        <span class="btn-inner--icon"><i class="ni ni-notification-70"></i></span>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary mt-4 btn-save">Actualizar campos</button>
+                                <button type="submit" class="btn btn-outline-warning mt-4 btn-save">Actualizar
+                                    contraseña</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -256,11 +269,15 @@
 
 @section('optional_scripts')
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
 
-    <script src="{{ asset('assets/js/profile/updatedProfile.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/profile/updatedFields.js') }}" type="module"></script>
+
+    <script src="{{ asset('assets/js/profile/updatePassword.js') }}" type="module"></script>
 @endsection

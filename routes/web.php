@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/carrito-de-compras', 'index')->name('client.shopping.index');
             Route::post('/sumar-cantidad-en-carrito/{inventory}', 'addCuantity')->name('client.shopping.addCuantity');
             Route::post('/restar-cantidad-en-carrito/{inventory}', 'subtractCuantity')->name('client.shopping.subtractCuantity');
+            Route::delete('eliminar-inventario-shopping/{inventory}', 'deleteInventoryOfShopping')->name('client.shopping.delete');
             Route::delete('/vaciar-carrito', 'emptyShoppingCart')->name('client.shopping.emptyShoppingCart');
         });
 

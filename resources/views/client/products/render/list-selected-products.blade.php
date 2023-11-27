@@ -1,17 +1,34 @@
 <div class="card-body container bg-list-productos">
     <div class="row">
-        <div class="col-lg-8 col-md-12 col-sm-12">
-            <p class="">Productos</p>
 
-            @php
-                $quantityProducts = 0;
-                $priceSubtotal = 0;
-            @endphp
+        @php
+            $quantityProducts = 0;
+            $priceSubtotal = 0;
+        @endphp
 
-            @foreach ($productsOnList as $productList)
-                @if ($productList->inventories->isEmpty())
-                    <h3 class="col-12 text-center">No hay productos seleccionados</h3>
-                @else
+        @foreach ($productsOnList as $productList)
+            @if ($productList->inventories->isEmpty())
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 d-flex flex-column">
+                            <div class="container-empty">
+                                <img class="image-empty" src="{{ asset('assets/img/theme/portapapeles.png') }}"
+                                    alt="">
+                                <div class="container-note">
+                                    <h3 class="col-12 text-start pl-0">Tu lista esta vacía</h3>
+                                    <p>¡Aprovecha! Tenemos miles de productos en oferta y oportunidades únicas.</p>
+                                </div>
+                            </div>
+                            <a class="btn btn-outline-warning btn-md button-empty"
+                                href="{{ route('client.getProductsOnSale') }}">
+                                Ver ofertas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <p class="">Productos</p>
                     @foreach ($productList->inventories as $inventory)
                         <div class="row">
                             <div class="col-12 mb-4 justify-content-around ">
@@ -76,7 +93,8 @@
                                                     data-subtract="{{ route('client.selected-products.subtractCuantity', $inventory->id) }}">-</button>
                                             </div>
                                             <p class="card-text text-center text-sm-center text-sm">Máx 10 unidades</p>
-                                            <p class="text-small text-sm-success text-success">Stock Disponible: {{ $inventory->stock}}</p>
+                                            <p class="text-small text-sm-success text-success">Stock Disponible:
+                                                {{ $inventory->stock }}</p>
                                         </div>
                                     @else
                                         <div class="container-cuantity">
@@ -109,26 +127,26 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
-            @endforeach
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12">
-            <p class="">Resumen de la lista</p>
-            <div class="row">
-                <div class="col-12 mb-4 justify-content-around">
-                    <div class="col-12 container-product-items">
-                        <div class="resumen-detalle">
-                            <h5>Productos: </h5>
-                            <h5>Subtotal: </h5>
-                        </div>
-                        <div class="resumen-precio">
-                            <h5>({{ $quantityProducts }})</h5>
-                            <h5>S/. {{ $priceSubtotal }}</h5>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <p class="">Resumen de la lista</p>
+                    <div class="row">
+                        <div class="col-12 mb-4 justify-content-around">
+                            <div class="col-12 container-product-items">
+                                <div class="resumen-detalle">
+                                    <h5>Productos: </h5>
+                                    <h5>Subtotal: </h5>
+                                </div>
+                                <div class="resumen-precio">
+                                    <h5>({{ $quantityProducts }})</h5>
+                                    <h5>S/. {{ $priceSubtotal }}</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
         <div class="col-12">
             <div class="row">
                 <div class="col-12 pt-4">

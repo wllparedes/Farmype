@@ -3,7 +3,9 @@
 @section('title', 'Perfil')
 
 @section('optional_links')
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/base.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
 @endsection
 
@@ -99,7 +101,6 @@
                                             <select id="select-document-type"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="document_type">
-                                                <option></option>
                                                 @foreach ($documentTypes as $key => $type)
                                                     <option value="{{ $key }}"> {{ $type }} </option>
                                                 @endforeach
@@ -131,7 +132,6 @@
                                                 *</label>
                                             <select id="select-departament" class="form-control input-form-class"
                                                 name="departament">
-                                                <option></option>
                                                 @foreach ($departaments as $key => $departament)
                                                     <option value="{{ $key }}"> {{ $departament }} </option>
                                                 @endforeach
@@ -144,7 +144,6 @@
                                             <select id="select-province"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="province">
-                                                <option></option>
                                                 @foreach ($provinces as $key => $province)
                                                     <option value="{{ $key }}"> {{ $province }} </option>
                                                 @endforeach
@@ -159,7 +158,6 @@
                                             <select id="select-district"
                                                 class="form-control js-example-basic-single input-form-class"
                                                 name="district">
-                                                <option></option>
                                                 @foreach ($districts as $key => $district)
                                                     <option value="{{ $key }}"> {{ $district }} </option>
                                                 @endforeach
@@ -272,11 +270,15 @@
 
 @section('optional_scripts')
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
+
     <script src="{{ asset('assets/js/profile/updatedFields.js') }}" type="module"></script>
+
     <script src="{{ asset('assets/js/profile/updatePassword.js') }}" type="module"></script>
 @endsection

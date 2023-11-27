@@ -1,4 +1,41 @@
 export const assignValues = () => {
+    const documentType = document.getElementById("select-document-type");
+    const departament = document.getElementById("select-departament");
+    const province = document.getElementById("select-province");
+    const district = document.getElementById("select-district");
+
+    const choicesDocumentType = new Choices(documentType, {
+        placeholder: true,
+        placeholderValue: "Selecciona un tipo de doc.",
+        allowHTML: true,
+        itemSelectText: "Presiona para seleccionar",
+        noResultsText: "Resultados no encontrados",
+    });
+
+    const choicesDepartament = new Choices(departament, {
+        placeholder: true,
+        placeholderValue: "Selecciona un departamento",
+        allowHTML: true,
+        itemSelectText: "Presiona para seleccionar",
+        noResultsText: "Resultados no encontrados",
+    });
+
+    const choicesProvince = new Choices(province, {
+        placeholder: true,
+        placeholderValue: "Selecciona una provincia",
+        allowHTML: true,
+        itemSelectText: "Presiona para seleccionar",
+        noResultsText: "Resultados no encontrados",
+    });
+
+    const choicesDistrict = new Choices(district, {
+        placeholder: true,
+        placeholderValue: "Selecciona un distrito",
+        allowHTML: true,
+        itemSelectText: "Presiona para seleccionar",
+        noResultsText: "Resultados no encontrados",
+    });
+
     $.ajax({
         type: "GET",
         url: $("#updateFieldsForm").data("send"),
@@ -8,11 +45,6 @@ export const assignValues = () => {
             const departament = data["departament"];
             const district = data["district"];
             const province = data["province"];
-
-            let selectDocumentType = $("#select-document-type");
-            let selectDepartament = $("#select-departament");
-            let selectProvince = $("#select-province");
-            let selectDistrict = $("#select-district");
 
             $("#names_surnames").text(user.names_surnames);
             $("#document_number").text(user.document_number);
@@ -30,10 +62,10 @@ export const assignValues = () => {
             $("input[name=phone]").val(user.phone);
             $("input[name=email]").val(user.email);
 
-            selectDocumentType.val(user.document_type).change();
-            selectDepartament.val(user.departament).change();
-            selectProvince.val(user.province).change();
-            selectDistrict.val(user.district).change();
+            choicesDocumentType.setChoiceByValue(user.document_type);
+            choicesDepartament.setChoiceByValue(user.departament);
+            choicesProvince.setChoiceByValue(user.province);
+            choicesDistrict.setChoiceByValue(user.district);
         },
     });
 };

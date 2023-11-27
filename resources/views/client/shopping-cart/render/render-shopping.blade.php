@@ -117,8 +117,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="deleteProductOnList dropdown-item"
-                                                data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">Eliminar
+                                            <a class="deleteProductOnShopping dropdown-item"
+                                                data-delete-shopping="{{ route('client.shopping.delete', $inventory->id) }}">Eliminar
                                                 del carrito</a>
                                         </div>
                                     </div>

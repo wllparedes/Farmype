@@ -1,11 +1,7 @@
 import { passwordStrength } from "../auth/passwordStrength.js";
-import { Expressions } from "../global/regularExpressions.js";
 import { Toast } from "../global/ToastSwal.js";
 import { resetPasswordValues } from "./resetPasswordValues.js";
 import { assignValues } from "./assignValues.js";
-
-// import { TokenCsrf } from "./../global/csrfToken.js";
-// import { MessageValidator } from "./../global/validatorMessages.js";
 
 $(document).ready(() => {
     let inputPassword = document.getElementById("password");
@@ -15,7 +11,6 @@ $(document).ready(() => {
     // ******* SelectDefault *******
 
     assignValues();
-
 
     // ******* Jquery-Validator *******
 
@@ -74,7 +69,7 @@ $(document).ready(() => {
                         resetPasswordValues();
                         Toast.fire({
                             icon: "success",
-                            text: 'Contraseña actualizada correctamente',
+                            text: "Contraseña actualizada correctamente",
                         });
                     } else {
                         Toast.fire({
@@ -92,7 +87,6 @@ $(document).ready(() => {
             });
         },
     });
-
 
     // ? Mensaje de la fuerza de la contraseña
 

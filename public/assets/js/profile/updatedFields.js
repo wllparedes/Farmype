@@ -1,46 +1,12 @@
-import { passwordStrength } from "../auth/passwordStrength.js";
 import { Expressions } from "../global/regularExpressions.js";
 import { Toast } from "../global/ToastSwal.js";
 import { resetPasswordValues } from "./resetPasswordValues.js";
 import { assignValues } from "./assignValues.js";
 
-// import { TokenCsrf } from "./../global/csrfToken.js";
-// import { MessageValidator } from "./../global/validatorMessages.js";
-
 $(document).ready(() => {
-    let inputPassword = document.getElementById("password");
-    let alertPassword = document.getElementById("password-strength");
-    let spanPassword = document.querySelector(".span-password");
-
-    // ******* SelectDefault *******
+    // ******* Asignar valores *******
 
     assignValues();
-
-    // ******* SelectTwo *******
-
-    $("#select-document-type").select2({
-        placeholder: "Selecciona un tipo de doc.",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
-
-    $("#select-departament").select2({
-        placeholder: "Selecciona un departamento",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
-
-    $("#select-province").select2({
-        placeholder: "Selecciona una provincia",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
-
-    $("#select-district").select2({
-        placeholder: "Selecciona un distrito",
-        language: "es",
-        minimumResultsForSearch: Infinity,
-    });
 
     // ******* Jquery-Validator *******
 
@@ -163,12 +129,4 @@ $(document).ready(() => {
             }
         }
     );
-
-    // // ? Mensaje de la fuerza de la contraseña
-
-    // inputPassword.addEventListener("keyup", () =>
-    //     passwordStrength(inputPassword, alertPassword, spanPassword)
-    // );
-
-
 });
