@@ -13,7 +13,7 @@ class Shopping extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'discount_coupion_id', 'total', 'subtotal'
+        'user_id', 'discount_coupion_id'
     ];
 
     public function inventories(): BelongsToMany

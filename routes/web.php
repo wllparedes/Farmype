@@ -68,6 +68,12 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
 
+        // * Orden de compra
+        // Route::controller(ClientPaymentController::class)->group(function () {
+        //     Route::get('/orden-de-compra', 'index')->name('client.cart.index');
+        // });
+
+
     });
 
     // * Empresa / farmacia

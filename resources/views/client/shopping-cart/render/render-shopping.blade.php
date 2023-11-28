@@ -71,7 +71,8 @@
                                                 {{ $inventory->discount }}</span>
                                             <span class="badge badge-pill badge-sm badge-light">S/.
                                                 {{ $inventory->discounted_price }}</span>
-                                            <span class="btn btn-danger btn-sm span-on_sale-selected on-sale-shopping">OFERTA</span>
+                                            <span
+                                                class="btn btn-danger btn-sm span-on_sale-selected on-sale-shopping">OFERTA</span>
                                         @else
                                             <span class="badge badge-pill badge-sm badge-primary">S/.
                                                 {{ $inventory->price }}</span>
@@ -179,13 +180,13 @@
                                     <h5>TOTAL: </h5>
                                     @if ($discountCoupion)
                                         <div class="container-discount">
-                                            <span class="badge badge-warning">-% {{ $discountCoupion->discount }}
-                                            </span>
                                             @php
                                                 $total = $priceSubtotal - ($priceSubtotal * $discountCoupion->discount) / 100;
                                             @endphp
                                             <span class="badge badge-primary badge-md">CUPÓN:
                                                 {{ Str::upper($discountCoupion->code) }} </span>
+                                            <span class="badge badge-warning">-% {{ $discountCoupion->discount }}
+                                            </span>
                                             <span class="badge badge-success badge-lg">Precio final: S/
                                                 {{ round($total, 2) }}
                                             </span>

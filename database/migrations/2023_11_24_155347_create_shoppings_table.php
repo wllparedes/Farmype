@@ -17,8 +17,8 @@ class CreateShoppingsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('discount_coupion_id')->nullable()->constrained('discount_coupions')->cascadeOnDelete();
-            $table->decimal('total', 8, 2)->default(0);
-            $table->decimal('subtotal', 8, 2)->default(0);
+            // $table->decimal('total', 8, 2)->default(0);
+            // $table->decimal('subtotal', 8, 2)->default(0);
             $table->timestamps();
         });
     }
