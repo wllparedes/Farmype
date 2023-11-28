@@ -1,4 +1,4 @@
-import { renderProductsOnList } from "./../productsOnList/renderProductsOnList.js";
+import { renderProductsOnList } from "./renderProductsOnShopping.js";
 
 $(document).ready(() => {
     $("#productData").on("click", ".subtractCuantity", function () {

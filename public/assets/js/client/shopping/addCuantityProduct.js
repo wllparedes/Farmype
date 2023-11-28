@@ -1,5 +1,5 @@
 import { Toast } from "./../../global/ToastSwal.js";
-import { renderProductsOnList } from "./../productsOnList/renderProductsOnList.js";
+import { renderProductsOnList } from "./renderProductsOnShopping.js";
 
 $(document).ready(() => {
     $("#productData").on("click", ".addCuantity", function () {

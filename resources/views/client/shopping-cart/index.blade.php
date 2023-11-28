@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
     <link rel="stylesheet" src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}">
 @endsection
-
-
 @section('content')
 
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
@@ -56,6 +54,24 @@
     {{-- carrito --}}
     <script src="{{ asset('assets/js/client/shopping/verifyCupon.js') }}" type="module"></script>
 
+
+    {{-- sdk mercado pago js --}}
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+    <script>
+        const mp = new MercadoPago("{{ config('services.mercadopago.key') }}", {
+            locale: 'es-AR'
+        });
+        mp.checkout({
+            preference: {
+                id: "{{ $preference->id }}"
+            },
+            render: {
+                container: '.mercadopago-button',
+                label: 'Pagar',
+            }
+        });
+    </script>
 
 
 

@@ -1,4 +1,4 @@
-import { renderProductsOnList } from "./../../client/productsOnList/renderProductsOnList.js";
+import { renderProductsOnList } from "./renderProductsOnShopping.js";
 import { Toast } from "./../../global/ToastSwal.js";
 import { SwalDelete } from "./../../global/SwalAlerts.js";
 

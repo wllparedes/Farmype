@@ -2,6 +2,7 @@
     <div class="row">
 
         @php
+
             $quantityProducts = 0;
             $priceSubtotal = 0;
         @endphp
@@ -196,8 +197,15 @@
                                     @endif
 
                                 </div>
-                                <div class="buy-now">
-                                    <a href="#" class="btn btn-md btn-danger">Continuar</a>
+                                @php
+                                    $item->title = 'Mi producto';
+                                    $item->quantity = 1;
+                                    $item->unit_price = $discountCoupion ? $total : $priceSubtotal;
+                                    $preference->items = [$item];
+                                    $preference->save();
+                                @endphp
+                                <div class="buy-now mercadopago-button">
+                                    {{-- <a href="#" class="btn btn-md btn-danger">Continuar</a> --}}
                                 </div>
                             </div>
                         </div>

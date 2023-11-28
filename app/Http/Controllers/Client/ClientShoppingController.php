@@ -9,12 +9,28 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
 
+// use LaravelMercadoPago\MercadoPago;
+use LaravelMercadoPago\Facades\MercadoPago;
+
+
+
 class ClientShoppingController extends Controller
 {
     public function index(Request $request)
     {
+        MercadoPago::initSdk(config('services.mercadopago.token'));
+
+        // require base_path('vendor/autoload.php');
+        // MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+        // $preference = new MercadoPago\Preference();
+
+        $preference = MercadoPago::preference();
+
+        // $item = new MercadoPago\Item();
+        $item = MercadoPago::item();
 
         $user = Auth::user();
+
 
         $inventoriesOnShopping = $user->shopping()
             ->with([
@@ -29,13 +45,15 @@ class ClientShoppingController extends Controller
 
         if ($request->ajax()) {
 
-            $prodcuts = view("client.shopping-cart.render.render-shopping", compact('inventoriesOnShopping'))->render();
+            $prodcuts = view("client.shopping-cart.render.render-shopping", compact('inventoriesOnShopping', 'preference', 'item'))->render();
             return [
                 'html' => $prodcuts,
+                'key' => config('services.mercadopago.key'),
+                'id' => $preference->id,
             ];
         }
 
-        return view("client.shopping-cart.index", compact('inventoriesOnShopping'));
+        return view("client.shopping-cart.index", compact('inventoriesOnShopping', 'preference', 'item'));
     }
 
 
@@ -186,7 +204,7 @@ class ClientShoppingController extends Controller
                 ->first();
 
             $discountCoupions = isset($discountCoupions) ? $discountCoupions : null;
-            $success =  $discountCoupions == null ? false : true;
+            $success = $discountCoupions == null ? false : true;
 
             if ($success) {
 

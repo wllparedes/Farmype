@@ -1,4 +1,4 @@
-import { renderProductsOnList } from "./../productsOnList/renderProductsOnList.js";
+import { renderProductsOnList } from "./renderProductsOnShopping.js";
 $(document).ready(() => {
     $("#discount").on("click", ".validateCupon", function (e) {
         var modal = $("#discount");
