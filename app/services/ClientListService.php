@@ -169,6 +169,37 @@ class ClientListService
 
     }
 
+
+    public function addShoppingCartDirect(Inventory $inventory)
+    {
+        $user = Auth::user();
+
+        try {
+            $shoppingCart = $user->shopping()->first();
+            $shoppingCart = !$shoppingCart ? Shopping::create(['user_id' => $user->id]) : $shoppingCart;
+
+            if ($inventory->stock > 0) {
+                $shoppingCart->inventories()->attach($inventory->id, ['quantity' => 1]);
+                $message = "Producto añadido a tu carrito";
+                $success = true;
+            } else {
+                $message = "Producto sin stock suficiente";
+                $success = false;
+            }
+
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $success = 'error';
+        }
+
+        return response()->json([
+            'message' => $message,
+            'success' => $success,
+        ]);
+
+    }
+
+
 }
 
 

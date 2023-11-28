@@ -50,7 +50,9 @@
     {{-- * Necesarios --}}
     <script src="{{ asset('assets/js/global/renderProductsNext.js') }}" type="module"></script>
 
-    <script src="{{ asset('assets/js/client/products/addProductOnList.js') }}" type="module"></script>
-    <script src="{{ asset('assets/js/client/products/deleteProductOnList.js') }}" type="module"></script>
+    {{-- ?????? --}}
+
+    <script src="{{ asset('assets/js/client/shopping/addProductOnShopping.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/client/shopping/deleteProductOnShopping.js') }}" type="module"></script>
 
 @endsection

@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/sumarCantidad/{inventory}', 'addCuantity')->name('client.selected-products.addCuantity');
             Route::post('/restarCantidad/{inventory}', 'subtractCuantity')->name('client.selected-products.subtractCuantity');
             Route::post('/agregar-al-carrito/{inventory}', 'addShoppingCart')->name('client.selected-inventory.addShoppingCart');
+            Route::post('/agregar-directo-al-carrito/{inventory}', 'addShoppingCartDirect')->name('client.selected-inventory.addShoppingCartDirect');
             Route::delete('eliminar-inventario-lista/{inventory}', 'deleteInventoryOfList')->name('client.selected-inventory.delete');
         });
 

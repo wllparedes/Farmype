@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\ProductList;
+use App\Models\Shopping;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -137,18 +138,18 @@ class ClientFilterController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->productList) {
-            $inventoryListId = $user->productList->value('id');
+        if ($user->shopping) {
+            $shoppingId = $user->shopping->value('id');
         } else {
-            $productList = new ProductList;
-            $user->productList()->save($productList);
-            $inventoryListId = $productList->id;
+            $shopping = new Shopping;
+            $user->shopping()->save($shopping);
+            $shoppingId = $shopping->id;
         }
 
         $productsOnSale = Inventory::where('on_sale', 1)
             ->withCount([
-                'productLists' => function ($query) use ($inventoryListId) {
-                    $query->where('product_lists_id', $inventoryListId);
+                'shoppings' => function ($query) use ($shoppingId) {
+                    $query->where('shopping_id', $shoppingId);
                 }
             ])
             ->with([

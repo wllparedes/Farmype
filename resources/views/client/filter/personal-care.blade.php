@@ -39,7 +39,7 @@
                                 <h3 class="col-12 text-center">No hay productos en esta categoria</h3>
                             @else
                                 @foreach ($productPersonalCare as $productPersonal)
-                                    <div class="col-sm-3 col-md-6 col-lg-3 card-responsive-mobil">
+                                    <div class="col-sm-6 col-md-6 col-lg-3 card-responsive-mobil">
                                         <div class="card">
                                             <div class="card-header">
                                                 <div class="container-image">

@@ -19,7 +19,7 @@
                                 <span class="badge badge-pill badge-default"> {{ $childCategory->parentCategory->name }}
                                 </span>
                                 @php
-                                    $var++
+                                    $var++;
                                 @endphp
                             @endif
                             <span class="badge badge-pill badge-light"> {{ $childCategory->name }} </span>
@@ -27,6 +27,7 @@
                     </div>
                 </div>
             @break
+
         @endforeach
         <div class="col-lg-8 col-md-12 col-sm-12 mb-4 justify-content-around column-product-list">
             @foreach ($inventories as $inventory)
@@ -40,7 +41,8 @@
                         @if ($inventory->on_sale)
                             <span class="badge badge-pill badge-sm badge-success text-decoration-line-through">S/.
                                 {{ $inventory->price }}</span>
-                            <span class="badge badge-pill badge-sm badge-danger discount-value-selected view-product-on">-%
+                            <span
+                                class="badge badge-pill badge-sm badge-danger discount-value-selected view-product-on on-sale-main">-%
                                 {{ $inventory->discount }}</span>
                             <span class="badge badge-pill badge-sm badge-light">S/.
                                 {{ $inventory->discounted_price }}</span>
@@ -58,10 +60,10 @@
                         <p class="text-small"><strong> Dirección: </strong> {{ $inventory->user->address }} </p>
                     </div>
 
-                    <div class="container-cuantity">
-                        @if ($inventory->stock === 0)
-                            <span class="btn btn-warning span-stock">AGOTADO</span>
-                        @else
+                    @if ($inventory->stock === 0)
+                        <span class="btn btn-warning span-stock">AGOTADO</span>
+                    @else
+                        <div class="container-cuantity">
                             @if ($inventory->product_lists_count === 0)
                                 <div class="d-flex justify-content-center cart-shooping">
                                     <button class="addProductOnList btn btn-icon btn-primary btn-sm" type="button"
@@ -80,8 +82,8 @@
                                     </button>
                                 </div>
                             @endforelse
-                        @endforelse
-                    </div>
+                        </div>
+                    @endforelse
                 </div>
             @endforeach
         </div>

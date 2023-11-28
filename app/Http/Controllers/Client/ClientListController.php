@@ -44,4 +44,7 @@ class ClientListController extends Controller
         return $this->clientListService->addShoppingCart($inventory);
     }
 
+    public function addShoppingCartDirect(Inventory $inventory){
+        return $this->clientListService->addShoppingCartDirect($inventory);
+    }
 }

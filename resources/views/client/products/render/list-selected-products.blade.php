@@ -64,7 +64,7 @@
                                             <span class="badge badge-pill badge-sm badge-light">S/.
                                                 {{ $inventory->discounted_price }}</span>
 
-                                            <span class="btn btn-danger btn-sm span-on_sale-selected">OFERTA</span>
+                                            <span class="btn btn-danger btn-sm span-on_sale-selected on-sale-selected-main">OFERTA</span>
                                         @else
                                             <span class="badge badge-pill badge-sm badge-primary">S/.
                                                 {{ $inventory->price }}</span>

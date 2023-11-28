@@ -17,7 +17,7 @@ class CreateInventoryShoppingTable extends Migration
             $table->id();
             $table->foreignId('inventory_id')->constrained('inventories')->cascadeOnDelete();
             $table->foreignId('shopping_id')->constrained('shoppings')->cascadeOnDelete();
-            $table->integer('quantity');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }
