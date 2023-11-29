@@ -1,7 +1,25 @@
 <div class="card-body">
     <div class="row container-products">
         @if ($inventories->isEmpty())
-            <h3 class="col-12 text-center">No hay productos registrados</h3>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 d-flex flex-column">
+                        <div class="container-empty">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/almacen.png') }}" alt="">
+                            <div class="container-note">
+                                <h3 class="col-12 text-start pl-0">Inventario pendiente</h3>
+                                <p>Estimado farmacéutico, aún no hay productos registrados en su inventario. Por favor,
+                                    tome un momento para agregar sus productos y ayudarnos a servir mejor a nuestros
+                                    clientes. ¡Gracias!</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-outline-warning btn-md button-inventary-create"
+                            href="{{ route('company.inventory.create') }}">
+                            Registrar en inventario
+                        </a>
+                    </div>
+                </div>
+            </div>
         @else
             @foreach ($inventories as $inventory)
                 <div class="col-sm-3 col-md-6 col-lg-3 card-responsive-mobil">
@@ -35,7 +53,8 @@
                                 <span class="badge badge-pill badge-success text-decoration-line-through">S/.
                                     {{ $inventory->price }}</span>
                                 <span class="badge badge-pill badge-warning">-% {{ $inventory->discount }}</span>
-                                <span class="badge badge-pill badge-danger">S/ {{ $inventory->discounted_price }}</span>
+                                <span class="badge badge-pill badge-danger">S/
+                                    {{ $inventory->discounted_price }}</span>
                             @else
                                 <span class="badge badge-pill badge-success">S/. {{ $inventory->price }}</span>
                             @endif

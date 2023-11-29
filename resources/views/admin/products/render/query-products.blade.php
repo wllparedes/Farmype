@@ -1,7 +1,25 @@
 <div class="card-body">
     <div class="row container-products">
         @if ($products->isEmpty())
-            <h3 class="col-12 text-center">No hay productos registrados</h3>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 d-flex flex-column">
+                        <div class="container-empty">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/almacen.png') }}" alt="">
+                            <div class="container-note">
+                                <h3 class="col-12 text-start pl-0">Inventario de productos vacio</h3>
+                                <p>Estimado Administrador, aún no hay productos registrados. Por favor,
+                                    tome un momento para agregar sus productos y ayudarnos a servir mejor a nuestros
+                                    clientes. ¡Gracias!</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-outline-warning btn-md button-inventary-create"
+                            href="{{ route('company.inventory.create') }}">
+                            Registrar en inventario
+                        </a>
+                    </div>
+                </div>
+            </div>
         @else
             @foreach ($products as $product)
                 <div class="col-sm-3 col-md-6 col-lg-3 card-responsive-mobil">

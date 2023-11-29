@@ -1,7 +1,25 @@
 <div class="card-body">
     <div class="row container-products">
         @if ($productsOnSale->isEmpty())
-            <h3 class="col-12 text-center">No hay productos registrados</h3>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 d-flex flex-column">
+                        <div class="container-empty">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/etiqueta-de-precio.png') }}"
+                                alt="">
+                            <div class="container-note">
+                                <h3 class="col-12 text-start pl-0">Sin Ofertas Disponibles</h3>
+                                <p>Nuestro equipo está trabajando constantemente para proporcionarte las mejores
+                                    ofertas. Por favor, vuelve a comprobar más tarde. ¡Gracias por tu paciencia!</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-outline-warning btn-md button-empty"
+                            href="{{ route('client.products.index') }}">
+                            Ver productos
+                        </a>
+                    </div>
+                </div>
+            </div>
         @else
             @foreach ($productsOnSale as $productsOnSal)
                 <div class="col-sm-6 col-md-6 col-lg-3 card-responsive-mobil">

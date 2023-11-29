@@ -16,6 +16,8 @@ class ClientListService
     public function getInventoryOnList(Request $request)
     {
         $user = Auth::user();
+        $list = $user->productList()->first();
+        $list = !$list ? ProductList::create(['user_id' => $user->id]) : $list;
 
         $productsOnList = $user->productList()
             ->with([

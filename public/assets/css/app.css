@@ -653,16 +653,27 @@ input.error {
     top: 28px;
 }
 
-.on-sale-selected-main, .on-sale-shopping {
+.on-sale-selected-main,
+.on-sale-shopping {
     position: absolute;
     left: 0;
     right: auto;
     top: 0;
 }
-/* 
+
+/*
 .on-sale-shopping {
     position: absolute;
     left: 0;
     right: auto;
     top: 0;
 } */
+
+
+.button-inventary-create {
+    /* width: 100px; */
+    min-width: 120px;
+    padding: 10px;
+    text-align: center;
+    margin: 20px auto;
+}

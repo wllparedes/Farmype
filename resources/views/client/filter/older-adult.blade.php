@@ -36,14 +36,34 @@
                     <div class="card-body">
                         <div class="row container-products">
                             @if ($productOlderAdults->isEmpty())
-                                <h3 class="col-12 text-center">No hay productos en esta categoria</h3>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12 d-flex flex-column">
+                                            <div class="container-empty">
+                                                <img class="image-empty" src="{{ asset('assets/img/theme/embalaje.png') }}"
+                                                    alt="">
+                                                <div class="container-note">
+                                                    <h3 class="col-12 text-start pl-0">Categoría en Actualización</h3>
+                                                    <p>Lo sentimos, actualmente no tenemos productos disponibles en esta
+                                                        categoría. Estamos trabajando para actualizar nuestro inventario.
+                                                        ¡Vuelve pronto para descubrir nuevos productos!</p>
+                                                </div>
+                                            </div>
+                                            <a class="btn btn-outline-warning btn-md button-empty"
+                                                href="{{ route('client.products.index') }}">
+                                                Ver productos
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             @else
                                 @foreach ($productOlderAdults as $productOlderAdult)
                                     <div class="col-sm-6 col-md-6 col-lg-3 card-responsive-mobil">
                                         <div class="card">
                                             <div class="card-header">
                                                 <div class="container-image">
-                                                    <img class="card-img-top" src="{{ verifyImage($productOlderAdult->file) }}"
+                                                    <img class="card-img-top"
+                                                        src="{{ verifyImage($productOlderAdult->file) }}"
                                                         alt="{{ $productOlderAdult->name }}">
                                                 </div>
                                             </div>

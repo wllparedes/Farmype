@@ -1,7 +1,26 @@
 <div class="card-body">
     <div class="row container-products">
         @if ($inventories->isEmpty())
-            <h3 class="col-12 text-center">No hay productos para vender</h3>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 d-flex flex-column">
+                        <div class="container-empty">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/en-stock.png') }}"
+                                alt="">
+                            <div class="container-note">
+                                <h3 class="col-12 text-start pl-0">No se encontraron productos</h3>
+                                <p>Lo sentimos, actualmente no tenemos productos disponibles en esta sección. Estamos
+                                    trabajando para actualizar nuestro inventario. ¡Vuelve pronto para descubrir nuevos
+                                    productos!</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-outline-warning btn-md button-empty"
+                            href="{{ route('client.products.index') }}">
+                            Ver productos
+                        </a>
+                    </div>
+                </div>
+            </div>
         @else
             @php
                 $var = 0;
