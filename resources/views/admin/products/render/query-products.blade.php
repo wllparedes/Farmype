@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <a class="btn btn-outline-warning btn-md button-inventary-create"
-                            href="{{ route('company.inventory.create') }}">
+                            href="{{ route('admin.products.create') }}">
                             Registrar en inventario
                         </a>
                     </div>
