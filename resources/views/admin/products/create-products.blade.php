@@ -5,7 +5,8 @@
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.css') }}">
 @endsection
 
 @section('content')
@@ -58,10 +59,14 @@
                                         <div class="input-group-alternative mb-3" id="group-parent-category"
                                             data-url-child="{{ route('admin.products.getChildCategories') }}"
                                             data-url-parent="{{ route('admin.products.getParentCategories') }}">
-                                            <select  id="select-parent-category" class="form-control input-form-class"
+                                            {{-- <select  id="select-parent-category" class="form-control input-form-class"
                                                 name="parentCategoryId">
-                                                <option value="">Selecciona una categoria</option>
-                                            </select>
+                                            </select> --}}
+                                            <div class="form-control input-form-class" id="select-parent-category"
+                                                name="parentCategoryId">
+                                                {{-- * SELECT CATEGORY PARENT --}}
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -69,22 +74,17 @@
                                     <div class="form-group">
                                         <label for="select-child-category" class="form-control-label">Sub categoria
                                             *</label>
-                                        <div class="input-group-alternative mb-3 render-childCategory">
-                                            <select name="child_category_id[]" id="select-child-category" multiple
-                                                class="form-control js-example-basic-single input-form-class">
-                                            </select>
+                                        <div class="input-group-alternative mb-3 render-childCategory"
+                                            id="group-child-category">
+                                            <div id="select-child-category"
+                                                class="form-control js-example-basic-single input-form-class" name="child_category_id">
+                                                {{-- * SELECT CATEGORY CHILDS --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-detail">Detalle (opcional)</label>
-                                        <textarea type="text" id="input-detail" name="detail" class="form-control form-control-alternative input-reset"
-                                            placeholder="Ingresa el detalle" rows="11"></textarea>
-                                    </div>
-                                </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label class="form-control-label">Imagen * </label>
@@ -98,6 +98,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-detail">Detalle (opcional)</label>
+                                        <textarea type="text" id="input-detail" name="detail" class="form-control form-control-alternative input-reset"
+                                            placeholder="Ingresa el detalle" rows="11"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -119,12 +126,13 @@
     <script src="{{ asset('assets/js/plugins/jquery-validator/jQueryValidator.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.js') }}"></script>
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
 
 
     <script src="{{ asset('assets/js/admin/products/validatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/admin/products/validatorCategory.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/admin/products/createCategory.js') }}" type="module"></script>
-    <script src="{{ asset('assets/js/admin/products/handleParentSelect.js') }}"></script>
+    <script src="{{ asset('assets/js/admin/products/handleParentSelect.js') }}" type="module"></script>
 @endsection

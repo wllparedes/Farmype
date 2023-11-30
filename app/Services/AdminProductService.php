@@ -21,12 +21,11 @@ class AdminProductService
             "detail" => $data["detail"],
         ];
 
-        $childCategories = $data['child_category_id'];
+        $childCategories = array_map('intval', explode(',', $data['child_category_id']));
 
         $user = Auth::user();
         $product = $user->products()->create($product);
         $product->childCategories()->attach($childCategories);
-
 
         if ($product) {
 

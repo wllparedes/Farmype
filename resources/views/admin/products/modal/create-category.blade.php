@@ -51,12 +51,11 @@
                             <div class="div div-name-child-category" id="name-child-category">
                                 <div class="form-group">
                                     <label class="form-control-label" for="select-parent-category-c">Categoria
-                                        Princial *</label>
-                                    <div class="input-group input-group-alternative mb-3">
-                                        <select id="select-parent-category-c"
-                                            class="form-control input-form-class select-parent-category-c"
-                                            name="parent_category_id_c">
-                                        </select>
+                                        Principal *</label>
+                                    <div class="input-group input-group-alternative mb-3" id="group-parent-category-c">
+                                        <div id="select-parent-category-c" class="form-control input-form-class select-parent-category-c" name="parent_category_id_c">
+                                            {{-- ? --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">

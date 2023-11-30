@@ -5,19 +5,6 @@ import { uploadImage } from "./../../global/uploadImage.js";
 $(document).ready(() => {
     // ******* selectTwo *******
 
-    // const parentCategory = document.getElementById("select-parent-category");
-
-    // const choicesParentCategory = new Choices(parentCategory, {
-    //     placeholder: true,
-    //     placeholderValue: "Selecciona una categoria",
-    //     allowHTML: true,
-    //     itemSelectText: "Presiona para seleccionar",
-    //     noResultsText: "Resultados no encontrados",
-    //     noChoicesText: "No hay opciones para seleccionar",
-    // });
-
-    // $("#select-parent-category").addAttr("required");
-
     uploadImage("#input-product-image-store", "#registerProductForm");
 
     // ******* Jquery-Validator *******
@@ -40,7 +27,7 @@ $(document).ready(() => {
         messages: {
             image: {
                 required: "SUBIR IMAGEN",
-            },
+            }
         },
         submitHandler: function (form, event) {
             event.preventDefault();
@@ -59,6 +46,7 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
+                    console.log(data);
                     if (data.success) {
                         registerProductForm.resetForm();
                         resetInputsForm();
@@ -67,10 +55,6 @@ $(document).ready(() => {
                             title: "Producto registrado",
                             text: data.message,
                         });
-                        $("#select-child-category").val(null).trigger("change");
-                        $("#select-parent-category")
-                            .val(null)
-                            .trigger("change");
                         uploadImage(
                             "input-user-image-store",
                             "registerProductForm"

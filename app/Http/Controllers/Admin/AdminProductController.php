@@ -97,7 +97,7 @@ class AdminProductController extends Controller
 
         return response()->json([
             "success" => $success,
-            "message" => $message
+            "message" => $message,
         ]);
 
 
@@ -107,7 +107,7 @@ class AdminProductController extends Controller
     {
 
         $valueParentCategory = $request->all();
-        $parentCategory_id = $valueParentCategory['valueParent'];
+        $parentCategory_id = $valueParentCategory['valueParentCategory'];
         $parentCategory = ParentCategory::find($parentCategory_id);
         $childCategories = $parentCategory->childCategories()->get();
 
