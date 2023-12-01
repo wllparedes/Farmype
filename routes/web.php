@@ -3,10 +3,11 @@
 use App\Http\Controllers\{ProfileController};
 
 use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController};
-use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController};
+use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController, ClientOrderController};
 use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController};
 use Illuminate\Support\Facades\{Auth, Route};
 
+use App\Http\Controllers\WebhooksController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -56,22 +57,35 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('productos/ofertas', 'getOnSale')->name('client.getProductsOnSale');
         });
 
+
+
         // * carrito de compras
         Route::controller(ClientShoppingController::class)->group(function () {
             Route::get('/carrito-de-compras', 'index')->name('client.shopping.index');
             Route::post('/sumar-cantidad-en-carrito/{inventory}', 'addCuantity')->name('client.shopping.addCuantity');
             Route::post('/restar-cantidad-en-carrito/{inventory}', 'subtractCuantity')->name('client.shopping.subtractCuantity');
             Route::post('/verificar-cupon-descuento', 'verifycoupions')->name('client.shopping.verifycoupions');
+            Route::post('eliminar-cupon-de-descuento/', 'deleteDiscountCoupion')->name('client.shopping.deleteDiscountCoupion');
+
 
             Route::delete('eliminar-inventario-shopping/{inventory}', 'deleteInventoryOfShopping')->name('client.shopping.delete');
             Route::delete('/vaciar-carrito', 'emptyShoppingCart')->name('client.shopping.emptyShoppingCart');
         });
 
+        Route::post('/webhooks', WebhooksController::class);
+
 
         // * Orden de compra
-        // Route::controller(ClientPaymentController::class)->group(function () {
-        //     Route::get('/orden-de-compra', 'index')->name('client.cart.index');
-        // });
+        Route::controller(ClientOrderController::class)->group(function () {
+
+            Route::get('/ordenes-de-compra', 'index')->name('client.order.index');
+            Route::get('/orden-de-compra/{order}', 'view')->name('client.order.view');
+
+            // * ruta para el pago de la orden en desarrollo
+            Route::get('orden/{shopping}/pago', 'pay')->name('client.order.pay');
+            // *
+
+        });
 
 
     });

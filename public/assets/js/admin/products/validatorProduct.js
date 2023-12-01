@@ -46,7 +46,6 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-                    console.log(data);
                     if (data.success) {
                         registerProductForm.resetForm();
                         resetInputsForm();

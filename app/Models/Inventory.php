@@ -39,6 +39,10 @@ class Inventory extends Model
     {
         return $this->belongsToMany(Shopping::class, 'inventory_shopping', 'inventory_id', 'shopping_id');
     }
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class, 'inventory_order', 'inventory_id', 'order_id');
+    }
 
 
 

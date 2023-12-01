@@ -41,7 +41,6 @@
 
 
 @section('optional_scripts')
-
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/js/all.min.js') }}"></script>
@@ -54,10 +53,7 @@
     {{-- carrito --}}
     <script src="{{ asset('assets/js/client/shopping/verifyCupon.js') }}" type="module"></script>
 
-
-    {{-- sdk mercado pago js --}}
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-
     <script>
         const mp = new MercadoPago("{{ config('services.mercadopago.key') }}", {
             locale: 'es-AR'
@@ -72,12 +68,5 @@
             }
         });
     </script>
-
-
-
-    {{-- <script src="{{ asset('assets/js/client/productsOnList/renderProductsOnList.js') }}" type="module"></script> --}}
-
-    {{--
-    <script src="{{ asset('assets/js/client/products/validateQuantity.js') }}"></script> --}}
-
+    <script src="{{ asset('assets/js/client/shopping/deleteDiscountCoupion.js') }}" type="module"></script>
 @endsection

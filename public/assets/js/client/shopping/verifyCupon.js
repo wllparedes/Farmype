@@ -31,10 +31,8 @@ $(document).ready(() => {
 
                     cuponFound.classList.remove("d-none");
                     cuponFound.classList.add("d-block");
+                    renderProductsOnList();
                 }
-            },
-            complete: function (data) {
-                renderProductsOnList();
             },
             error: function (data) {
                 console.log(data);

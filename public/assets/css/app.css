@@ -544,8 +544,12 @@ input.error {
 /*  */
 
 .text-small {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
+}
+.text-small-light {
+    font-size: 0.8rem;
+    font-weight: 200;
 }
 
 
@@ -677,3 +681,64 @@ input.error {
     text-align: center;
     margin: 20px auto;
 }
+
+.mercadopago-button{
+    background-color: rgb(247, 50, 50) !important;
+    border-radius: 2.3rem;
+}
+
+.mercadopago-button:active{
+    outline: none !important;
+    border: none !important;
+}
+
+.mercadopago-button:focus{
+    outline: none !important;
+    border: none !important;
+}
+.deleteDiscountCoupion{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-weight: bold;
+    width: 4px;
+    position: absolute;
+    left: 0px;
+    cursor: pointer;
+    color: #2643e9;
+}
+
+
+.deleteDiscountCoupion:focus{
+    border: none;
+    outline: none;
+}
+.deleteDiscountCoupion:active{
+    border: none;
+    outline: none;
+}
+
+/* ***** */
+
+.status-order{
+    border-radius: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.date-diff-humans{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+}
+
+.container-prices-order, .container-operation-number, .container-products-order, .container-date-order{
+    width: 100%;
+    min-width: 120px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+

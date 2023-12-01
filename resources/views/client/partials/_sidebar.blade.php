@@ -128,9 +128,9 @@
                         <i class="ni ni-cart text-info"></i> Carrito de compras
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link "
-                        href="{{ route('client.selected-products.index') }}">
+                <li class="nav-item {{ setActive('client.order.index') }}">
+                    <a class="nav-link {{ setActive('client.order.index') }}"
+                        href="{{ route('client.order.index') }}">
                         <i class="ni ni-pin-3 text-success"></i> Historial de compras
                     </a>
                 </li>

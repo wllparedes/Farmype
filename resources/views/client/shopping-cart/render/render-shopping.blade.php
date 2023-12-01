@@ -2,7 +2,6 @@
     <div class="row">
 
         @php
-
             $quantityProducts = 0;
             $priceSubtotal = 0;
         @endphp
@@ -184,7 +183,12 @@
                                             @php
                                                 $total = $priceSubtotal - ($priceSubtotal * $discountCoupion->discount) / 100;
                                             @endphp
-                                            <span class="badge badge-primary badge-md">CUPÓN:
+                                            <span class="badge badge-primary badge-md">
+                                                <button type="button" class="deleteDiscountCoupion"
+                                                    data-url="{{ route('client.shopping.deleteDiscountCoupion') }}">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                CUPÓN:
                                                 {{ Str::upper($discountCoupion->code) }} </span>
                                             <span class="badge badge-warning">-% {{ $discountCoupion->discount }}
                                             </span>
@@ -202,7 +206,13 @@
                                     $item->quantity = 1;
                                     $item->unit_price = $discountCoupion ? $total : $priceSubtotal;
                                     $preference->items = [$item];
+
+                                    // * redirect
+
+
+
                                     $preference->save();
+
                                 @endphp
                                 <div class="buy-now mercadopago-button">
                                     {{-- <a href="#" class="btn btn-md btn-danger">Continuar</a> --}}

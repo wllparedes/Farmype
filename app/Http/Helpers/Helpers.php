@@ -70,15 +70,28 @@ function verifyImage($file)
 
 
 
-function whatIsTop($quantity){
+function whatIsTop($quantity)
+{
 
     return $quantity >= 10 ? 'disabled' : '';
 
 }
-function whatIsBottom($quantity){
+function whatIsBottom($quantity)
+{
 
     return $quantity <= 1 ? 'disabled' : '';
 
+}
+
+
+function dateDiffHumans($fecha)
+{
+    return Carbon::parse($fecha)->locale('es')->diffForHumans();
+}
+
+function dateFormal($fecha)
+{
+    return Carbon::parse($fecha)->locale('es')->isoFormat('D [de] MMMM [del] YYYY');
 }
 
 

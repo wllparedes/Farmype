@@ -22,9 +22,9 @@
 
                         <span class="alert-inner--text"><strong>¡Cupón encontrado!</strong> Se aplicó el descuento
                             correctamente.</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
-                        </button>
+                        </button> --}}
                     </div>
 
                     {{-- create alert that say: cupon no encontrado  --}}
@@ -33,9 +33,9 @@
 
                         <span class="alert-inner--text"><strong>¡Cupón no encontrado!</strong> El cupón no existe o ya
                             fue utilizado.</span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
-                        </button>
+                        </button> --}}
                     </div>
 
                     <div class="modal-footer">

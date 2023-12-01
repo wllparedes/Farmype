@@ -19,18 +19,11 @@ class ClientShoppingController extends Controller
     public function index(Request $request)
     {
         MercadoPago::initSdk(config('services.mercadopago.token'));
-
-        // require base_path('vendor/autoload.php');
-        // MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-        // $preference = new MercadoPago\Preference();
-
         $preference = MercadoPago::preference();
-
-        // $item = new MercadoPago\Item();
         $item = MercadoPago::item();
-
         $user = Auth::user();
 
+        $preference->auto_return = 'approved';
 
         $inventoriesOnShopping = $user->shopping()
             ->with([
@@ -42,6 +35,10 @@ class ClientShoppingController extends Controller
                     $sq3->where('file_type', 'imagenes')
                         ->where('category', 'products')
             ])->get();
+
+        $preference->back_urls = [
+            'success' => route('client.order.pay', $user->shopping()->first()),
+        ];
 
         if ($request->ajax()) {
 
@@ -65,6 +62,8 @@ class ClientShoppingController extends Controller
             $shopping = $user->shopping()->first();
 
             $shopping->inventories()->sync([]);
+            $shopping->discount_coupion_id = null;
+            $shopping->save();
 
             $message = 'Carrito de compras vaciado correctamente';
         } catch (Exception $e) {
@@ -133,32 +132,6 @@ class ClientShoppingController extends Controller
                     if ($inventory->stock != 0 and $inventory->pivot->quantity > 1) {
                         $newQuantity = $inventory->pivot->quantity - 1;
                         $inventoryShopping->inventories()->updateExistingPivot($inventory->id, ["quantity" => $newQuantity]);
-
-                        // *****
-
-                        // foreach ($shoppingCart as $shopping) {
-
-                        //     $subtotal = 0;
-                        //     $inventarios = $shopping->inventories;
-
-                        //     if ($inventarios) {
-                        //         foreach ($inventarios as $inventor) {
-
-                        //             if ($inventor->on_sale && $inventor->pivot->discount_price > 0) {
-                        //                 $subtotal += $inventor->pivot->quantity * $inventor->pivot->discount_price;
-                        //             } elseif ($inventor->pivot->price > 0) {
-                        //                 $subtotal += $inventor->pivot->quantity * $inventor->pivot->price;
-                        //             }
-
-                        //         }
-                        //     }
-
-                        //     $shopping->subtotal = $subtotal;
-                        //     $shopping->save();
-                        // }
-
-                        // *****
-
                         $success = true;
                     } else {
                         $success = false;
@@ -225,6 +198,20 @@ class ClientShoppingController extends Controller
         ]);
     }
 
+
+    public function deleteDiscountCoupion()
+    {
+
+        $user = Auth::user();
+        $shopping = $user->shopping()->first();
+        $shopping->discount_coupion_id = null;
+        $shopping->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => "Cupón de descuento eliminado correctamente"
+        ]);
+    }
 
 
 }
