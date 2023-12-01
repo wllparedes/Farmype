@@ -6,15 +6,14 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-column">
                         <div class="container-empty">
-                            <img class="image-empty" src="{{ asset('assets/img/theme/carro-vacio.png') }}" alt="">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/error.png') }}" alt="">
                             <div class="container-note">
-                                <h3 class="col-12 text-start pl-0">Tu carro está vacío</h3>
-                                <p>¡Aprovecha! Tenemos miles de productos en oferta y oportunidades únicas.</p>
+                                <h3 class="col-12 text-start pl-0">Oops...</h3>
+                                <p>Ha ocurrido un error, vuelva más tarde.</p>
                             </div>
                         </div>
-                        <a class="btn btn-outline-warning btn-md button-empty"
-                            href="{{ route('client.getProductsOnSale') }}">
-                            Ver ofertas
+                        <a class="btn btn-outline-warning btn-md button-empty" href="{{ route('client.order.index') }}">
+                            Volver
                         </a>
                     </div>
                 </div>
