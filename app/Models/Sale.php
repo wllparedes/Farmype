@@ -29,4 +29,9 @@ class Sale extends Model
         return $this->belongsToMany(Inventory::class, 'inventory_sale', 'sale_id', 'inventory_id')->withPivot('quantity', 'subtotal');
     }
 
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'client_id');
+    }
+
 }

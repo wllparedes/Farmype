@@ -20,31 +20,38 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'document_type', 'document_number',
-        'names_surnames','role' ,'password' ,'departament',
-        'province', 'district', 'address',
-        'email', 'phone'
+        'document_type',
+        'document_number',
+        'names_surnames',
+        'role',
+        'password',
+        'departament',
+        'province',
+        'district',
+        'address',
+        'email',
+        'phone'
     ];
 
-    public function products() : HasMany
+    public function products(): HasMany
     {
 
         return $this->hasMany(Product::class);
 
     }
 
-    public function inventories() : HasMany
+    public function inventories(): HasMany
     {
         return $this->hasMany(Inventory::class);
     }
 
     // Make method for product_lists
-    public function productList() : HasOne
+    public function productList(): HasOne
     {
         return $this->hasOne(ProductList::class);
     }
     // Make method for shopping
-    public function shopping() : HasOne
+    public function shopping(): HasOne
     {
         return $this->hasOne(Shopping::class);
     }
@@ -64,13 +71,19 @@ class User extends Authenticatable
         return $this->hasMany(Sale::class);
     }
 
+    public function clientHasSales(): HasMany
+    {
+        return $this->hasMany(Sale::class, 'client_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**

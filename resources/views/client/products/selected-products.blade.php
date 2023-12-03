@@ -5,7 +5,6 @@
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
     <link rel="stylesheet" src="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    </link>
 @endsection
 
 

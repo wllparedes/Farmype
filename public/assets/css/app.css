@@ -742,3 +742,8 @@ input.error {
 
 
 
+/*  */
+
+.dataTables_paginate, .dataTables_info{
+    padding: 25px 0;
+}

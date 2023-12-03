@@ -94,3 +94,7 @@ function dateFormal($fecha)
     return Carbon::parse($fecha)->locale('es')->isoFormat('D [de] MMMM [del] YYYY');
 }
 
+function timeFormal($fecha)
+{
+    return Carbon::parse($fecha)->locale('es')->isoFormat('h:mm:ss a');
+}
