@@ -1,6 +1,5 @@
 <div class="card-body container bg-list-productos">
     <div class="row">
-
         @if ($orderDetail->isEmpty())
             <div class="col-12">
                 <div class="row">
@@ -40,7 +39,7 @@
                         <div class="container-prices-order">
                             <p>
                                 <span class="text-small">Subtotal</span>
-                                <span class="text-small-light">S/. {{ $order->total }}</span>
+                                <span class="text-small-light">S/. {{ $order->subtotal }}</span>
                             </p>
                             @if ($order->discountCoupion)
                                 <p>
@@ -50,31 +49,11 @@
                                         {{ $order->discountCoupion->discount }}</span>
                                 </p>
                             @endif
-                            @php
-                                $total = $order->discountCoupion ? $order->total - ($order->total * $order->discountCoupion->discount) / 100 : $order->total;
-                            @endphp
                             <p class="mb-0">
                                 <span class="text-small">Total:</span>
-                                <span class="text-small-light">S/. {{ $total }}</span>
+                                <span class="text-small-light">S/. {{ $order->total }}</span>
                             </p>
                         </div>
-                        <div class="container-products-order">
-                            <span class="text-small mb-2">Productos:</span>
-                            <ul class="mb-0">
-                                @foreach ($order->inventories as $inventory)
-                                    <li>
-                                        <p class="text-small-light">
-                                            <span> {{ $inventory->product->name }} </span>
-                                            <span> ({{ $inventory->pivot->quantity }}) - </span>
-                                            <span> {{ $inventory->user->names_surnames }} </span>
-                                        </p>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        {{-- <div class="container-date-order">
-                            <span class="text-small">{{ dateFormal($order->created_at) }}</span>
-                        </div> --}}
                         <span
                             class="badge badge-pill badge-warning date-diff-humans">{{ dateDiffHumans($order->created_at) }}</span>
                         <p>

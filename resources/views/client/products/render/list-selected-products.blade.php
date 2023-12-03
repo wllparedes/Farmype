@@ -78,7 +78,7 @@
                                         @endif
                                     </div>
 
-                                    @if ($inventory->stock != 0)
+                                    @if ($inventory->stock >= 1)
                                         @php
                                             $quantityProducts++;
                                         @endphp
@@ -107,7 +107,7 @@
                                     @endif
                                 </div>
 
-                                @if ($inventory->stock != 0)
+                                @if ($inventory->stock >= 1)
                                     <div class="dropdown" id="dropdown-three">
                                         <button class="btn btn-sm btn-icon-only bg-transparent text-light"
                                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true"

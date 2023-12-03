@@ -30,7 +30,7 @@
                                     src="{{ verifyImage($productsOnSal->product->file) }}"
                                     alt="{{ $productsOnSal->product->name }}">
                             </div>
-                            @if ($productsOnSal->stock === 0)
+                            @if ($productsOnSal->stock < 1)
                                 <span class="btn btn-warning span-stock btn-sm">AGOTADO</span>
                             @else
                                 @if ($productsOnSal->shoppings_count === 0)

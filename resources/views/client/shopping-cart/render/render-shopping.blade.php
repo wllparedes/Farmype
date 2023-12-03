@@ -86,7 +86,7 @@
                                         @endif
                                     </div>
 
-                                    @if ($inventory->stock != 0)
+                                    @if ($inventory->stock > 0)
                                         @php
                                             $quantityProducts++;
                                         @endphp
@@ -107,15 +107,15 @@
                                     @else
                                         <div class="container-cuantity">
                                             <p class="card-text text-danger text-center text-sm">Producto sin stock</p>
-                                            <button class="deleteProductOnList w-100 btn btn-sm btn-danger"
-                                                data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">
+                                            <button class="deleteProductOnShopping w-100 btn btn-sm btn-danger"
+                                                data-delete-shopping="{{ route('client.shopping.delete', $inventory->id) }}">
                                                 Eliminar
                                             </button>
                                         </div>
                                     @endif
                                 </div>
 
-                                @if ($inventory->stock != 0)
+                                @if ($inventory->stock > 0)
                                     <div class="dropdown" id="dropdown-three">
                                         <button class="btn btn-sm btn-icon-only bg-transparent text-light"
                                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true"

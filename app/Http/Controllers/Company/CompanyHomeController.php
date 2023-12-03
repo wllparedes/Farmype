@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 
 class CompanyHomeController extends Controller
@@ -22,8 +23,17 @@ class CompanyHomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+
     public function index()
     {
+
+        $user =  Auth::user();
+        // $discountCoupions = $user->load('discountCoupions');
+
+
+
         return view('company.home');
     }
 }

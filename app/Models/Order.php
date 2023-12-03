@@ -15,6 +15,7 @@ class Order extends Model
         'user_id',
         'discount_coupion_id',
         'operation_number',
+        'subtotal',
         'total',
         'status',
     ];

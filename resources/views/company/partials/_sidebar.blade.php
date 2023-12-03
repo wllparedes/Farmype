@@ -109,11 +109,12 @@
                         <i class="ni ni-pin-3 text-orange"></i> Consultar inventario
                     </a>
                 </li>
-                {{-- <li class="nav-item ">
-                    <a class="nav-link " href="./examples/tables.html">
-                        <i class="ni ni-bullet-list-67 text-red"></i> Tables
+                <li class="nav-item {{ setActive('company.sales.index') }}">
+                    <a class="nav-link {{ setActive('company.sales.index') }}"
+                        href="{{ route('company.sales.index') }}">
+                        <i class="ni ni-bullet-list-67 text-red"></i> Ordenes de ventas
                     </a>
-                </li> --}}
+                </li>
                 {{-- <li class="nav-item ">
                     <a class="nav-link" href="{{ route('profile.index') }}">
                         <i class="ni ni-key-25 text-info"></i> Perfil

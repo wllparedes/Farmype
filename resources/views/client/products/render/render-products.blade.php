@@ -79,7 +79,7 @@
                         <p class="text-small"><strong> Dirección: </strong> {{ $inventory->user->address }} </p>
                     </div>
 
-                    @if ($inventory->stock === 0)
+                    @if ($inventory->stock < 1)
                         <span class="btn btn-warning span-stock">AGOTADO</span>
                     @else
                         <div class="container-cuantity">

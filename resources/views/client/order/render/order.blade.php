@@ -93,18 +93,15 @@
                             </div>
                             <div class="resumen-precio">
                                 <h5>({{ $cuantityInventories }})</h5>
-                                <h5>S/. {{ $orderDetail->total }}</h5>
+                                <h5>S/. {{ $orderDetail->subtotal }}</h5>
                             </div>
                             <div class="address">
                                 <h5>Envío:</h5>
-                                @php
-                                    $user = $orderDetail->user;
-                                @endphp
                                 {{-- * Direccion exacta --}}
-                                <p> {{ $user->address }}
+                                <p> {{ $orderDetail->user->address }}
                                     <br>
                                     {{-- * Direccion General --}}
-                                    {{ Str::ucfirst($user->departament) . ', ' . Str::ucfirst($user->province) . ', ' . Str::ucfirst($user->district) . ', Perú.' }}
+                                    {{ Str::ucfirst($orderDetail->user->departament) . ', ' . Str::ucfirst($orderDetail->user->province) . ', ' . Str::ucfirst($orderDetail->user->district) . ', Perú.' }}
                                 </p>
                             </div>
                             <div class="total">
@@ -118,7 +115,7 @@
                                             {{ $orderDetail->discountCoupion->discount }}
                                         </span>
                                         <span class="badge badge-success badge-lg">Precio final: S/.
-                                            {{ round($orderDetail->total - ($orderDetail->total * $orderDetail->discountCoupion->discount) / 100, 2) }}
+                                            {{ $orderDetail->total }}
                                         </span>
                                     </div>
                                 @else

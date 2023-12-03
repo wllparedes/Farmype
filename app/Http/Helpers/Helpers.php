@@ -94,4 +94,3 @@ function dateFormal($fecha)
     return Carbon::parse($fecha)->locale('es')->isoFormat('D [de] MMMM [del] YYYY');
 }
 
-

@@ -5,7 +5,9 @@
 @section('optional_links')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/select2.min.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -13,9 +15,15 @@
         <div class="container-fluid">
             <div class="header-body">
                 <!-- Card stats -->
-                <div class="row">
-                    <div class="col-xl-3 col-lg-6">
+                <div class="d-flex justify-content-between">
+                    <div class="text-start">
                         <h1 class="text-white text-center">Registro de Inventario</h1>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-md-12 text-end">
+                        <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#createCoupionModal">
+                            Crear cupón
+                        </button>
                     </div>
                 </div>
             </div>
@@ -39,11 +47,13 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="" class="form-control-label">Producto *</label>
-                                            <div class="input-group-alternative mb-3" id="select-product-c" data-get="{{ route('admin.inventory.getProductsForSelect') }}">
-                                                <select name="product_id" id="select-product"
+                                            <div class="input-group-alternative mb-3" id="select-product-c"
+                                                data-get="{{ route('admin.inventory.getProductsForSelect') }}">
+
+                                                <div name="product_id" id="select-product"
                                                     class="form-control js-example-basic-single input-form-class">
-                                                    <option selected disabled value="">Seleccionar producto </option>
-                                                </select>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -97,6 +107,9 @@
         </div>
     </div>
 
+
+    @include('company.products.modals.create-coupion')
+
 @endsection
 
 @section('optional_scripts')
@@ -104,10 +117,17 @@
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
 
     {{-- <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/plugins/Choices/choices.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
     <script src="{{ asset('assets/js/company/products/validatorProduct.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/global/chekedDiscount.js') }}"></script>
+
+    {{-- <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> --}}
+
+    {{-- <script src="{{ asset('assets/js/plugins/clipboard/dist/clipboard.min.js') }}"></script> --}}
+
+    <script src="{{ asset('assets/js/company/products/validatorCoupion.js') }}" type="module"></script>
 
 @endsection

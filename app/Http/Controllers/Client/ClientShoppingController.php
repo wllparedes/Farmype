@@ -27,10 +27,10 @@ class ClientShoppingController extends Controller
 
         $inventoriesOnShopping = $user->shopping()
             ->with([
-                'user',
-                'discountCoupion',
+                'user:id,address,district,province,departament',
+                'discountCoupion:id,code,discount',
                 'inventories',
-                'inventories.user',
+                'inventories.user:id,names_surnames',
                 'inventories.product.file' => fn($sq3) =>
                     $sq3->where('file_type', 'imagenes')
                         ->where('category', 'products')

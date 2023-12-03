@@ -153,6 +153,7 @@ class ClientFilterController extends Controller
                 }
             ])
             ->with([
+                'user:id,names_surnames',
                 'product',
                 'product.file' => fn($sq3) =>
                     $sq3->where('file_type', 'imagenes')

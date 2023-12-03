@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\DiscountCoupion;
 use App\Models\Order;
+use App\Models\Sale;
 use App\Models\Shopping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -17,20 +18,7 @@ class ClientOrderController extends Controller
     {
 
         $orderDetail = Order::with([
-            'discountCoupion',
-            'inventories.user',
-            'inventories' => function ($query) {
-                $query->with([
-                    'product' => function ($query) {
-                        $query->with([
-                            'file' => function ($query) {
-                                $query->where('file_type', 'imagenes')
-                                    ->where('category', 'products');
-                            }
-                        ]);
-                    }
-                ]);
-            }
+            'discountCoupion:id,code,discount'
         ])->paginate(6);
 
         if ($request->ajax()) {
@@ -41,9 +29,6 @@ class ClientOrderController extends Controller
             ];
         }
 
-
-
-
         return view("client.order.index", compact('orderDetail'));
     }
 
@@ -52,7 +37,9 @@ class ClientOrderController extends Controller
     {
 
         $orderDetail = $order->load([
-            'discountCoupion',
+            'user:id,address,district,province,departament',
+            'discountCoupion:id,code,discount',
+            'inventories.user:id,names_surnames,email,phone',
             'inventories' => function ($query) {
                 $query->with([
                     'product' => function ($query) {
@@ -83,35 +70,28 @@ class ClientOrderController extends Controller
         // obtener relaciónes
         $user = Auth::user();
         $inventoriesOnShopping = $user->shopping()
-            ->with([
-                'inventories' => function ($query) {
-                    $query->with([
-                        'product' => function ($query) {
-                            $query->with([
-                                'file' => function ($query) {
-                                    $query->where('file_type', 'imagenes')
-                                        ->where('category', 'products');
-                                }
-                            ]);
-                        }
-                    ]);
-                }
-            ])
+            ->with('inventories')
             ->get();
 
+        $subTotal = $inventoriesOnShopping->sum(function ($shopping) {
+            return $shopping->inventories->sum(function ($inventory) {
+                return $inventory->on_sale ? $inventory->discounted_price * $inventory->pivot->quantity : $inventory->price * $inventory->pivot->quantity;
+            });
+        });
+
+        $total = $inventoriesOnShopping[0]->discountCoupion ? $subTotal - ($subTotal * $inventoriesOnShopping[0]->discountCoupion->discount) / 100 : $subTotal;
 
         // orden de compra creada
         $idDiscounted = $inventoriesOnShopping[0]->discount_coupion_id ? $inventoriesOnShopping[0]->discount_coupion_id : null;
-        $orderNew = [
+        $order = $user->order()->create([
             'discount_coupion_id' => $idDiscounted,
             'operation_number' => $payment_id,
+            'subtotal' => $subTotal,
+            'total' => $total,
             'status' => $status
-        ];
+        ]);
 
-        $order = $user->order()->create($orderNew);
-
-        $total = 0;
-
+        $discount_coupion = null;
         if ($idDiscounted != null) {
             $discount_coupion = DiscountCoupion::find($idDiscounted);
             $discount_coupion->uses += 1;
@@ -121,24 +101,20 @@ class ClientOrderController extends Controller
         foreach ($inventoriesOnShopping[0]->inventories as $inventory) {
 
             $quantity = $inventory->pivot->quantity;
-
             $inventory->stock -= $quantity;
             $inventory->save();
-
             // 1. si esta en oferta
             // 2. si no esta en oferta
             $subtotal = $inventory->on_sale ? $inventory->discounted_price * $quantity : $inventory->price * $quantity;
-            $total += $subtotal;
 
             $order->inventories()->attach($inventory->id, [
                 'quantity' => $quantity,
                 'subtotal' => $subtotal,
             ]);
-
         }
 
-        $order->total = $total;
-        $order->save();
+        $this->createOrderSale($inventoriesOnShopping, $discount_coupion, $payment_id, $subTotal, $total);
+
         // vaciar el carrito
         $shopping = $user->shopping()->first();
         $shopping->inventories()->sync([]);
@@ -146,10 +122,55 @@ class ClientOrderController extends Controller
         $shopping->save();
 
 
-
+        // return $total;
         return redirect()->route('client.order.view', compact('order'));
 
     }
+
+
+    public function createOrderSale($inventoriesOnShopping, $discount_coupion = null, $payment_id, $subtotal, $total)
+    {
+        $inventoriesForFarmacia = $inventoriesOnShopping->flatMap(function ($shopping) {
+            return $shopping->inventories;
+        })->groupBy('user_id');
+
+        $subtotalSinDescuento = $subtotal;
+        $totalConDescuento = $total;
+
+        $porcentajeDescuento = 1 - ($totalConDescuento / $subtotalSinDescuento);
+
+        foreach ($inventoriesForFarmacia as $farmaceutico_id => $inventories) {
+            $ordenVenta = new Sale();
+            $ordenVenta->user_id = $farmaceutico_id;
+            $ordenVenta->operation_number_sale = $payment_id;
+            $ordenVenta->discount = $discount_coupion ? $discount_coupion->discount : null;
+
+            $totalSinDescuentoFarmaceutico = $inventories->sum(function ($inventory) {
+                return $inventory->on_sale ? $inventory->discounted_price * $inventory->pivot->quantity : $inventory->price * $inventory->pivot->quantity;
+            });
+
+            $totalConDescuentoFarmaceutico = $totalSinDescuentoFarmaceutico * (1 - $porcentajeDescuento);
+
+            $ordenVenta->total = $totalConDescuentoFarmaceutico;
+            $ordenVenta->save();
+
+            foreach ($inventories as $inventory) {
+                $precio = $inventory->on_sale ? $inventory->discounted_price : $inventory->price;
+                $subtotalProducto = $precio * $inventory->pivot->quantity;
+                $subtotalProductoConDescuento = $subtotalProducto * (1 - $porcentajeDescuento);
+
+                $ordenVenta->inventories()->attach($inventory->id, [
+                    'quantity' => $inventory->pivot->quantity,
+                    'subtotal' => $subtotalProductoConDescuento,
+                ]);
+            }
+        }
+    }
+
+
+
+
+
 
 
 }

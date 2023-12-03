@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\{ProfileController};
 
-use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController};
+use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController, DiscountCoupionController};
 use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController, ClientOrderController};
-use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController};
+use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController, CompanySaleController};
 use Illuminate\Support\Facades\{Auth, Route};
+
 
 use App\Http\Controllers\WebhooksController;
 
@@ -28,7 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::controller(ClientInventoryController::class)->group(function () {
             Route::get('/productos', 'index')->name('client.products.index');
-            Route::get('/ver-producto/{product}', 'view')->name('client.product.view');
+            Route::get('/ver-productos/{product}', 'view')->name('client.product.view');
             Route::post('/agregar-inventario/{inventory}', 'add')->name('client.inventory.add');
             Route::delete('/client/eliminar-inventario/{inventory}', 'delete')->name('client.inventory.delete');
         });
@@ -72,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::delete('/vaciar-carrito', 'emptyShoppingCart')->name('client.shopping.emptyShoppingCart');
         });
 
-        Route::post('/webhooks', WebhooksController::class);
+        Route::post('/webhooks', WebhooksController::class)->name('webhooks.invoke');
 
 
         // * Orden de compra
@@ -107,6 +108,20 @@ Route::group(['middleware' => ['auth']], function () {
             Route::delete('/eliminar-inventario/{inventory}', 'destroy')->name('company.inventory.delete');
 
         });
+
+        // * Descuentos
+        Route::controller(DiscountCoupionController::class)->group(function () {
+
+            Route::post('/descuentos', 'store')->name('admin.discount.store');
+
+        });
+
+        Route::controller(CompanySaleController::class)->group(function () {
+            Route::get('/ventas', 'index')->name('company.sales.index');
+            Route::get('/ventas/{sale}', 'view')->name('company.sales.view');
+
+        });
+
 
     });
 
