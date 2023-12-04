@@ -33,7 +33,11 @@ class CompanySaleController extends Controller
     }
 
     public function view(Sale $sale){
-        //
+
+        $sale = $sale->load('client','inventories','inventories.product');
+
+        return view('company.sales.view', compact('sale'));
+
     }
 
 

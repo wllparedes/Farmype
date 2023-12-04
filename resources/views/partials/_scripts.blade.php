@@ -4,7 +4,7 @@
 <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
 <!--   Argon JS   -->
-<script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.2') }}"></script>
+<script src="{{ asset('assets/js/argon-dashboard.js') }}"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 <script>
     window.TrackJS &&

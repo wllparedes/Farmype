@@ -16,8 +16,9 @@ class ClientOrderController extends Controller
 
     public function index(Request $request)
     {
+        $user = Auth::user();
 
-        $orderDetail = Order::with([
+        $orderDetail = $user->order()->with([
             'discountCoupion:id,code,discount'
         ])->paginate(6);
 
@@ -59,7 +60,7 @@ class ClientOrderController extends Controller
     }
 
 
-    public function pay(Shopping $shopping, Request $request)
+    public function pay(Request $request)
     {
 
         $payment_id = $request->get('payment_id');
@@ -143,6 +144,7 @@ class ClientOrderController extends Controller
             $ordenVenta = new Sale();
             $ordenVenta->user_id = $farmaceutico_id;
             $ordenVenta->operation_number_sale = $payment_id;
+            $ordenVenta->client_id = Auth::id();
             $ordenVenta->discount = $discount_coupion ? $discount_coupion->discount : null;
 
             $totalSinDescuentoFarmaceutico = $inventories->sum(function ($inventory) {

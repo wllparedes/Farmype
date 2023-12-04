@@ -6,7 +6,8 @@
     <link rel="stylesheet"
         href="{{ asset('assets/js/plugins/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     {{-- * reponsive --}}
-    <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables/Responsive-2.2.1/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/js/plugins/datatables/Responsive-2.2.1/css/responsive.bootstrap4.min.css') }}">
 
 @endsection
 
@@ -20,7 +21,7 @@
                 <!-- Card stats -->
                 <div class="d-flex justify-content-between">
                     <div class="text-start">
-                        <h1 class="text-white text-center">Ordenes de ventas realizadas</h1>
+                        <h1 class="text-white text-center">Ventas realizadas</h1>
                     </div>
                 </div>
             </div>

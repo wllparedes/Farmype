@@ -747,3 +747,12 @@ input.error {
 .dataTables_paginate, .dataTables_info{
     padding: 25px 0;
 }
+
+.span-on_sale-selected{
+    left: 0;
+    right: auto;
+}
+.discount-value-selected{
+    left: 0;
+    right: auto;
+}

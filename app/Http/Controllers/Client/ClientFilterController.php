@@ -139,7 +139,7 @@ class ClientFilterController extends Controller
         $user = Auth::user();
 
         if ($user->shopping) {
-            $shoppingId = $user->shopping->value('id');
+            $shoppingId = $user->shopping()->value('id');
         } else {
             $shopping = new Shopping;
             $user->shopping()->save($shopping);
@@ -161,7 +161,7 @@ class ClientFilterController extends Controller
             ])
             ->paginate(8);
 
-        if($request->ajax()){
+        if ($request->ajax()) {
 
             $products = view('client.filter.render-on-sale', compact('productsOnSale'))->render();
 

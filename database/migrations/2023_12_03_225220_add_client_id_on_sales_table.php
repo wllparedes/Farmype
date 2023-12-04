@@ -14,7 +14,7 @@ class AddClientIdOnSalesTable extends Migration
     public function up()
     {
         Schema::table('sales', function (Blueprint $table) {
-            $table->foreignId("client_id")->default(1)->after('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId("client_id")->after('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
 

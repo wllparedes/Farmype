@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/orden-de-compra/{order}', 'view')->name('client.order.view');
 
             // * ruta para el pago de la orden en desarrollo
-            Route::get('orden/{shopping}/pago', 'pay')->name('client.order.pay');
+            Route::get('orden/shopping/pago', 'pay')->name('client.order.pay');
             // *
 
         });
@@ -93,9 +93,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     // * Empresa / farmacia
 
-    Route::group(['middleware' => 'check.role:company','prefix' => 'farmacia'], function () {
+    Route::group(['middleware' => 'check.role:company', 'prefix' => 'farmacia'], function () {
 
-        Route::get('/home', [CompanyHomeController::class, 'index'])->name('company.home');
+        // Route::get('/home', [CompanyHomeController::class, 'index'])->name('company.home');
+
+        Route::controller(CompanyHomeController::class)->group(function () {
+            Route::get('/home', 'index')->name('company.home');
+            Route::get('/getSalesCount', 'getSalesCount')->name('company.home.getSalesCount');
+            Route::get('/getSalesMoney', 'getSalesMoney')->name('company.home.getSalesMoney');
+        });
 
         Route::controller(CompanyInventoryController::class)->group(function () {
 
@@ -111,9 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         // * Descuentos
         Route::controller(DiscountCoupionController::class)->group(function () {
-
             Route::post('/descuentos', 'store')->name('admin.discount.store');
-
         });
 
         Route::controller(CompanySaleController::class)->group(function () {

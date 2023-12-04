@@ -37,7 +37,7 @@ class ClientInventoryService
         $user = Auth::user();
 
         if ($user->productList) {
-            $inventoryListId = $user->productList->value('id');
+            $inventoryListId = $user->productList()->value('id');
         } else {
             $productList = new ProductList;
             $user->productList()->save($productList);
@@ -74,13 +74,14 @@ class ClientInventoryService
     {
 
         $user = Auth::user();
-        $productList = $user->productList->first();
+        $productList = $user->productList()->first();
 
         if (!$productList) {
             $productList = ProductList::create(['user_id' => $user->id]);
         }
 
         $productList->inventories()->attach($inventory);
+
         return response()->json([
             'message' => 'Producto añadido a tu lista',
         ]);
@@ -91,7 +92,7 @@ class ClientInventoryService
     {
 
         $user = Auth::user();
-        $productList = $user->productList->first();
+        $productList = $user->productList()->first();
         $productList->inventories()->detach($inventory);
 
         return response()->json([

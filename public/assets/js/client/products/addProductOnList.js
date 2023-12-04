@@ -10,6 +10,7 @@ $(document).ready(() => {
             url: url,
             dataType: "JSON",
             success: function (data) {
+                console.log(data);
                 renderProductsLoad();
                 Toast.fire({
                     icon: "success",

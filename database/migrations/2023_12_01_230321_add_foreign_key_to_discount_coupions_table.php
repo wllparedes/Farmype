@@ -14,7 +14,7 @@ class AddForeignKeyToDiscountCoupionsTable extends Migration
     public function up()
     {
         Schema::table('discount_coupions', function (Blueprint $table) {
-            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->after('id')->constrained('users')->cascadeOnDelete();
         });
     }
 

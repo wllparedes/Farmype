@@ -64,7 +64,8 @@
                                             <span class="badge badge-pill badge-sm badge-light">S/.
                                                 {{ $inventory->discounted_price }}</span>
 
-                                            <span class="btn btn-danger btn-sm span-on_sale-selected on-sale-selected-main">OFERTA</span>
+                                            <span
+                                                class="btn btn-danger btn-sm span-on_sale-selected on-sale-selected-main">OFERTA</span>
                                         @else
                                             <span class="badge badge-pill badge-sm badge-primary">S/.
                                                 {{ $inventory->price }}</span>
@@ -119,7 +120,7 @@
                                                 data-add-cart-shopping="{{ route('client.selected-inventory.addShoppingCart', $inventory->id) }}">Añadir
                                                 al carrito</a>
                                             <a class="deleteProductOnList dropdown-item"
-                                                data-delete-list="{{ route('client.selected-inventory.delete', $inventory->id) }}">Eliminar
+                                                data-delete-list="{{ route('client.inventory.delete', $inventory->id) }}">Eliminar
                                                 de la lista</a>
                                         </div>
                                     </div>

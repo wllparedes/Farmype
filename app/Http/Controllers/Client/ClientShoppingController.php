@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Models\DiscountCoupion;
 use App\Models\Inventory;
+use App\Models\Shopping;
 use Auth;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -25,6 +26,14 @@ class ClientShoppingController extends Controller
 
         $preference->auto_return = 'approved';
 
+        $shopping = $user->shopping()->first();
+        if (!$shopping) {
+            $shopping = Shopping::create([
+                'user_id' => $user->id,
+            ]);
+        }
+
+
         $inventoriesOnShopping = $user->shopping()
             ->with([
                 'user:id,address,district,province,departament',
@@ -37,7 +46,7 @@ class ClientShoppingController extends Controller
             ])->get();
 
         $preference->back_urls = [
-            'success' => route('client.order.pay', $user->shopping()->first()),
+            'success' => route('client.order.pay'),
         ];
 
         if ($request->ajax()) {
@@ -155,7 +164,7 @@ class ClientShoppingController extends Controller
     {
 
         $user = Auth::user();
-        $shoppingCart = $user->shopping->first();
+        $shoppingCart = $user->shopping()->first();
         $shoppingCart->inventories()->detach($inventory);
 
         return response()->json([
