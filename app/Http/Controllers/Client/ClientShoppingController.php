@@ -180,29 +180,35 @@ class ClientShoppingController extends Controller
         $data = $request->all();
 
         try {
-            $discountCoupions = DiscountCoupion::select('id', 'code', 'discount', 'is_active')
+            $discountCoupions = DiscountCoupion::select('id', 'code', 'discount', 'is_active', 'max_uses', 'uses')
                 ->where('is_active', 1)
                 ->where('code', $data['code'])
                 ->first();
 
             $discountCoupions = isset($discountCoupions) ? $discountCoupions : null;
+
             $success = $discountCoupions == null ? false : true;
 
             if ($success) {
 
-                $user->shopping()->update([
-                    'discount_coupion_id' => $discountCoupions->id
-                ]);
+                if ($discountCoupions->max_uses > $discountCoupions->uses) {
+
+                    $user->shopping()->update([
+                        'discount_coupion_id' => $discountCoupions->id
+                    ]);
+
+                } else {
+                    $success = false;
+                }
 
             }
 
+
         } catch (Exception $e) {
-            $discountCoupions = $e->getMessage();
             $success = false;
         }
 
         return response()->json([
-            'data' => $discountCoupions,
             'success' => $success,
         ]);
     }

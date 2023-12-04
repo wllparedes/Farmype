@@ -172,9 +172,9 @@
                                         {{-- * Direccion General --}}
                                         {{ Str::ucfirst($user->departament) . ', ' . Str::ucfirst($user->province) . ', ' . Str::ucfirst($user->district) . ', Perú.' }}
                                     </p>
-                                    <a class="text-small" href="#">
+                                    {{-- <a class="text-small" href="#">
                                         Cambiar dirección
-                                    </a>
+                                    </a> --}}
                                 </div>
                                 <div class="total">
                                     <h5>TOTAL: </h5>

@@ -86,13 +86,24 @@ class AdminProductController extends Controller
     {
         $storage = env('FILESYSTEM_DRIVER');
 
-        try {
-            $this->adminProductService->store($request, $storage);
-            $success = true;
-            $message = config('parameters.stored_message_ product');
-        } catch (Exception $e) {
-            $success = false;
-            $message = $e->getMessage();
+        $data = $request->all();
+
+        if ($data['child_category_id'] == null || $data['child_category_id'] == null) {
+            return response()->json([
+                'success' => 'incompleto',
+                'message' => 'Debe seleccionar la categorias pertenecientes al producto',
+            ]);
+        } else {
+
+            try {
+                $this->adminProductService->store($request, $storage);
+                $success = true;
+                $message = config('parameters.stored_message_ product');
+            } catch (Exception $e) {
+                $success = false;
+                $message = $e->getMessage();
+            }
+
         }
 
         return response()->json([

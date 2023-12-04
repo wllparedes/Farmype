@@ -16,7 +16,8 @@ class DiscountCoupionSeeder extends Seeder
     {
         $coupons = [
             [
-                'code' => 'ADP1',
+                'code' => 'FARMA1',
+                'user_id' => 1,
                 'discount' => 10,
                 'start_date' => '2023-11-24',
                 'expiration_date' => '2023-11-28',
@@ -25,7 +26,8 @@ class DiscountCoupionSeeder extends Seeder
                 'uses' => 0,
             ],
             [
-                'code' => 'ADP2',
+                'code' => 'FARMA2',
+                'user_id' => 2,
                 'discount' => 20,
                 'start_date' => '2023-11-22',
                 'expiration_date' => '2023-11-26',
@@ -34,7 +36,8 @@ class DiscountCoupionSeeder extends Seeder
                 'uses' => 0,
             ],
             [
-                'code' => 'ADP3',
+                'code' => 'FARMA3',
+                'user_id' => 3,
                 'discount' => 30,
                 'start_date' => '2023-11-24',
                 'expiration_date' => '2023-11-26',

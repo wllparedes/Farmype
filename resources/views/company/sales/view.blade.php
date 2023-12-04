@@ -134,7 +134,6 @@
                                                     <th>Nombre</th>
                                                     <th>Detalle</th>
                                                     <th>Cantidad</th>
-                                                    <th>Precio</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -145,9 +144,6 @@
                                                         <td>{{ $inventory->product->detail ? $inventory->product->detail : 'Sin detalle.' }}
                                                         </td>
                                                         <td>{{ $inventory->pivot->quantity }} ud.</td>
-                                                        <td>S/.
-                                                            {{ $inventory->on_sale ? $inventory->discounted_price : $inventory->price }}
-                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

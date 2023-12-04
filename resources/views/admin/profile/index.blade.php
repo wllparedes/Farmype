@@ -36,7 +36,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('assets/img/theme/team-3-800x800.jpg') }}" class="rounded-circle">
+                                    <img src="{{ asset('assets/img/theme/admin.png') }}" class="rounded-circle">
                                 </a>
                             </div>
                         </div>

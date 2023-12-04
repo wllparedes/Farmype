@@ -12,7 +12,7 @@ class DiscountCoupionController extends Controller
     public function store(Request $request)
     {
 
-
+        $user = auth()->user();
         $data = $request->all();
 
         $coupion = [
@@ -24,7 +24,7 @@ class DiscountCoupionController extends Controller
             'max_uses' => $data['max_uses'],
         ];
 
-        $coupion  = DiscountCoupion::create($coupion);
+        $coupion = $user->discountCoupions()->create($coupion);
 
         if (!$coupion) {
             return response()->json([

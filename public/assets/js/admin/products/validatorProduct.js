@@ -27,7 +27,7 @@ $(document).ready(() => {
         messages: {
             image: {
                 required: "SUBIR IMAGEN",
-            }
+            },
         },
         submitHandler: function (form, event) {
             event.preventDefault();
@@ -46,22 +46,28 @@ $(document).ready(() => {
                 contentType: false,
                 dataType: "JSON",
                 success: function (data) {
-                    if (data.success) {
+                    if (data.success === true) {
                         registerProductForm.resetForm();
                         resetInputsForm();
                         Toast.fire({
                             icon: "success",
-                            title: "Producto registrado",
                             text: data.message,
                         });
                         uploadImage(
                             "input-user-image-store",
                             "registerProductForm"
                         );
+
+                        document.querySelector("#select-parent-category").reset();
+
+                    } else if (data.success === "incompleto") {
+                        Toast.fire({
+                            icon: "warning",
+                            text: data.message,
+                        });
                     } else {
                         Toast.fire({
                             icon: "error",
-                            title: "Error",
                             text: data.message,
                         });
                     }
