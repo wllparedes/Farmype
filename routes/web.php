@@ -4,7 +4,8 @@ use App\Http\Controllers\{ProfileController};
 
 use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController, DiscountCoupionController};
 use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController, ClientOrderController};
-use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController, CompanySaleController};
+use App\Http\Controllers\Company\{CompanyHomeController, CompanyInventoryController, CompanySaleController, CompanyPromotionController};
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\{Auth, Route};
 
 
@@ -80,6 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(ClientOrderController::class)->group(function () {
 
             Route::get('/ordenes-de-compra', 'index')->name('client.order.index');
+            Route::get('/ordenes-de-compra-en-proceso', 'notDelivered')->name('client.order.notDelivered');
             Route::get('/orden-de-compra/{order}', 'view')->name('client.order.view');
 
             // * ruta para el pago de la orden en desarrollo
@@ -103,6 +105,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/getSalesMoney', 'getSalesMoney')->name('company.home.getSalesMoney');
         });
 
+        Route::controller(LocationController::class)->group(function () {
+            Route::get('/ubicacion', 'index')->name('company.location.index');
+            Route::post('/guardar-ubicacion', 'store')->name('company.location.store');
+            Route::post('/actualizar-ubicacion', 'update')->name('company.location.update');
+        });
+
         Route::controller(CompanyInventoryController::class)->group(function () {
 
             Route::get('/inventario-registrados', 'index')->name('company.inventory.index');
@@ -120,10 +128,18 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/descuentos', 'store')->name('admin.discount.store');
         });
 
+        // * Ventas
         Route::controller(CompanySaleController::class)->group(function () {
             Route::get('/ventas', 'index')->name('company.sales.index');
             Route::get('/ventas/{sale}', 'view')->name('company.sales.view');
 
+        });
+
+        // * Promociones
+
+        Route::controller(CompanyPromotionController::class)->group(function () {
+            Route::get('/lista-de-promociones', 'list')->name('company.promotions.list');
+            Route::post('/registrar-promocion', 'store')->name('company.promotions.store');
         });
 
 

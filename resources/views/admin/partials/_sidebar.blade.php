@@ -109,13 +109,13 @@
                 <li class="nav-item {{ setActive('admin.products.create') }}">
                     <a class="nav-link {{ setActive('admin.products.create') }}"
                         href="{{ route('admin.products.create') }}">
-                        <i class="ni ni-planet text-blue"></i> Crear productos y categorias
+                        <i class="ni ni-ruler-pencil text-blue"></i> Crear productos y categorias
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('admin.products.index') }}">
                     <a class="nav-link {{ setActive('admin.products.index') }}"
                         href="{{ route('admin.products.index') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> Productos registrados
+                        <i class="ni ni-collection text-orange"></i> Productos registrados
                     </a>
                 </li>
                 {{-- <li class="nav-item">

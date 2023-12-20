@@ -15,8 +15,6 @@ $(document).ready(() => {
             let labels = response.labels;
             let datasets = response.datasets;
 
-            console.log(response);
-
             // * raw chart
             var SalesChart = (function () {
                 // Variables

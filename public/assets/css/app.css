@@ -756,3 +756,28 @@ input.error {
     left: 0;
     right: auto;
 }
+
+.text-italic{
+    font-style: italic;
+    font-weight: bold;
+}
+.text-lighter-success{
+    color: #1aae6f !important;
+    font-weight: lighter;
+}
+
+.text-lighter-warning{
+    color: #ff3709 !important;
+    font-weight: lighter;
+}
+
+.datepicker{
+    width: 100%;
+}
+.datepicker__wrapper{
+    width: 100%;
+}
+
+.modal-xl {
+  max-width: 75%;
+}

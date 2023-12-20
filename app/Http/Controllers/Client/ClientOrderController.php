@@ -20,7 +20,9 @@ class ClientOrderController extends Controller
 
         $orderDetail = $user->order()->with([
             'discountCoupion:id,code,discount'
-        ])->paginate(6);
+        ])
+        ->where('status_delivery', '=', Order::STATUS_DELIVERED)
+        ->paginate(6);
 
         if ($request->ajax()) {
             $html = view('client.order.render.order', compact('orderDetail'))->render();
@@ -59,6 +61,16 @@ class ClientOrderController extends Controller
         return view('client.order.view', compact('orderDetail'));
     }
 
+    public function notDelivered(){
+        $user = Auth::user();
+
+        $ordersNotDelivered = $user->order()->with([
+            'discountCoupion:id,code,discount'
+        ])->where('status_delivery','!=', Order::STATUS_DELIVERED)->get();
+
+        return view("client.order.notDelivered", compact('ordersNotDelivered'));
+    }
+
 
     public function pay(Request $request)
     {
@@ -89,7 +101,7 @@ class ClientOrderController extends Controller
             'operation_number' => $payment_id,
             'subtotal' => $subTotal,
             'total' => $total,
-            'status' => $status
+            'status_payment' => $status
         ]);
 
         $discount_coupion = null;

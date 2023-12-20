@@ -1,6 +1,6 @@
 <div class="card-body container bg-list-productos">
     <div class="row">
-        @if ($orderDetail->isEmpty())
+        @if ($ordersNotDelivered->isEmpty())
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 d-flex flex-column">
@@ -20,10 +20,10 @@
             </div>
         @else
             <p class="col-12 d-flex justify-content-between">
-                Historial de compras:
+                Compras que aun no han sido entregadas:
             </p>
             {{-- <div class="row col-md-12 col-sm-12"> --}}
-            @foreach ($orderDetail as $order)
+            @foreach ($ordersNotDelivered as $order)
                 {{-- <div class="row"> --}}
                 <div class="col-sm-12 col-lg-6 col-md-12 mb-4 justify-content-around">
                     <div class="col-12 p-3 container-product-items">
@@ -75,8 +75,4 @@
         @endif
 
     </div>
-</div>
-
-<div class="card-footer">
-    {{ $orderDetail->links() }}
 </div>

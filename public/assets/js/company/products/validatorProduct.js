@@ -4,7 +4,6 @@ import { resetInputsForm } from "./../../global/resetInputsForm.js";
 import { uploadImage } from "./../../global/uploadImage.js";
 
 $(document).ready(() => {
-    // ******* selectTwo *******
 
     let containerSelectProduct = document.querySelector("#select-product-c");
     let urlGet = containerSelectProduct.getAttribute("data-get");

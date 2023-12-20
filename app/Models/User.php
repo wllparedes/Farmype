@@ -76,6 +76,17 @@ class User extends Authenticatable
         return $this->hasMany(Sale::class, 'client_id');
     }
 
+
+    public function location(): HasOne
+    {
+        return $this->hasOne(Location::class);
+    }
+
+    public function promotions(): HasMany
+    {
+        return $this->hasMany(Promotion::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

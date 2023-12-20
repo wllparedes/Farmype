@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Order;
 use Yajra\DataTables\DataTables;
 use Auth;
 

@@ -18,7 +18,6 @@ class Product extends Model
     protected $fillable = ['name', 'detail', 'user_id'];
 
 
-    // *
 
     public function childCategories(): BelongsToMany
     {
@@ -30,7 +29,6 @@ class Product extends Model
         return $this->hasMany(Inventory::class);
     }
 
-    // *
 
 
     public function user(): BelongsTo
@@ -39,12 +37,6 @@ class Product extends Model
         return $this->belongsTo(User::class);
 
     }
-
-    // public function productLists(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(ProductList::class, 'product_product_list', 'product_id', 'product_lists_id');
-    // }
-
 
     public function file()
     {
@@ -59,6 +51,10 @@ class Product extends Model
         ]);
     }
 
+    public function promotions(): BelongsToMany
+    {
+        return $this->belongsToMany(Promotion::class, 'inventory_promotion', 'product_id', 'promotion_id');
+    }
 
 
 

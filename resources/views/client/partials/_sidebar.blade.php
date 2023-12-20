@@ -19,6 +19,15 @@
                     </a>
                 </a>
             </li>
+            &nbsp;
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-link-icon" href="" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ route('client.order.notDelivered') }}">
+                        <i class="fas fa-truck"></i>
+                    </a>
+                </a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -107,19 +116,19 @@
                 <li class="nav-item {{ setActive('client.products.index') }}">
                     <a class="nav-link {{ setActive('client.products.index') }}"
                         href="{{ route('client.products.index') }}">
-                        <i class="ni ni-planet text-blue"></i> Seleccionar Productos
+                        <i class="ni ni-active-40 text-blue"></i> Seleccionar Productos
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('client.getProductsOnSale') }}">
                     <a class="nav-link {{ setActive('client.getProductsOnSale') }}"
                         href="{{ route('client.getProductsOnSale') }}">
-                        <i class="ni ni-pin-3 text-pink"></i> Ofertas
+                        <i class="ni ni-tag text-red"></i> Ofertas
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('client.selected-products.index') }}">
                     <a class="nav-link {{ setActive('client.selected-products.index') }}"
                         href="{{ route('client.selected-products.index') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> Productos seleccionados
+                        <i class="ni ni-basket text-orange"></i> Productos seleccionados
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('client.shopping.index') }}">
@@ -131,7 +140,7 @@
                 <li class="nav-item {{ setActive('client.order.index') }}">
                     <a class="nav-link {{ setActive('client.order.index') }}"
                         href="{{ route('client.order.index') }}">
-                        <i class="ni ni-pin-3 text-success"></i> Historial de compras
+                        <i class="ni ni-bullet-list-67 text-success"></i> Historial de compras
                     </a>
                 </li>
                 {{-- <li class="nav-item">

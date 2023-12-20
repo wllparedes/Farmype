@@ -141,10 +141,9 @@ $(document).ready(() => {
         }
     );
 
-
     // ? Mensaje de la fuerza de la contraseña
 
-    inputPassword.addEventListener("keyup", () => passwordStrength(inputPassword, alertPassword, spanPassword) );
-
-
+    inputPassword.addEventListener("keyup", () =>
+        passwordStrength(inputPassword, alertPassword, spanPassword)
+    );
 });

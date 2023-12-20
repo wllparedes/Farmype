@@ -100,19 +100,25 @@
                 <li class="nav-item {{ setActive('company.inventory.create') }}">
                     <a class="nav-link {{ setActive('company.inventory.create') }}"
                         href="{{ route('company.inventory.create') }}">
-                        <i class="ni ni-planet text-blue"></i> Registro de inventarios
+                        <i class="ni ni-settings-gear-65 text-blue"></i> Registro de inventarios
+                    </a>
+                </li>
+                <li class="nav-item {{ setActive('company.promotions.list') }}">
+                    <a class="nav-link {{ setActive('company.promotions.list') }}"
+                        href="{{ route('company.promotions.list') }}">
+                        <i class="ni ni-app text-info"></i> Promociones
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('company.inventory.index') }}">
                     <a class="nav-link {{ setActive('company.inventory.index') }}"
                         href="{{ route('company.inventory.index') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> Consultar inventario
+                        <i class="ni ni-box-2 text-orange"></i> Consultar inventario
                     </a>
                 </li>
                 <li class="nav-item {{ setActive('company.sales.index') }}">
                     <a class="nav-link {{ setActive('company.sales.index') }}"
                         href="{{ route('company.sales.index') }}">
-                        <i class="ni ni-bullet-list-67 text-red"></i> Ordenes de ventas
+                        <i class="ni ni-bullet-list-67 text-pink"></i> Ordenes de ventas
                     </a>
                 </li>
                 {{-- <li class="nav-item ">

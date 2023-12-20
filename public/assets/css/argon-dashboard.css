@@ -120,7 +120,7 @@ option,
 select,
 span {
     font-family: var(--bs-body-font-family) !important;
-    font-family: "Nunito", sans-serif !important;
+    font-family: Open Sans, sans-serif !important;
 }
 
 [tabindex="-1"]:focus {
@@ -18550,7 +18550,7 @@ article h5+figure {
     margin-top: 0;
 }
 
-.datepicker {
+/* .datepicker {
     border-radius: 0.375rem;
     direction: ltr;
 }
@@ -18818,7 +18818,7 @@ article h5+figure {
     width: 12px;
     padding: 0 2px 0 5px;
     vertical-align: middle;
-}
+} */
 
 /*! nouislider - 14.0.1 - 6/21/2019 */
 /* Functional styling;

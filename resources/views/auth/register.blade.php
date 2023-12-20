@@ -26,7 +26,8 @@
 
                             <div class="form-group">
                                 <label for="select-document-type">Tipo de documento *</label>
-                                <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group input-group-alternative mb-3 parent-documentType">
+
                                     <select id="select-document-type"
                                         class="form-control js-example-basic-single input-form-class" name="document_type">
                                         <option></option>
@@ -34,6 +35,11 @@
                                             <option value="{{ $key }}"> {{ $type }} </option>
                                         @endforeach
                                     </select>
+
+                                    {{-- <div class="form-control js-example-basic-single input-form-class" id="select-documentType" name="documentType">
+
+                                    </div> --}}
+
                                 </div>
                             </div>
 
