@@ -3,6 +3,8 @@ import { Toast } from "./../../global/ToastSwal.js";
 import { resetInputsForm } from "./../../global/resetInputsForm.js";
 import { uploadImage } from "./../../global/uploadImage.js";
 import { selectProduct } from "./selectProducts.js";
+import { promotionsTable } from "./promotions-datatable.js";
+
 
 let datepicker = new Datepicker("#datepicker", {
     inline: true,
@@ -89,6 +91,7 @@ $(document).ready(() => {
                 complete: function (data) {
                     form.find(".btn-save").removeAttr("disabled");
                     selectProduct.reset();
+                    promotionsTable.ajax.reload();
                     modal.modal("toggle");
                 },
                 error: function (data) {

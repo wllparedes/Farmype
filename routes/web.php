@@ -138,7 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
         // * Promociones
 
         Route::controller(CompanyPromotionController::class)->group(function () {
-            Route::get('/lista-de-promociones', 'list')->name('company.promotions.list');
+            Route::get('/lista-de-promociones', 'index')->name('company.promotions.list');
             Route::post('/registrar-promocion', 'store')->name('company.promotions.store');
         });
 

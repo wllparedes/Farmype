@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/datepicker-master/css/datepicker.minimal.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/datepicker-master/css/datepicker.material.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/js/plugins/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    {{-- * reponsive --}}
+    <link rel="stylesheet"
+        href="{{ asset('assets/js/plugins/datatables/Responsive-2.2.1/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -39,13 +44,14 @@
                     </div>
                     <div class="table-responsive">
 
-                        <table id="sales-table" class="table align-items-center table-flush"
-                            data-url="{{ route('company.sales.index') }}">
+                        <table id="promotions-table" class="table align-items-center table-flush"
+                            data-url="{{ route('company.promotions.list') }}">
                             <thead class="thead-light">
                                 <tr>
                                     <th>ID</th>
                                     <th>Número de promoción</th>
                                     <th>Precio</th>
+                                    <th>Stock</th>
                                     <th>Fecha de incio</th>
                                     <th>Fecha de finalización</th>
                                     <th>Productos</th>
@@ -71,10 +77,15 @@
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/virtual-select/virtual-select.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/datepicker-master/datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datatables/Responsive-2.2.1/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/datatables/Responsive-2.2.1/js/responsive.bootstrap4.min.js') }}"></script>
 
 
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
     <script src="{{ asset('assets/js/company/promotion/selectProducts.js') }}" type="module"></script>
     <script src="{{ asset('assets/js/company/promotion/validatorPromotion.js') }}" type="module"></script>
+    <script src="{{ asset('assets/js/company/promotion/promotions-datatable.js') }}" type="module"></script>
 
 @endsection

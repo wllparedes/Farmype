@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Services\CompanyPromotionService;
 use App\Services\FileService;
 use Exception;
 use Illuminate\Http\Request;
@@ -11,10 +12,27 @@ use Illuminate\Support\Carbon;
 
 class CompanyPromotionController extends Controller
 {
-    public function list()
+
+    protected $service;
+    public function __construct(CompanyPromotionService $service)
     {
-        return view('company.promotions.index');
+        $this->service = $service;
     }
+
+    public function index(Request $request)
+    {
+
+        if ($request->ajax()) {
+            return $this->service->getDatatable();
+        } else {
+            return view('company.promotions.index');
+        }
+
+
+
+    }
+
+
 
     public function store(Request $request)
     {
