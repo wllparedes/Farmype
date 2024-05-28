@@ -118,6 +118,11 @@
                         <i class="ni ni-collection text-orange"></i> Productos registrados
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000" target="__BLANK">
+                        <i class="ni ni-box-2 text-blue"></i> Predicción de ventas
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link " href="./examples/profile.html">
                         <i class="ni ni-single-02 text-yellow"></i> User profile
