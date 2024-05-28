@@ -121,6 +121,11 @@
                         <i class="ni ni-bullet-list-67 text-pink"></i> Ordenes de ventas
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000" target="__BLANK">
+                        <i class="ni ni-box-2 text-blue"></i> Predicción de ventas
+                    </a>
+                </li>
                 {{-- <li class="nav-item ">
                     <a class="nav-link" href="{{ route('profile.index') }}">
                         <i class="ni ni-key-25 text-info"></i> Perfil
