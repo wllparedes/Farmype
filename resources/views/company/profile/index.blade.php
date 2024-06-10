@@ -7,12 +7,16 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/base.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/Choices/choices.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.css') }}">
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&loading=async&callback=initMap">
+    </script>
+
 @endsection
 
 @section('content')
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-        style="min-height: 600px; background-image: url({{ asset('assets/img/theme/profile-cover.jpg') }}); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+        {{-- style="min-height: 600px; background-image: url({{ asset('assets/img/theme/profile-cover.jpg') }}); background-size: cover; background-position: center top;"> --}}
         <!-- Mask -->
         <span class="mask bg-gradient-default opacity-8"></span>
         <!-- Header container -->
@@ -196,6 +200,30 @@
                             <hr class="my-4" />
                             <!-- Description -->
                         </form>
+
+
+                        {{-- * FORM LOCATION --}}
+
+                        <h6 class="heading-small text-muted mb-4">Tú ubicación</h6>
+
+                        <div id="map" style="width:100%;height:400px"></div>
+
+                        <form id="update-location-company" method="POST"
+                            action="{{ route('company.location.update') }}">
+                            {{-- @csrf --}}
+                            <input type="number" id="latitude" name="latitude" value="{{ $latitude }}"
+                                class="d-none">
+                            <input type="number" id="longitude" name="longitude" value="{{ $longitude }}"
+                                class="d-none">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-primary mt-4 btn-update-location">
+                                    Actualizar ubicación
+                                </button>
+                            </div>
+                            <hr class="my-4" />
+                        </form>
+
+
                         {{-- * FORM CHANGE PASSWORD --}}
                         <form id="updatePasswordForm" action="{{ route('profile.update-password') }}" method="POST"
                             data-validate="{{ route('profile.validatePassword') }}" autocomplete="off">
@@ -272,9 +300,15 @@
     <script src="{{ asset('assets/js/plugins/sweetAlert/sweetAlert.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/global/csrfToken.js') }}"></script>
+
     <script src="{{ asset('assets/js/global/validatorMessages.js') }}"></script>
 
     <script src="{{ asset('assets/js/profile/updatedFields.js') }}" type="module"></script>
 
     <script src="{{ asset('assets/js/profile/updatePassword.js') }}" type="module"></script>
+
+    <script src="{{ asset('assets/js/company/profile/getLocation.js') }}" type="module"></script>
+
+    <script src="{{ asset('assets/js/company/profile/updateLocation.js') }}" type="module"></script>
+
 @endsection

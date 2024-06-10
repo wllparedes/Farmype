@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Ramsey\Uuid\Type\Decimal;
 
 class ProfileController extends Controller
 {
@@ -21,20 +22,31 @@ class ProfileController extends Controller
     public function index()
     {
 
-        $user_role = Auth::User()->role;
+        $user = Auth::User();
+        $user_role = $user->role;
+
+        $user->load('location');
+
+        $latitude =  null;
+        $longitude =  null;
+
+        if ($user->location) {
+            $latitude = floatval($user->location->latitude);
+            $longitude = floatval($user->location->longitude);
+        }
+
         $departaments = config('parameters.departaments');
         $provinces = config('parameters.provinces');
         $districts = config('parameters.districts');
         $documentTypes = config('parameters.document_type');
 
         if ($user_role === 'company') {
-            return view('company.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
+            return view('company.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes', 'latitude', 'longitude'));
         } elseif ($user_role === 'clients') {
             return view('client.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
         } elseif ($user_role === 'super_admin') {
             return view('admin.profile.index', compact('departaments', 'provinces', 'districts', 'documentTypes'));
         }
-
     }
 
     public function edit()
@@ -52,7 +64,6 @@ class ProfileController extends Controller
             'province' => $province,
             'district' => $district,
         ]);
-
     }
 
     public function validatePassword(Request $request)
@@ -82,7 +93,6 @@ class ProfileController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
-
     }
 
     public function updatePassword(Request $request)
@@ -102,11 +112,5 @@ class ProfileController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
-
     }
-
-
-
-
-
 }

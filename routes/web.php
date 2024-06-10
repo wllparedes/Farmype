@@ -106,8 +106,8 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::controller(LocationController::class)->group(function () {
-            Route::get('/ubicacion', 'index')->name('company.location.index');
-            Route::post('/guardar-ubicacion', 'store')->name('company.location.store');
+            // Route::get('/ubicacion', 'index')->name('company.location.index');
+            // Route::post('/guardar-ubicacion', 'store')->name('company.location.store');
             Route::post('/actualizar-ubicacion', 'update')->name('company.location.update');
         });
 
@@ -144,7 +144,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     });
- 
+
 
     // * Super admin
 

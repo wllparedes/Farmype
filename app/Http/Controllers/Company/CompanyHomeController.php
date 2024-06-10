@@ -32,6 +32,9 @@ class CompanyHomeController extends Controller
     {
 
         $user = Auth::user();
+
+        $user->load('location');
+
         $discountCoupions = $user->discountCoupions()->select('id', 'uses')->sum('uses');
 
         $sales = $user->sales()->count();
@@ -57,9 +60,7 @@ class CompanyHomeController extends Controller
             });
 
 
-
-        return view('company.home', compact('discountCoupions', 'sales', 'salesMoney', 'countInventoriesSales', 'topSellingData'));
-
+        return view('company.home', compact('discountCoupions', 'sales', 'salesMoney', 'countInventoriesSales', 'topSellingData', 'user'));
     }
 
 
@@ -123,5 +124,4 @@ class CompanyHomeController extends Controller
             ],
         ];
     }
-
 }

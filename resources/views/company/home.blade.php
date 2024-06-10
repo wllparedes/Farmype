@@ -6,13 +6,27 @@
         <div class="container-fluid">
             <div class="header-body">
                 <!-- Card stats -->
+
+                @if (!$user->location)
+                    <div class="alert alert-warning alert-dismissible fade show w-50 p-4" role="alert">
+                        <strong>
+                            Querido usuario, aún no ha completado la información de su ubicación. <br>
+                            Por favor, hágalo para que podamos brindarle un mejor servicio.
+                        </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" class="text-white font-weight-700">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-xl-3 col-lg-6">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Productos vendidos</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Productos vendidos
+                                        </h5>
                                         <span class="h2 font-weight-bold mb-0">{{ $countInventoriesSales }}</span>
                                     </div>
                                     <div class="col-auto">
@@ -33,7 +47,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Cupones utilizados</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Cupones utilizados
+                                        </h5>
                                         <span class="h2 font-weight-bold mb-0">{{ $discountCoupions }}</span>
                                     </div>
                                     <div class="col-auto">
@@ -54,7 +69,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Ventas realizadas</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Ventas realizadas
+                                        </h5>
                                         <span class="h2 font-weight-bold mb-0"> {{ $sales }}</span>
                                     </div>
                                     <div class="col-auto">
@@ -75,7 +91,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Ventas en soles</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Ventas en soles
+                                        </h5>
                                         <span class="h2 font-weight-bold mb-0">S/. {{ $salesMoney }} </span>
                                     </div>
                                     <div class="col-auto">
@@ -194,7 +211,7 @@
 
 
 
-    <script>
+    {{-- <script>
         $(document).ready(() => {
 
 
@@ -210,7 +227,9 @@
                         },
                         dataType: 'JSON',
                         success: function(data) {
-                            // console.log(data);
+                            console.log(
+                                data.message
+                            );
                         }
                     });
 
@@ -220,5 +239,5 @@
 
 
         });
-    </script>
+    </script> --}}
 @endsection

@@ -71,15 +71,15 @@
                         {{-- * End form login --}}
 
                         <div class="row mt-3">
-                            <div class="col-6">
+                            {{-- <div class="col-6">
 
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" class="text-muted"><small>Olvidaste tu
                                             contraseña?</small></a>
                                 @endif
 
-                            </div>
-                            <div class="col-6 text-right">
+                            </div> --}}
+                            <div class="col-12 text-right">
                                 <a href="{{ route('register') }}" class="text-muted"><small>Regístrate!</small></a>
                             </div>
                         </div>
