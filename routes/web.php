@@ -26,10 +26,18 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/inicio', [ClientHomeController::class, 'index'])->name('clients.home');
 
+        // * Location
+        Route::controller(LocationController::class)->group(function () {
+            Route::post('/actualizar-ubicacion', 'update')->name('client.location.update');
+        });
+
         // * Inventories
 
         Route::controller(ClientInventoryController::class)->group(function () {
             Route::get('/productos', 'index')->name('client.products.index');
+
+            Route::get('/farmacias-cercanas', 'getCompaniesNearby')->name('client.product.getCompaniesNearby');
+
             Route::get('/ver-productos/{product}', 'view')->name('client.product.view');
             Route::post('/agregar-inventario/{inventory}', 'add')->name('client.inventory.add');
             Route::delete('/client/eliminar-inventario/{inventory}', 'delete')->name('client.inventory.delete');
@@ -89,8 +97,6 @@ Route::group(['middleware' => ['auth']], function () {
             // *
 
         });
-
-
     });
 
     // * Empresa / farmacia
@@ -120,7 +126,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/registrar', 'store')->name('company.inventory.store');
             Route::post('/actualizar-inventario/{inventory}', 'update')->name('company.inventory.update');
             Route::delete('/eliminar-inventario/{inventory}', 'destroy')->name('company.inventory.delete');
-
         });
 
         // * Descuentos
@@ -132,7 +137,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(CompanySaleController::class)->group(function () {
             Route::get('/ventas', 'index')->name('company.sales.index');
             Route::get('/ventas/{sale}', 'view')->name('company.sales.view');
-
         });
 
         // * Promociones
@@ -141,8 +145,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/lista-de-promociones', 'index')->name('company.promotions.list');
             Route::post('/registrar-promocion', 'store')->name('company.promotions.store');
         });
-
-
     });
 
 
@@ -162,15 +164,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/editar-producto/{product}', 'edit')->name('admin.product.edit');
             Route::post('/actualizar-producto/{product}', 'update')->name('admin.product.update');
             Route::delete('/eliminar-producto/{product}', 'destroy')->name('admin.product.delete');
-
         });
 
         Route::controller(AdminCategoryController::class)->group(function () {
             Route::get('/obtener-categorias-principales', 'getParentCategory')->name('admin.category.getParentCategory');
             Route::post('/registrar-categoria', 'store')->name('admin.category.store');
         });
-
-
     });
 
 
@@ -186,9 +185,6 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/validar-password', 'validatePassword')->name('profile.validatePassword');
             Route::post('/actualizar-campos', 'updateFields')->name('profile.update-fields');
             Route::post('/actualizar-password', 'updatePassword')->name('profile.update-password');
-
         });
-
     });
-
 });

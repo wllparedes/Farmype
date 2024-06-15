@@ -108,4 +108,34 @@
     <script src="{{ asset('assets/js/plugins/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/client/inicio/swiper-client.js') }}"></script>
 
+    <script>
+        $(document).ready(() => {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+
+                    let token = $('meta[name="csrf-token"]').attr('content');
+
+                    $.ajax({
+                        url: "{{ route('client.location.update') }}",
+                        type: 'POST',
+                        data: {
+                            _token: token,
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        },
+                        dataType: 'JSON',
+                        success: function(data) {
+                            console.log(data);
+                        }
+                    });
+
+
+                });
+            }
+
+
+        });
+    </script>
+
 @endsection

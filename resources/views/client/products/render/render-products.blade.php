@@ -5,8 +5,7 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-column">
                         <div class="container-empty">
-                            <img class="image-empty" src="{{ asset('assets/img/theme/en-stock.png') }}"
-                                alt="">
+                            <img class="image-empty" src="{{ asset('assets/img/theme/en-stock.png') }}" alt="">
                             <div class="container-note">
                                 <h3 class="col-12 text-start pl-0">No se encontraron productos</h3>
                                 <p>Lo sentimos, actualmente no tenemos productos disponibles en esta sección. Estamos
@@ -44,11 +43,23 @@
                             <span class="badge badge-pill badge-light"> {{ $childCategory->name }} </span>
                         @endforeach
                     </div>
+
+                    <div class="col-lg-12 mt-2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="products">Farmacias cercanas</label>
+                            <div class="form-control form-control-alternative input-reset"
+                                id="select-for-nearby-company" name="select-for-nearby-company"
+                                data-get="{{ route('client.product.getCompaniesNearby') }}">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             @break
 
         @endforeach
-        <div class="col-lg-8 col-md-12 col-sm-12 mb-4 justify-content-around column-product-list">
+        <div class="col-lg-8 col-md-12 col-sm-12 mb-4 justify-content-around column-product-list"
+            id="column-product-list" data-url="{{ route('client.product.view', $product) }}">
             @foreach ($inventories as $inventory)
                 <div class="col-12 container-product-items">
                     <div class="container-list-img">

@@ -38,12 +38,14 @@ class LocationController extends Controller
             $data =  $request->all();
             $success = $user->location()->updateOrCreate($conditions, $data);
             $message = config('parameters.updated_message');
+            $user->load('location');
         } catch (Exception $e) {
             $success = false;
             $message = $e->getMessage();
         }
 
         return response()->json([
+            'user' => $user,
             'success' => $success,
             'message' => $message,
         ]);

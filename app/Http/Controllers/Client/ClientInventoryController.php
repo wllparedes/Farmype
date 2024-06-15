@@ -22,6 +22,11 @@ class ClientInventoryController extends Controller
         return $this->clientInventoryService->getProducts($request);
     }
 
+    public function getCompaniesNearby(Request $request)
+    {
+        return $this->clientInventoryService->getCompaniesNearby($request);
+    }
+
     public function view(Product $product, Request $request)
     {
         return $this->clientInventoryService->getView($product, $request);
@@ -31,13 +36,10 @@ class ClientInventoryController extends Controller
     {
 
         return $this->clientInventoryService->addInventoryOnList($inventory);
-
     }
 
     public function delete(Inventory $inventory)
     {
         return $this->clientInventoryService->deleteInventoryOnList($inventory);
     }
-
 }
-

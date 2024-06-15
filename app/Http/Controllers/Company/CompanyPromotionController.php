@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Events\Company\PromotionForClients;
 use App\Http\Controllers\Controller;
 use App\Services\CompanyPromotionService;
 use App\Services\FileService;
@@ -27,9 +28,6 @@ class CompanyPromotionController extends Controller
         } else {
             return view('company.promotions.index');
         }
-
-
-
     }
 
 
@@ -69,6 +67,8 @@ class CompanyPromotionController extends Controller
             // * asignarle la imagen
             if ($promotion) {
 
+                PromotionForClients::dispatch($promotion);
+
                 if ($request->hasFile('image')) {
 
                     $file_type = 'imagenes';
@@ -92,18 +92,14 @@ class CompanyPromotionController extends Controller
 
             $success = true;
             $message = 'Promoción registrada correctamente';
-
         } catch (Exception $th) {
             $success = false;
             $message = 'Ocurrió un error al registrar la promoción';
         }
 
-
         return response()->json([
             'success' => $success,
             'message' => $message,
         ]);
-
     }
-
 }
