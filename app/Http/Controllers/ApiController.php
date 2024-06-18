@@ -14,7 +14,7 @@ class ApiController extends Controller
     public function _sales(Request $request)
     {
 
-        $limit = $request->limit ?? 5;
+        $limit = $request->limit ?? 1000;
 
         $paginator = Sale::whereHas('user', function ($query) {
             $query->where('role', 'company');
