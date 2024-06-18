@@ -20,7 +20,7 @@ class Sale extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 
@@ -33,5 +33,4 @@ class Sale extends Model
     {
         return $this->belongsTo(User::class, 'client_id');
     }
-
 }

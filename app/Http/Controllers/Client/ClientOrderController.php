@@ -171,11 +171,11 @@ class ClientOrderController extends Controller
             foreach ($inventories as $inventory) {
                 $precio = $inventory->on_sale ? $inventory->discounted_price : $inventory->price;
                 $subtotalProducto = $precio * $inventory->pivot->quantity;
-                $subtotalProductoConDescuento = $subtotalProducto * (1 - $porcentajeDescuento);
+                // $subtotalProductoConDescuento = $subtotalProducto * (1 - $porcentajeDescuento);
 
                 $ordenVenta->inventories()->attach($inventory->id, [
                     'quantity' => $inventory->pivot->quantity,
-                    'subtotal' => $subtotalProductoConDescuento,
+                    'subtotal' => $subtotalProducto,
                 ]);
             }
         }

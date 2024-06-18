@@ -119,7 +119,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:5000" target="__BLANK">
+                    <a class="nav-link" href="https://farmype-predictions-xy3kh2dj2q-uk.a.run.app/" target="__BLANK">
                         <i class="ni ni-box-2 text-blue"></i> Predicción de ventas
                     </a>
                 </li>

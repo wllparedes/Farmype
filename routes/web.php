@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController};
+use App\Http\Controllers\{ApiController, ProfileController};
 
 use App\Http\Controllers\Admin\{AdminCategoryController, AdminHomeController, AdminProductController, DiscountCoupionController};
 use App\Http\Controllers\Client\{ClientHomeController, ClientInventoryController, ClientListController, ClientFilterController, ClientShoppingController, ClientOrderController};
@@ -13,6 +13,12 @@ use App\Http\Controllers\WebhooksController;
 
 Route::get('/', function () {
     return redirect()->route('login');
+});
+
+Route::controller(ApiController::class)->group(function () {
+    Route::get('/farMyPe/sales', '_sales')->name('api.farMyPe.sales');
+    Route::get('/farMyPe/products', '_products')->name('api.farMyPe.products');
+    Route::get('/farMyPe/companies', '_companies')->name('api.farMyPe.companies');
 });
 
 
